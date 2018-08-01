@@ -1,14 +1,13 @@
-import { Component,ViewChild,ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController,Content,List, AlertController,ModalController } from 'ionic-angular';
-import * as $ from 'jquery';
 import { MapPage } from '../map/map';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  @ViewChild(Content) contentArea: Content;
-  @ViewChild(List, {read: ElementRef}) chatList: ElementRef;
+  // @ViewChild(Content) contentArea: Content;
+  // @ViewChild(List, {read: ElementRef}) chatList: ElementRef;
   chats:any =[];
   message:any;
   questions:any = [
@@ -81,7 +80,7 @@ export class HomePage {
               modal.onDidDismiss(res => {
                 console.log('dismissed data',data);
                 let address_msg = data.flat + '\n'+ data.locality + data.city + data.pincode;
-                let address_chat = {'message' : address_msg};
+                let address_chat = {'message' : address_msg,'type' : 'user'};
                 this.chats.push(address_chat);
                 this.pushChat();
               });
@@ -95,7 +94,7 @@ export class HomePage {
     if(this.current_ques.req_info == 'business_type'){
       this.clickable = 1;
       
-      let business_chat = {'message' : 'Choose Category Type'};
+      let business_chat = {'message' : 'Choose Category Type','type' : 'user'};
       this.chats.push(business_chat);
     }
 
@@ -130,9 +129,9 @@ export class HomePage {
 
 
     console.log(this.message);
-    let mess_data = {'message' : this.message};
+    let mess_data = {'message' : this.message,'type': 'user'};
     if(this.current_ques.req_info == 'co_namern'){
-      let name_chat = {'message' : '','btn':'1','req_info' : 'co_name_conf'};
+      let name_chat = {'message' : '','type' : 'user','btn':'1','req_info' : 'co_name_conf'};
       name_chat.message = name_chat.message + this.co_name;
       this.chats.push(name_chat);
     }else{
@@ -165,7 +164,7 @@ export class HomePage {
     }
   
     this.business_type_show = false;
-    this.contentArea.scrollToBottom();
+    // this.contentArea.scrollToBottom();
   }
 
   msgclick(){
@@ -173,13 +172,13 @@ export class HomePage {
   }
   ionViewDidLoad(){
  
-    this.mutationObserver = new MutationObserver((mutations) => {
-        this.contentArea.scrollToBottom();
-    });
+    // this.mutationObserver = new MutationObserver((mutations) => {
+    //     this.contentArea.scrollToBottom();
+    // });
 
-    this.mutationObserver.observe(this.chatList.nativeElement, {
-        childList: true
-    });
+    // this.mutationObserver.observe(this.chatList.nativeElement, {
+    //     childList: true
+    // });
 
 }
   edit(val){
@@ -198,7 +197,7 @@ export class HomePage {
   confrim(val){
       if(val == 'comp'){
       
-        let name_chat = {'message' : '','type' : '','btn':'1','req_info' : 'co_name_conf'};
+        let name_chat = {'message' : '','type' : 'user','btn':'1','req_info' : 'co_name_conf'};
         name_chat.message = name_chat.message + this.co_name;
         this.chats.pop();
         this.chats.pop();

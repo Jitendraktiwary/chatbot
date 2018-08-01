@@ -1,0 +1,183 @@
+page-home {
+  .global-hdr{background: #ce271e; color: #fff;}
+  .global-hdr .title{color: #fff; font-family: 'RobotoRegular'; font-size: 1.4em;display: inline-block;}
+  .tf-logo img{width: 20px;}
+  .tf-logo{width: 30px; text-align: right; line-height: 44px;display: inline-block;
+    margin: 10px;}
+  .global-hdr .button{color: #fff;}
+
+    .flex-items{
+        display:  flex;
+        background-color: #fff;
+    }
+    .icon{
+        font-size: 50px;
+        opacity: 0.5;
+        padding-left: 40px;
+        align-self: center;
+    }
+    .send{
+        color: #ce271e;
+        font-size: 30px;
+    }
+    .input_message{
+        border: 1px solid #ce271e;
+        border-radius: 15px; 
+    }
+    .messages{
+        height: 100%;
+        position: relative;
+    }
+    .footer{
+        position: fixed;
+        bottom: 0%;
+    }
+    .chats {
+        height: 100%;
+        position: relative;
+        z-index: 0;
+    }
+    .chats .chatbox {
+        height: calc(100% - 80px);
+        overflow-x: hidden;
+        padding: 0 16px;
+        padding-bottom: 30px;
+    }
+    .joined {
+      clear: both;
+      line-height: 18px;
+      font-size: 15px;
+      margin: 8px 0;
+      padding: 8px;
+    }
+    .joined span {
+      padding: 5px
+    }
+    /* Messages*/
+    .message {
+      color: #000;
+      clear: both;
+      line-height: 18px;
+      font-size: 15px;
+      padding: 8px;
+      position: relative;
+      margin: 8px 0;
+      max-width: 85%;
+      word-wrap: break-word;
+      z-index: 99;
+    }
+    .message:after {
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+    .message:first-child {
+      margin: 16px 0 8px;
+    }
+    .message.received {
+      background: #ccc;
+      border-radius: 0px 5px 5px 5px;
+      float: left;
+    }
+
+    .message.received:after {
+      border-width: 0px 10px 10px 0;
+      border-color: transparent #ccc transparent transparent;
+      top: 0;
+      left: -10px;
+    }
+    .message.sent {
+      background: #e1ffc7;
+      border-radius: 5px 0px 5px 5px;
+      float: right;
+    }
+    .message.sent:after {
+      border-width: 0px 0 10px 10px;
+      border-color: transparent transparent transparent #e1ffc7;
+      top: 0;
+      right: -10px;
+    }
+    .scroll-content{
+      padding: 0 !important;
+    }
+    ion-app.md [padding] {
+      padding: 10px !important;
+     
+  }
+  //.......................btn ................//
+  btn-yellow{background-color: #fdc519; color: #1d1d1d;}
+  .btn-green{background-color: #0edc22; color: #1d1d1d;}
+  .btn-red{background-color: #ce271e; color: #f4f4f4;}
+  .btn-yellow.activated, .btn-yellow:hover, .btn-yellow:focus{background-color: #f4bd12; color: #1d1d1d; border: 1px solid #f4bd12;}
+  .btn-green{background-color: #0edc22; color: #1d1d1d;}
+  .btn-green.activated, .btn-green:hover, .btn-green:focus{background-color: #2db33a; color: #1d1d1d; border: 1px solid #0af521;}
+  .btn-block .button{font-weight: 500; font-family: 'RobotoRegular'; padding: 0 5px; font-size: 0.9em; min-height: 42px; line-height: 42px;}
+  .btn-block{padding: 0 5px;}
+  .p-0{padding: 0 !important;}
+.m-t-1{margin-top: -1px !important;}
+.m-t-10{margin-top: 10px !important;}
+.m-t-20{margin-top: 20px !important;}
+.m-b-10{margin-bottom: 10px !important;}
+.p-t-10{padding-top: 10px !important;}
+.left{text-align: left !important;}
+.right{text-align: right !important;}
+.center{text-align: center !important;}
+.p-r-5{padding: 0 3px 0 0 !important;}
+.p-l-5{padding: 0 0 0 3px !important;}
+.w-100{width: 100% !important;}
+.b-t-0{border-top: 0 !important;}
+.b-b-0{border-bottom: 0 !important;}
+/*======== global-button ========*/
+.btn-global{background-color: #ce271e; color: #fff; text-transform: uppercase; font-family: 'RobotoRegular'; font-size: 1.2em; min-height: 52px; line-height: 47px; font-weight: 600;}
+.btn-global:hover, .btn-global:focus{color: #fff;}
+.btn-global.activated{background-color: #c22118; color: #fff; border: 1px solid #c22118;}
+/*======== global-header ========*/
+  //..................end.........................//
+  .disab{
+    z-index: -1;
+  }
+  .scene {
+    width: 200px;
+    height: 260px;
+    border: 1px solid #CCC;
+    margin: 40px 0;
+    perspective: 600px;
+  }
+  
+  .card {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .card.is-flipped {
+    transform: rotateY(180deg);
+  }
+  
+  .card__face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 260px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    backface-visibility: hidden;
+  }
+  
+  .card__face--front {
+    background: red;
+  }
+  
+  .card__face--back {
+    background: blue;
+    transform: rotateY(180deg);
+  }
+  
+}

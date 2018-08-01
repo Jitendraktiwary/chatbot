@@ -1,6 +1,8 @@
 import { Component,ViewChild,ElementRef } from '@angular/core';
 import { NavController,Content,List } from 'ionic-angular';
 import * as $ from 'jquery';
+import { AlertController,ModalController } from 'ionic-angular';
+import { MapPage } from '../map/map';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -36,7 +38,7 @@ export class HomePage {
   ];
   private mutationObserver: MutationObserver;
   headervalue:any=" is Typing..."
-  constructor(public navCtrl: NavController) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController,public alertCtrl: AlertController) {
     this.pushChat();
   }
 
@@ -50,10 +52,60 @@ export class HomePage {
     if(this.current_ques.skip){
       this.pushChat();
     }
+    if(this.current_ques.req_info == 'co_add'){
+      const prompt = this.alertCtrl.create({
+        title: 'Address',
+        inputs: [
+          {
+            name: 'flat',
+            placeholder: 'House No/Flat/Building'
+          },
+          {
+            name: 'locality',
+            placeholder: 'Street'
+          },
+          {
+            name: 'city',
+            placeholder: 'City'
+          },
+          {
+            name: 'pincode',
+            placeholder: 'pincode'
+          }
+        ],
+        buttons: [
+          {
+            text: 'Locate on Map',
+            handler: data => {
+              console.log(data);
+              const modal = this.modalCtrl.create(MapPage,data);
+              modal.onDidDismiss(res => {
+                console.log('dismissed data',data);
+                let address_msg = data.flat + '\n'+ data.locality + data.city + data.pincode;
+                let address_chat = {'message' : address_msg};
+                this.chats.push(address_chat);
+                this.pushChat();
+              });
+              modal.present();
+            }
+          }
+        ]
+      });
+      prompt.present();
+    }
+    if(this.current_ques.req_info == 'business_type'){
+      this.clickable = 1;
+      
+      let business_chat = {'message' : 'Choose Category Type'};
+      this.chats.push(business_chat);
+    }
+
      
     }, 1000);      
   
   }
+
+
   repushChat(){
     
     setTimeout(() =>  {

@@ -1,7 +1,6 @@
 import { Component,ViewChild,ElementRef } from '@angular/core';
-import { NavController,Content,List } from 'ionic-angular';
+import { NavController,Content,List, AlertController,ModalController } from 'ionic-angular';
 import * as $ from 'jquery';
-import { AlertController,ModalController } from 'ionic-angular';
 import { MapPage } from '../map/map';
 @Component({
   selector: 'page-home',
@@ -199,12 +198,17 @@ export class HomePage {
   confrim(val){
       if(val == 'comp'){
       
-        let name_chat = {'message' : '','btn':'1','req_info' : 'co_name_conf'};
+        let name_chat = {'message' : '','type' : '','btn':'1','req_info' : 'co_name_conf'};
         name_chat.message = name_chat.message + this.co_name;
         this.chats.pop();
         this.chats.pop();
         this.chats.push(name_chat);
         this.pushChat();
       }
+  }
+  address(){
+    let name_chat = {'message' : '','type' : 'bot','btn':'0','req_info' : 'co_add'};
+    this.questions.push(name_chat);
+    this.pushChat();
   }
 }

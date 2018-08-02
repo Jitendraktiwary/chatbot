@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CreatemywebsitePage } from '../pages/createmywebsite/createmywebsite';
 import { MapPage } from '../pages/map/map';
+import { SubDomaininfoPage } from '../pages/sub-domaininfo/sub-domaininfo';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ApiServiceProvider } from '../providers/api-service/api-service';
     MyApp,
     HomePage,
     CreatemywebsitePage,
-    MapPage
+    MapPage,
+    SubDomaininfoPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { ApiServiceProvider } from '../providers/api-service/api-service';
     MyApp,
     HomePage,
     CreatemywebsitePage,
-    MapPage
+    MapPage,
+    SubDomaininfoPage
   ],
   providers: [
     StatusBar,

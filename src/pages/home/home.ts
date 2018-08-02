@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController,Content,List, AlertController,ModalController } from 'ionic-angular';
 import { MapPage } from '../map/map';
+import { SubDomaininfoPage } from '../sub-domaininfo/sub-domaininfo'
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -17,9 +18,11 @@ export class HomePage {
     {'message' : 'What is the your Business Type?','type' : 'bot','req_info' : 'business_type','btn':'0'},
     {'message' : 'Alright,next is your business address','type' : 'bot','req_info' : 'business_address','skip' : 1,'btn':'0'},
     {'message' : 'be precise,for both your customer and SEO','type' : 'bot','req_info' : 'seo','skip' : 1,'btn':'0'},
-    {'message' : 'What is SEO ? Enter your Address','type' : 'bot','req_info' : 'seobtn','skip' : 1,'btn':'1'},
-
-
+   // {'message' : 'What is SEO ? Enter your Address','type' : 'bot','req_info' : 'seobtn','skip' : 1,'btn':'1'},
+    {'message' : 'Enter your Address','type' : 'bot','req_info' : 'co_add','btn':'0'},
+    {'message' : 'Enter your SubDomain Name?','type' : 'bot','req_info' : 'sub_domain','btn':'0'},
+    {'message' : 'Alright,Thanks you for giving your time.','type' : 'bot','req_info' : 'final_step','skip' : 1,'btn':'0'},
+    {'message' : 'Your all detail and your sub domain is ready for your first vist .!  Thanks','type' : 'bot','req_info' : 'final','btn':'0'},
   ];
   name:any;
   co_name:any;
@@ -28,6 +31,8 @@ export class HomePage {
   clickable:any;
   showmsg:any=0;
   business_type_show:boolean = false;
+  subdomainname:any;
+  mainaddress:any;
   business_type_list:any = [
     {'option' : 'Agriculture','value' : 1},
     {'option' : 'Apparel & Fashion','value' :27},
@@ -81,8 +86,11 @@ export class HomePage {
                 console.log('dismissed data',data);
                 let address_msg = data.flat + '\n'+ data.locality + data.city + data.pincode;
                 let address_chat = {'message' : address_msg,'type' : 'user'};
+                this.chats.pop();
                 this.chats.push(address_chat);
-                this.pushChat();
+                this.mainaddress=address_msg;
+                //this.chats.push(address_chat);
+                 this.pushChat();
               });
               modal.present();
             }
@@ -90,13 +98,85 @@ export class HomePage {
         ]
       });
       prompt.present();
-    }
+    }       
     if(this.current_ques.req_info == 'business_type'){
-      this.clickable = 1;
+      let alert = this.alertCtrl.create();
+      alert.setTitle('Select your Business Type');
+  
+      alert.addInput({
+        type: 'checkbox',
+        label: 'Exporter',
+        value: 'Exporter',
+        
+      });
+  
+      alert.addInput({
+        type: 'checkbox',
+        label: 'Importer',
+        value: 'Importer'
+      });
       
-      let business_chat = {'message' : 'Choose Category Type','type' : 'user'};
-      this.chats.push(business_chat);
+      alert.addInput({
+        type: 'checkbox',
+        label: 'Manufacturer',
+        value: 'Manufacturer',
+        
+      });
+  
+      alert.addInput({
+        type: 'checkbox',
+        label: 'Service',
+        value: 'Service'
+      });
+      alert.addInput({
+        type: 'checkbox',
+        label: 'Provider',
+        value: 'Provider',
+       
+      });
+  
+      alert.addInput({
+        type: 'checkbox',
+        label: 'Distributor',
+        value: 'Distributor'
+      });
+      alert.addInput({
+        type: 'checkbox',
+        label: 'Supplier',
+        value: 'Supplier',
+        
+      });
+  
+      alert.addInput({
+        type: 'checkbox',
+        label: 'Trader',
+        value: 'Trader'
+      });
+      alert.addButton('Cancel');
+      alert.addButton({
+        text: 'Okay',
+        handler: data => {
+
+          console.log('Checkbox data:', data);
+            let business_chat = {'message' : data,'type' : 'user'};
+            this.business_type=data;
+            this.chats.push(business_chat);
+            this.pushChat();
+        }
+      });
+      alert.present();
+    
     }
+    if(this.current_ques.req_info == 'final'){
+      this.navCtrl.push(SubDomaininfoPage,{name:this.name,comp_name:this.co_name,address:this.mainaddress,sub_domain:this.subdomainname,bussness_type:this.business_type});
+     
+    }
+    // if(this.current_ques.req_info == 'business_type'){
+    //   this.clickable = 1;
+      
+    //   let business_chat = {'message' : 'Choose Category Type','type' : 'user'};
+    //   this.chats.push(business_chat);
+    // }
 
      
     }, 1000);      
@@ -122,19 +202,18 @@ export class HomePage {
 
   sendMessage(){
 
-    // event.preventDefault();
-    // document.getElementById( 'side-2' ).className = 'flip flip-side-1';
-    // document.getElementById( 'side-1' ).className = 'flip flip-side-2';  
-    //$('.card').toggle('is-flipped');
-
-
     console.log(this.message);
     let mess_data = {'message' : this.message,'type': 'user'};
     if(this.current_ques.req_info == 'co_namern'){
       let name_chat = {'message' : '','type' : 'user','btn':'1','req_info' : 'co_name_conf'};
       name_chat.message = name_chat.message + this.co_name;
       this.chats.push(name_chat);
-    }else{
+    }else if(this.current_ques.req_info == 'subdomainbtn_namern'){
+      let name_chat = {'message' : '','type' : 'user','btn':'1','req_info' : 'subdomainbtn_conf'};
+      name_chat.message = name_chat.message + this.subdomainname;
+      this.chats.push(name_chat);
+    }
+    else{
       this.chats.push(mess_data);
     }
     
@@ -152,6 +231,11 @@ export class HomePage {
       this.business_type = this.message;
       
     }
+    else if(this.current_ques.req_info == 'sub_domain'){
+      
+      this.subdomainname = this.message;
+      
+    }
    
     this.showmsg=0;
     this.headervalue=' is Typing..'
@@ -159,7 +243,12 @@ export class HomePage {
     if(this.current_ques.req_info == 'co_name'){
       this.current_ques ={'message' : 'Confirm your Company Name','type' : 'bot','req_info' : 'co_namebtn','btn':'1'};
       this.repushChat();
-    }else{
+    }
+    else if(this.current_ques.req_info == 'sub_domain'){
+      this.current_ques ={'message' : 'Confirm your Sub Domain Name','type' : 'bot','req_info' : 'conf_subdomainbtn','btn':'1'};
+      this.repushChat();
+    }
+    else{
       this.pushChat();
     }
   
@@ -172,14 +261,7 @@ export class HomePage {
   }
   ionViewDidLoad(){
  
-    // this.mutationObserver = new MutationObserver((mutations) => {
-    //     this.contentArea.scrollToBottom();
-    // });
-
-    // this.mutationObserver.observe(this.chatList.nativeElement, {
-    //     childList: true
-    // });
-
+  
 }
   edit(val){
    
@@ -190,8 +272,16 @@ export class HomePage {
       name_chat.message = name_chat.message;
       this.chats.pop();
       this.chats.push(name_chat);
-     // this.pushChat();
+   
     }
+    if(val == 'domain'){
+      console.log("1"+val);
+     let name_chat = {'message' :'Re-enter Sub Domain Name?','type' : 'bot','req_info' : 'subdomainbtn_namern','btn':'0'};
+     name_chat.message = name_chat.message;
+     this.chats.pop();
+     this.chats.push(name_chat);
+  
+   }
 
   }
   confrim(val){
@@ -199,6 +289,15 @@ export class HomePage {
       
         let name_chat = {'message' : '','type' : 'user','btn':'1','req_info' : 'co_name_conf'};
         name_chat.message = name_chat.message + this.co_name;
+        this.chats.pop();
+        this.chats.pop();
+        this.chats.push(name_chat);
+        this.pushChat();
+      }
+      if(val == 'domain'){
+      
+        let name_chat = {'message' : '','type' : 'user','btn':'1','req_info' : 'subdomainbtn_conf'};
+        name_chat.message = name_chat.message + this.subdomainname;
         this.chats.pop();
         this.chats.pop();
         this.chats.push(name_chat);

@@ -42,6 +42,20 @@
                        </div>
                     </div>
                </span>
+               <span *ngIf="chat.req_info =='conf_subdomainbtn'">
+                <div class="btn-block p-0">
+                    <div class="row">
+                      <h1>Confirm your Sub Domain Name</h1>
+                      <p>{{subdomainname}}</p>
+                      <div class="col" >
+                        <button class="button button-block btn-global btn-green editcomp" (click)="edit('domain')">Edit</button>
+                      </div>
+                      <div class="col">
+                        <button class="button button-block btn-global btn-yellow confrimcomp" (click)="confrim('domain')">Confrim</button>
+                      </div>
+                     </div>
+                  </div>
+             </span>
                <span *ngIf="chat.req_info =='co_name_conf'">
                   <div class="btn-block p-0">
                       <div class="row">

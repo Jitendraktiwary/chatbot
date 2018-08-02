@@ -14,3 +14,26 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+body{
+    .alert-head {
+        background: #e2252b !important;
+       
+    }
+    ion-alert.alert-top {
+        padding-top: 86px !important;
+       
+    }
+    .alert-wrapper {
+       
+        min-width: 90% !important;
+        
+    }
+    .alert-md .alert-title {
+         color: white !important;
+    }
+    .alert-md .alert-button {
+        
+        color: #f53d3d !important;
+       text-decoration: underline;
+    }
+}

@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { NavController,Content,List, AlertController,ModalController } from 'ionic-angular';
+import { Component,ViewChild } from '@angular/core';
+import { NavController,Content, AlertController,ModalController } from 'ionic-angular';
 import { MapPage } from '../map/map';
-import { SubDomaininfoPage } from '../sub-domaininfo/sub-domaininfo'
+import { SubDomaininfoPage } from '../sub-domaininfo/sub-domaininfo';
+import * as $ from "jquery";
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  // @ViewChild(Content) contentArea: Content;
+  @ViewChild(Content) content: Content;
   // @ViewChild(List, {read: ElementRef}) chatList: ElementRef;
   chats:any =[];
   message:any;
@@ -18,10 +19,17 @@ export class HomePage {
     {'message' : 'What is the your Business Type?','type' : 'bot','req_info' : 'business_type','btn':'0'},
     {'message' : 'Alright,next is your business address','type' : 'bot','req_info' : 'business_address','skip' : 1,'btn':'0'},
     {'message' : 'be precise,for both your customer and SEO','type' : 'bot','req_info' : 'seo','skip' : 1,'btn':'0'},
-   // {'message' : 'What is SEO ? Enter your Address','type' : 'bot','req_info' : 'seobtn','skip' : 1,'btn':'1'},
     {'message' : 'Enter your Address','type' : 'bot','req_info' : 'co_add','btn':'0'},
-    {'message' : 'Enter your SubDomain Name?','type' : 'bot','req_info' : 'sub_domain','btn':'0'},
+    {'message' : 'To verfiy your account','type' : 'bot','skip' : 1,'req_info' : 'verfiy_ac','btn':'0'},
+    {'message' : 'I will send you an otp on this number so please make sure your phone number is valid. .','type' : 'bot','req_info' : 'phone_number','skip' : 1,'btn':'0'},
+    {'message' : 'please enter mobile number','type' : 'bot','req_info' : 'phone_number_enter','btn':'0'},
+    {'message' : 'Almost done ...','type' : 'bot','req_info' : 'phone_number_enter','btn':'0','skip' : 1},
+    {'message' : 'We think this should be your business web address..','type' : 'bot','req_info' : 'sub_domain','skip' : 1,'btn':'0'},
+    {'message' : 'No worry,your can always map it to an existing domain or a custom domain at later point.','type' : 'bot','req_info' : 'laterpoint','skip' : 1,'btn':'0'},
+    {'message' : 'please enter the website address you want..','type' : 'bot','req_info' : 'sub_domain','btn':'0'},
     {'message' : 'Alright,Thanks you for giving your time.','type' : 'bot','req_info' : 'final_step','skip' : 1,'btn':'0'},
+    {'message' : 'Lastly. I need your email Id to send you your username,password and other important details.','type' : 'bot','skip' : 1,'req_info' : 'final','btn':'0'},
+    {'message' : 'Please enter your email address..','type' : 'bot','req_info' : 'email_address','btn':'0'},
     {'message' : 'Your all detail and your sub domain is ready for your first vist .!  Thanks','type' : 'bot','req_info' : 'final','btn':'0'},
   ];
   name:any;
@@ -98,6 +106,7 @@ export class HomePage {
         ]
       });
       prompt.present();
+      
     }       
     if(this.current_ques.req_info == 'business_type'){
       let alert = this.alertCtrl.create();
@@ -180,7 +189,9 @@ export class HomePage {
 
      
     }, 1000);      
-  
+    setTimeout(() => {
+      this.content.scrollToBottom();
+      }, 500);
   }
 
 
@@ -201,6 +212,10 @@ export class HomePage {
   }
 
   sendMessage(){
+    
+    
+      $(".chatbox").scrollTop(-10);
+
 
     console.log(this.message);
     let mess_data = {'message' : this.message,'type': 'user'};

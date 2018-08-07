@@ -189,9 +189,9 @@ export class HomePage {
 
      
     }, 1000);      
-    setTimeout(() => {
-      this.content.scrollToBottom();
-      }, 500);
+    // setTimeout(() => {
+    //   this.content.scrollToBottom();
+    //   }, 500);
   }
 
 
@@ -214,7 +214,7 @@ export class HomePage {
   sendMessage(){
     
     
-      $(".chatbox").scrollTop(-10);
+     // $(".chatbox").scrollTop();
 
 
     console.log(this.message);

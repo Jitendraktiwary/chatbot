@@ -8,7 +8,7 @@
 <ion-content padding>
     <div class="chats" style="background-image: url(assets/imgs/bacimge.jpg); ">
         <div class="chatbox">
-          <div *ngFor="let chat of chats">
+          <div *ngFor="let chat of chats" #map>
             <div class="message sent" *ngIf="chat.type!=='bot'">
               {{chat.message}}     
             </div>

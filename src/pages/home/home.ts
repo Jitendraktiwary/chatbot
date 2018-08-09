@@ -55,6 +55,13 @@ export class HomePage {
 
   pushChat(){
     this.chats.push({'message' : '....','type' : 'bot','btn':'0'});
+    
+    setTimeout(function () {
+      var itemList = document.getElementById("scrollBottom");
+      var chatList = document.getElementById("chatscroll");
+    }, 10);
+    // this.content.scrollToBottom();
+    // document.getElementById('scrollBottom').scrollIntoView();
     setTimeout(() =>  {
       this.headervalue='';
       this.current_ques = this.questions.shift();
@@ -64,48 +71,11 @@ export class HomePage {
       this.pushChat();
     }
     if(this.current_ques.req_info == 'co_add'){
-      const prompt = this.alertCtrl.create({
-        title: 'Address',
-        inputs: [
-          {
-            name: 'flat',
-            placeholder: 'House No/Flat/Building'
-          },
-          {
-            name: 'locality',
-            placeholder: 'Street'
-          },
-          {
-            name: 'city',
-            placeholder: 'City'
-          },
-          {
-            name: 'pincode',
-            placeholder: 'pincode'
-          }
-        ],
-        buttons: [
-          {
-            text: 'Locate on Map',
-            handler: data => {
-              console.log(data);
-              const modal = this.modalCtrl.create(MapPage,data);
-              modal.onDidDismiss(res => {
-                console.log('dismissed data',data);
-                let address_msg = data.flat + '\n'+ data.locality + data.city + data.pincode;
-                let address_chat = {'message' : address_msg,'type' : 'user'};
-                this.chats.pop();
-                this.chats.push(address_chat);
-                this.mainaddress=address_msg;
-                //this.chats.push(address_chat);
-                 this.pushChat();
-              });
-              modal.present();
-            }
-          }
-        ]
+      const modal = this.modalCtrl.create(MapPage);
+      modal.onDidDismiss(res => {
+        console.log(res);
       });
-      prompt.present();
+      modal.present();
       
     }       
     if(this.current_ques.req_info == 'business_type'){

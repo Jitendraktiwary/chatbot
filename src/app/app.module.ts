@@ -13,7 +13,7 @@ import { MapPage } from '../pages/map/map';
 import { SubDomaininfoPage } from '../pages/sub-domaininfo/sub-domaininfo';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { ConstantProvider } from '../providers/constant/constant';
-// import { HttpInterceptorProvider } from '../providers/http-interceptor/http-interceptor';
+import { HttpInterceptorProvider } from '../providers/http-interceptor/http-interceptor';
 
 // export function httpServiceInterceptor(backend: XHRBackend,
 //   options: RequestOptions
@@ -50,11 +50,12 @@ import { ConstantProvider } from '../providers/constant/constant';
     ApiServiceProvider,
     ConstantProvider,
     // HttpInterceptorProvider,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useFactory: HttpInterceptorProvider,
-    //   multi : true
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      // useFactory: HttpInterceptorProvider,
+      useClass: HttpInterceptorProvider,
+      multi : true
+    },
   ]
 })
 export class AppModule {}

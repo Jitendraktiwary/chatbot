@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 // import { Http, Response,Headers,RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
@@ -26,13 +26,20 @@ export class ApiServiceProvider {
 
   get_categories(){
     let url = 'https://www.tradeindia.com/messenger/v_117/get_categories.html';
-    return this.http.get(url).map((res:Response) => console.log('get_categories res',res));
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+    headers = headers.set('Custom-Header', 'qwerty');
+    return this.http.get(url,{headers : headers});
+    // return this.http.get(url).map((res:Response) => console.log('get_categories res',res));
   }
   
   send_otp(mobile_no){
     let url = 'https://www.tradeindia.com/messenger/v_117/send_otp.html';
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+    headers = headers.set('Custom-Header', 'qwerty');
     url += '?mobile=' + mobile_no;
-    return this.http.get(url);
+    return this.http.get(url,{headers : headers});
   }
 
 }

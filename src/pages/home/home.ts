@@ -1,4 +1,4 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component,ViewChild, ElementRef } from '@angular/core';
 import { NavController,Content, AlertController,ModalController } from 'ionic-angular';
 import { MapPage } from '../map/map';
 import { SubDomaininfoPage } from '../sub-domaininfo/sub-domaininfo';
@@ -8,7 +8,7 @@ import * as $ from "jquery";
   templateUrl: 'home.html'
 })
 export class HomePage {
-  @ViewChild(Content) content: Content;
+  @ViewChild('scrollMe') scrollElement: ElementRef;
   // @ViewChild(List, {read: ElementRef}) chatList: ElementRef;
   chats:any =[];
   message:any;
@@ -54,6 +54,9 @@ export class HomePage {
   }
 
   pushChat(){
+    setTimeout( ()=> {
+      this.scrollElement.nativeElement.scrollTop = this.scrollElement.nativeElement.scrollHeight+10;
+    }, 5);
     this.chats.push({'message' : '....','type' : 'bot','btn':'0'});
     setTimeout(() =>  {
       this.headervalue='';
@@ -192,10 +195,17 @@ export class HomePage {
     // setTimeout(() => {
     //   this.content.scrollToBottom();
     //   }, 500);
+    setTimeout( ()=> {
+      this.scrollElement.nativeElement.scrollTop = this.scrollElement.nativeElement.scrollHeight+10;
+    }, 5);
   }
 
 
   repushChat(){
+
+    setTimeout( ()=> {
+      this.scrollElement.nativeElement.scrollTop = this.scrollElement.nativeElement.scrollHeight+10;
+    }, 5);
     
     setTimeout(() =>  {
       this.headervalue='';
@@ -207,17 +217,25 @@ export class HomePage {
      
     }, 1000);
    
-       
+  
   
   }
 
   sendMessage(){
-    
-    
+   
+   
+    setTimeout( ()=> {
+      this.scrollElement.nativeElement.scrollTop = this.scrollElement.nativeElement.scrollHeight+10;
+    }, 5);
+  
      // $(".chatbox").scrollTop();
 
-
-    console.log(this.message);
+    // var element = document.getElementById("chats");
+     // I can't remember why I added a short timeout, 
+     // but you might be able to use ngzone instead.
+     // the below works great though. 
+    
+  
     let mess_data = {'message' : this.message,'type': 'user'};
     if(this.current_ques.req_info == 'co_namern'){
       let name_chat = {'message' : '','type' : 'user','btn':'1','req_info' : 'co_name_conf'};
@@ -279,7 +297,9 @@ export class HomePage {
   
 }
   edit(val){
-   
+    setTimeout( ()=> {
+      this.scrollElement.nativeElement.scrollTop = this.scrollElement.nativeElement.scrollHeight+10;
+    }, 5);
     console.log(val);
     if(val == 'comp'){
        console.log("1"+val);
@@ -300,6 +320,9 @@ export class HomePage {
 
   }
   confrim(val){
+    setTimeout( ()=> {
+      this.scrollElement.nativeElement.scrollTop = this.scrollElement.nativeElement.scrollHeight+10;
+    }, 5);
       if(val == 'comp'){
       
         let name_chat = {'message' : '','type' : 'user','btn':'1','req_info' : 'co_name_conf'};
@@ -320,6 +343,9 @@ export class HomePage {
       }
   }
   address(){
+    setTimeout( ()=> {
+      this.scrollElement.nativeElement.scrollTop = this.scrollElement.nativeElement.scrollHeight+10;
+    }, 5);
     let name_chat = {'message' : '','type' : 'bot','btn':'0','req_info' : 'co_add'};
     this.questions.push(name_chat);
     this.pushChat();

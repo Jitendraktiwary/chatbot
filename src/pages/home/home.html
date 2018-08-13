@@ -6,9 +6,9 @@
 </ion-header>
 
 <ion-content padding>
-    <div class="chats" style="background-image: url(assets/imgs/bacimge.jpg); ">
-        <div class="chatbox">
-          <div *ngFor="let chat of chats" #map>
+    <div class="chats "  style="background-image: url(assets/imgs/bacimge.jpg); ">
+        <div class="chatbox" class="scroll" #scrollMe>
+          <div *ngFor="let chat of chats" >
             <div class="message sent" *ngIf="chat.type!=='bot'">
               {{chat.message}}     
             </div>
@@ -31,7 +31,7 @@
                <span *ngIf="chat.req_info =='co_namebtn'">
                   <div class="btn-block p-0">
                       <div class="row">
-                        <h1>Confirm your Company Name</h1>
+                        <h6>Confirm your Company Name</h6>
                         <p>{{co_name}}</p>
                         <div class="col" >
                           <button class="button button-block btn-global btn-green editcomp" (click)="edit('comp')">Edit</button>
@@ -45,7 +45,7 @@
                <span *ngIf="chat.req_info =='conf_subdomainbtn'">
                 <div class="btn-block p-0">
                     <div class="row">
-                      <h1>Confirm your Sub Domain Name</h1>
+                      <h6>Confirm your Sub Domain Name</h6>
                       <p>{{subdomainname}}</p>
                       <div class="col" >
                         <button class="button button-block btn-global btn-green editcomp" (click)="edit('domain')">Edit</button>

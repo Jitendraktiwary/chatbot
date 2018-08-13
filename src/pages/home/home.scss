@@ -183,5 +183,18 @@ page-home {
     background: #e2252b !important;
    
 }
+.scroll {
+  max-height: 403px !important; // for example
+  overflow-y: scroll !important; // show vertical scroll
+  margin: 0 10px !important;
+}
+.btn-block .button {
+   font-size: 0.8em !important;
+  min-height: 28px !important;
+  line-height: 28px !important;
+}
+.message:first-child {
+  margin: 0px 9px 8px 9px !important;
+}
 
 }

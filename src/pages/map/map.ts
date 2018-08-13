@@ -76,6 +76,7 @@ export class MapPage {
   }
 
   send_otp(){
+    let email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if(this.mobile == undefined){
       let alert = this.alertCtrl.create({
         title:'Mobile',
@@ -83,10 +84,24 @@ export class MapPage {
         buttons:['Ok']
       });
       alert.present();
+    }else if(this.mobile.length < 10 || this.mobile.length > 15){
+      let alert = this.alertCtrl.create({
+        title:'Mobile',
+        message:'Invalid Mobile Length',
+        buttons:['Ok']
+      });
+      alert.present();
     }else if(this.email == undefined){
       let alert = this.alertCtrl.create({
         title:'Email',
         message:'Please enter Email Id',
+        buttons:['Ok']
+      });
+      alert.present();
+    }else if(!email_regex.test(this.email)){
+      let alert = this.alertCtrl.create({
+        title:'Email',
+        message:'Please enter Email Id in correct format',
         buttons:['Ok']
       });
       alert.present();

@@ -13,19 +13,19 @@ import { ConstantProvider } from '../constant/constant';
 @Injectable()
 export class ApiServiceProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private constant: ConstantProvider) {
     console.log('Hello ApiServiceProvider Provider');
   }
 
   get_loc_pincode(pincode){
-    let url = 'http://maps.googleapis.com/maps/api/geocode/json?components=country:IN|postal_code:';
+    let url = this.constant.config.get_loc_pinURL;
     url += pincode;
     console.log('in get pincode');
     return this.http.get(url);
   }
 
   get_categories(){
-    let url = 'https://www.tradeindia.com/messenger/v_117/get_categories.html';
+    let url = this.constant.config.get_categoriesURL;
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
     headers = headers.set('Custom-Header', 'qwerty');
@@ -34,7 +34,7 @@ export class ApiServiceProvider {
   }
   
   send_otp(mobile_no){
-    let url = 'https://www.tradeindia.com/messenger/v_117/send_otp.html';
+    let url = this.constant.config.send_otpURL;
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
     headers = headers.set('Custom-Header', 'qwerty');

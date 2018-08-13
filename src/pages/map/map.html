@@ -1,6 +1,45 @@
 <ion-header>
-    <div class="save_button" (click)="save_location()">Save</div>
+    <div *ngIf="show_map == 1" class="save_button" (click)="save_location('send_loc')">Save</div>
+    <div *ngIf="show_map == 0">
+        <div class="bar bar-header global-hdr">
+            <div class="h1 title">Registration</div>
+        </div>
+    </div>
 </ion-header>
 <ion-content>
-    <div #map id="map" class="map_class"></div>
+    <div *ngIf="show_map == 1" #map id="map" class="map_class"></div>
+    <div *ngIf="show_map == 0">
+        <div *ngIf="!show_otp && show_enter_details">
+            <ion-input type="tel" id="mobile" [(ngModel)]="mobile" placeholder="Mobile No"></ion-input>
+            <ion-input type="email" id="email" [(ngModel)]="email" placeholder="Email Id"></ion-input>
+            <div >Address Details</div>
+            <ion-input type="text" id="flat" [(ngModel)]="flat" placeholder="House No/Flat/Building"></ion-input>
+            <ion-input type="text" id="locality" [(ngModel)]="locality" placeholder="Street"></ion-input>
+            <ion-input type="number" id="pincode" [(ngModel)]="pincode" placeholder="Pincode"></ion-input>
+            <div class="button">
+                <button (click)="send_otp()">Okay</button>
+            </div>
+        </div>
+        <div *ngIf="show_otp">
+            We will soon send you a OTP on the given mobile number {{mobile}} .
+            Please enter the OTP to verify your mobile number.
+            <div class="otp_class">
+                <ion-input type="number" [(ngModel)]="otp" placeholder="****"></ion-input>
+            </div>
+            <div class="button">
+                <button (click)="verify_otp()">Submit</button>
+                <button (click)="edit_address()">Edit Number</button>
+            </div>
+        </div>
+        <div *ngIf="!show_otp && show_details">
+            Mobile : {{mobile}} <br>
+            Email Id : {{email}} <br>
+            Address Details : {{flat}} , {{locality}} , {{pincode}} <br>
+            <div class="button">
+                <button (click)="save_location('no_send_loc')">Confirm</button>
+                <button (click)="open_map()">Confirm Location on Map</button>
+            </div>
+        </div>
+
+    </div>
 </ion-content>

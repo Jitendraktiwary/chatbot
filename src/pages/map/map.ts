@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { Platform } from 'ionic-angular/platform/platform';
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 
@@ -17,31 +17,26 @@ declare var google: any;
   templateUrl: 'map.html',
 })
 export class MapPage {
+  show_map:number = 0;
+  // button_type:number = 0;
+  show_otp:boolean=false;
+  show_details:boolean=false;
+  show_enter_details:boolean=true;
+  otp_count:number = 0;
   // map:any;
   // marker:any;
   @ViewChild('map') mapElement: ElementRef;
   initial_lat:any;
   initial_lng:any;
   pincode:any;
+  mobile:any;
+  email:any;
+  flat:any;
+  locality:any;
+  otp:any;
 
-  constructor(private ApiServiceProvider: ApiServiceProvider,public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams,public platform: Platform) {
-    console.log(this.navParams);
-    this.pincode = this.navParams.get('pincode');
-    platform.ready().then(() => {
-      console.log('platform ready');
-      this.ApiServiceProvider.get_loc_pincode(this.pincode).subscribe((res) => {
-        console.log(res);
-        console.log(res.status);
-        if(res.status == 'OK'){
-          this.initial_lat = res.results[0].geometry.location.lat;
-          this.initial_lng = res.results[0].geometry.location.lng;
-        }else{
-          this.initial_lat = 28.520396599999998;
-          this.initial_lng = 77.2804617;
-        }
-        this.initMap();
-      });
-    });
+  constructor(public alertCtrl: AlertController,private ApiServiceProvider: ApiServiceProvider,public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams,public platform: Platform) {
+    
   }
 
   initMap(){
@@ -71,10 +66,119 @@ export class MapPage {
     console.log('ionViewDidLoad MapPage');
   }
 
-  save_location(){
-    let user_location = {'lat' : localStorage.getItem('client_lat'),'lng':localStorage.getItem('client_lng')};
-    console.log('user_loc=',user_location);
-    this.viewCtrl.dismiss(user_location);
+  save_location(with_loc){
+    let json_data = {'pincode':this.pincode,'mobile':this.mobile,'email':this.email,'flat':this.flat,'locality':this.locality};
+    if(with_loc == 'send_loc'){
+      let user_location = {'lat' : localStorage.getItem('client_lat'),'lng':localStorage.getItem('client_lng')};
+      json_data['userlocation'] = user_location;
+    }
+    this.viewCtrl.dismiss(json_data);
+  }
+
+  send_otp(){
+    if(this.mobile == undefined){
+      let alert = this.alertCtrl.create({
+        title:'Mobile',
+        message:'Please enter mobile no',
+        buttons:['Ok']
+      });
+      alert.present();
+    }else if(this.email == undefined){
+      let alert = this.alertCtrl.create({
+        title:'Email',
+        message:'Please enter Email Id',
+        buttons:['Ok']
+      });
+      alert.present();
+    }else if(this.flat == undefined){
+      let alert = this.alertCtrl.create({
+        title:'House No/Flat/Building',
+        message:'Please enter House No/Flat/Building',
+        buttons:['Ok']
+      });
+      alert.present();
+    }else if(this.pincode == undefined){
+      let alert = this.alertCtrl.create({
+        title:'Pincode',
+        message:'Please enter Pincode',
+        buttons:['Ok']
+      });
+      alert.present();
+    }else if(this.pincode.length != 6){
+      let alert = this.alertCtrl.create({
+        title:'Pincode',
+        message:'Pincode length should be 6.',
+        buttons:['Ok']
+      });
+      alert.present();
+    }else{
+      console.log(this.otp_count);
+      if(this.otp_count <= 3){
+        this.ApiServiceProvider.send_otp(this.mobile).subscribe((res) => {
+          console.log(res);
+          this.otp_count++;
+          this.show_otp = true;
+          // this.button_type = 9999; //to hide okay button
+          localStorage.setItem('otp',res['OTP']);
+        }, (error) => {
+          console.log(error);
+        })
+      }else{
+        let alert = this.alertCtrl.create({
+          title:'Verification Error',
+          message:'Please try again after some time.',
+          buttons:['Ok']
+        });
+        alert.present();
+      }
+
+    }
+  }
+
+  open_map(){
+    this.platform.ready().then(() => {
+      console.log('platform ready');
+      this.ApiServiceProvider.get_loc_pincode(this.pincode).subscribe((res) => {
+        console.log(res);
+        console.log(res['status']);
+        if(res['status'] == 'OK'){
+          this.initial_lat = res['results'][0].geometry.location.lat;
+          this.initial_lng = res['results'][0].geometry.location.lng;
+        }else{
+          this.initial_lat = 28.520396599999998;
+          this.initial_lng = 77.2804617;
+        }
+        this.initMap();
+      });
+    });
+    this.show_map = 1;
+  }
+
+  verify_otp(){
+    if(this.otp == undefined){
+      let alert = this.alertCtrl.create({
+        title:'OTP',
+        message:'Please enter OTP'
+      });
+      alert.present();
+    }else if(this.otp != localStorage.getItem('otp')){
+      let alert = this.alertCtrl.create({
+        title:'OTP',
+        message:'OTP you have entered is invalid'
+      });
+      alert.present();
+    }else{
+      this.show_otp = false;
+      this.show_enter_details = false;
+      this.show_details = true;
+      // this.viewCtrl.dismiss(json_data);
+    }
+  }
+
+  edit_address(){
+    this.show_otp =false;
+    this.show_enter_details = true;
+    this.otp = undefined;
   }
 
 }

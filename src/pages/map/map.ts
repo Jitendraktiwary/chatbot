@@ -76,6 +76,7 @@ export class MapPage {
   }
 
   send_otp(){
+    console.log("this.show_map"+this.show_map);
     let email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if(this.mobile == undefined){
       let alert = this.alertCtrl.create({
@@ -128,11 +129,13 @@ export class MapPage {
       alert.present();
     }else{
       console.log(this.otp_count);
+      this.show_map = 2;
       if(this.otp_count <= 3){
         this.ApiServiceProvider.send_otp(this.mobile).subscribe((res) => {
           console.log(res);
           this.otp_count++;
           this.show_otp = true;
+          this.show_map = 2;
           // this.button_type = 9999; //to hide okay button
           localStorage.setItem('otp',res['OTP']);
         }, (error) => {
@@ -148,6 +151,8 @@ export class MapPage {
       }
 
     }
+    console.log("this.show_map"+this.show_map);
+
   }
 
   open_map(){
@@ -166,10 +171,12 @@ export class MapPage {
         this.initMap();
       });
     });
-    this.show_map = 1;
+   
+    console.log("this.show_map"+this.show_map);
   }
 
   verify_otp(){
+   
     if(this.otp == undefined){
       let alert = this.alertCtrl.create({
         title:'OTP',
@@ -183,6 +190,7 @@ export class MapPage {
       });
       alert.present();
     }else{
+      this.show_map = 3;
       this.show_otp = false;
       this.show_enter_details = false;
       this.show_details = true;
@@ -191,6 +199,7 @@ export class MapPage {
   }
 
   edit_address(){
+    this.show_map = 0;
     this.show_otp =false;
     this.show_enter_details = true;
     this.otp = undefined;

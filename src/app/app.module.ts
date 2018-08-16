@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CreatemywebsitePage } from '../pages/createmywebsite/createmywebsite';
 import { MapPage } from '../pages/map/map';
+import { DashboradPage } from '../pages/dashborad/dashborad';
 import { SubDomaininfoPage } from '../pages/sub-domaininfo/sub-domaininfo';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { ConstantProvider } from '../providers/constant/constant';
@@ -27,7 +28,8 @@ import { HttpInterceptorProvider } from '../providers/http-interceptor/http-inte
     HomePage,
     CreatemywebsitePage,
     MapPage,
-    SubDomaininfoPage
+    SubDomaininfoPage,
+    DashboradPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { HttpInterceptorProvider } from '../providers/http-interceptor/http-inte
     HomePage,
     CreatemywebsitePage,
     MapPage,
-    SubDomaininfoPage
+    SubDomaininfoPage,
+    DashboradPage
   ],
   providers: [
     StatusBar,

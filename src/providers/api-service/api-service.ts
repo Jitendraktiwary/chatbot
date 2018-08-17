@@ -35,8 +35,8 @@ export class ApiServiceProvider {
     headers.set('Content-Type', 'application/json; charset=utf-8');
     headers.set('Custom-Header', 'qwerty');
     headers.set('Access-Control-Allow-Origin', '*');
-    return this.http.get(url,{headers : headers});
-    // return this.http.get(url).map((res:Response) => console.log('get_categories res',res));
+    return this.http.get(url,{headers : headers}).map((res:Response) => res.json());;
+    //return this.http.get(url).map((res:Response) => console.log('get_categories res',res));
   }
   
   send_otp(mobile_no){
@@ -48,7 +48,7 @@ export class ApiServiceProvider {
     headers.set('Content-Type', 'application/json; charset=utf-8');
     headers.set('Custom-Header', 'qwerty');
     url += '?mobile=' + mobile_no;
-    return this.http.get(url,{headers : headers});
+    return this.http.get(url,{headers : headers}).map((res:Response) => res.json());
   }
 
 }

@@ -180,13 +180,15 @@ export class MapPage {
     if(this.otp == undefined){
       let alert = this.alertCtrl.create({
         title:'OTP',
-        message:'Please enter OTP'
+        message:'Please enter OTP',
+        buttons: ['Ok']
       });
       alert.present();
     }else if(this.otp != localStorage.getItem('otp')){
       let alert = this.alertCtrl.create({
         title:'OTP',
-        message:'OTP you have entered is invalid'
+        message:'OTP you have entered is invalid',
+        buttons: ['Ok']
       });
       alert.present();
     }else{

@@ -2,7 +2,7 @@ import { Component,ViewChild, ElementRef } from '@angular/core';
 import { NavController,Content, AlertController,ModalController } from 'ionic-angular';
 import { MapPage } from '../map/map';
 import { SubDomaininfoPage } from '../sub-domaininfo/sub-domaininfo';
-import * as $ from "jquery";
+import { ApiServiceProvider } from '../../providers/api-service/api-service';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -49,8 +49,13 @@ export class HomePage {
   ];
   private mutationObserver: MutationObserver;
   headervalue:any=" is Typing..."
-  constructor(public modalCtrl: ModalController,public navCtrl: NavController,public alertCtrl: AlertController) {
+  constructor(private ApiServiceProvider :ApiServiceProvider,public modalCtrl: ModalController,public navCtrl: NavController,public alertCtrl: AlertController) {
     this.pushChat();
+    this.ApiServiceProvider.get_categories().subscribe((res) => {
+      console.log('api service hit');
+    },(error) => {
+      console.log('error');
+    })
   }
 
   pushChat(){

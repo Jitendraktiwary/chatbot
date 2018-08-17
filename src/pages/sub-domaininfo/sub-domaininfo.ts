@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the SubDomaininfoPage page.
@@ -19,7 +19,7 @@ export class SubDomaininfoPage {
  busnesstype:any;
  address:any;
  subdomain:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams) {
     this.name = this.navParams.get('name');
     this.company = this.navParams.get('comp_name');
     this.busnesstype = this.navParams.get('bussness_type');
@@ -29,6 +29,9 @@ export class SubDomaininfoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SubDomaininfoPage');
+  }
+  goback(){
+    this.viewCtrl.dismiss();
   }
 
 }

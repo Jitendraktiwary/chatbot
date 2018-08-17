@@ -15,6 +15,7 @@ import { SubDomaininfoPage } from '../pages/sub-domaininfo/sub-domaininfo';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { ConstantProvider } from '../providers/constant/constant';
 import { HttpInterceptorProvider } from '../providers/http-interceptor/http-interceptor';
+import { CompinfoPage } from '../pages/compinfo/compinfo';
 
 export function httpServiceInterceptor(backend: XHRBackend,
   options: RequestOptions
@@ -29,7 +30,8 @@ export function httpServiceInterceptor(backend: XHRBackend,
     CreatemywebsitePage,
     MapPage,
     SubDomaininfoPage,
-    DashboradPage
+    DashboradPage,
+    CompinfoPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ export function httpServiceInterceptor(backend: XHRBackend,
     CreatemywebsitePage,
     MapPage,
     SubDomaininfoPage,
-    DashboradPage
+    DashboradPage,
+    CompinfoPage
   ],
   providers: [
     StatusBar,

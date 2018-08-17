@@ -2,6 +2,7 @@ import { Component,ViewChild, ElementRef } from '@angular/core';
 import { NavController,Content, AlertController,ModalController } from 'ionic-angular';
 import { MapPage } from '../map/map';
 import { SubDomaininfoPage } from '../sub-domaininfo/sub-domaininfo';
+import { CompinfoPage } from '../compinfo/compinfo';
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 @Component({
   selector: 'page-home',
@@ -20,17 +21,14 @@ export class HomePage {
     {'message' : 'Alright,next is your business address','type' : 'bot','req_info' : 'business_address','skip' : 1,'btn':'0'},
     {'message' : 'be precise,for both your customer and SEO','type' : 'bot','req_info' : 'seo','skip' : 1,'btn':'0'},
     {'message' : 'Enter your Address','type' : 'bot','req_info' : 'co_add','btn':'0'},
-    {'message' : 'To verfiy your account','type' : 'bot','skip' : 1,'req_info' : 'verfiy_ac','btn':'0'},
-    {'message' : 'I will send you an otp on this number so please make sure your phone number is valid. .','type' : 'bot','req_info' : 'phone_number','skip' : 1,'btn':'0'},
-    {'message' : 'please enter mobile number','type' : 'bot','req_info' : 'phone_number_enter','btn':'0'},
     {'message' : 'Almost done ...','type' : 'bot','req_info' : 'phone_number_enter','btn':'0','skip' : 1},
     {'message' : 'We think this should be your business web address..','type' : 'bot','req_info' : 'sub_domain','skip' : 1,'btn':'0'},
     {'message' : 'No worry,your can always map it to an existing domain or a custom domain at later point.','type' : 'bot','req_info' : 'laterpoint','skip' : 1,'btn':'0'},
     {'message' : 'please enter the website address you want..','type' : 'bot','req_info' : 'sub_domain','btn':'0'},
     {'message' : 'Alright,Thanks you for giving your time.','type' : 'bot','req_info' : 'final_step','skip' : 1,'btn':'0'},
-    {'message' : 'Lastly. I need your email Id to send you your username,password and other important details.','type' : 'bot','skip' : 1,'req_info' : 'final','btn':'0'},
-    {'message' : 'Please enter your email address..','type' : 'bot','req_info' : 'email_address','btn':'0'},
     {'message' : 'Your all detail and your sub domain is ready for your first vist .!  Thanks','type' : 'bot','req_info' : 'final','btn':'0'},
+    {'message' : 'Alright,next is your Company Detail','type' : 'bot','req_info' : 'cmpanydetail2','skip' : 1,'btn':'0'},
+    {'message' : 'please enter your Company Detail..','type' : 'bot','req_info' : 'cmpanydetail3','btn':'0'},
   ];
   name:any;
   co_name:any;
@@ -82,6 +80,10 @@ export class HomePage {
       const modal = this.modalCtrl.create(MapPage);
       modal.onDidDismiss(res => {
         console.log(res);
+        let name_chat = {'message' : ' ','type' : 'user' ,'btn':'0'};
+        name_chat.message = name_chat.message + res.email+','+res.mobile+','+res.flat+','+res.pincode;
+        this.chats.push(name_chat);
+        this.pushChat();
       });
       modal.present();
       
@@ -155,16 +157,27 @@ export class HomePage {
     
     }
     if(this.current_ques.req_info == 'final'){
-      this.navCtrl.push(SubDomaininfoPage,{name:this.name,comp_name:this.co_name,address:this.mainaddress,sub_domain:this.subdomainname,bussness_type:this.business_type});
+      const modal = this.modalCtrl.create(SubDomaininfoPage,{name:this.name,comp_name:this.co_name,address:this.mainaddress,sub_domain:this.subdomainname,bussness_type:this.business_type});
+      modal.onDidDismiss(res => {
+        this.pushChat();
+      });
+      modal.present();
+     // this.navCtrl.push(SubDomaininfoPage,{name:this.name,comp_name:this.co_name,address:this.mainaddress,sub_domain:this.subdomainname,bussness_type:this.business_type});
      
     }
-    // if(this.current_ques.req_info == 'business_type'){
-    //   this.clickable = 1;
-      
-    //   let business_chat = {'message' : 'Choose Category Type','type' : 'user'};
-    //   this.chats.push(business_chat);
-    // }
-
+    if(this.current_ques.req_info == 'cmpanydetail3'){
+      const modal = this.modalCtrl.create(CompinfoPage);
+      modal.onDidDismiss(res => {
+        let name_chat = {'message' : ' ','type' : 'user' ,'btn':'0'};
+        name_chat.message = name_chat.message +'Descriptin :'+res.desc+',No of Emp :'+res.Noofemp+',Trun over :'+res.turnover;
+        this.chats.push(name_chat);
+        this.pushChat();
+      });
+      modal.present();
+     // this.navCtrl.push(SubDomaininfoPage,{name:this.name,comp_name:this.co_name,address:this.mainaddress,sub_domain:this.subdomainname,bussness_type:this.business_type});
+     
+    }
+    
      
     }, 1000);      
     // setTimeout(() => {
@@ -253,8 +266,36 @@ export class HomePage {
       this.repushChat();
     }
     else if(this.current_ques.req_info == 'sub_domain'){
-      this.current_ques ={'message' : 'Confirm your Sub Domain Name','type' : 'bot','req_info' : 'conf_subdomainbtn','btn':'1'};
-      this.repushChat();
+     // this.current_ques ={'message' : 'Confirm your Sub Domain Name','type' : 'bot','req_info' : 'conf_subdomainbtn','btn':'1'};
+      let alert = this.alertCtrl.create({
+        title: 'Confirm Domain',
+        message: 'Confirm your Sub Domain Name?',
+        buttons: [
+          {
+            text: 'Edit',
+            role: 'cancel',
+            handler: () => {
+              let name_chat = {'message' :'Re-enter Sub Domain Name?','type' : 'bot','req_info' : 'subdomainbtn_namern','btn':'0'};
+                name_chat.message = name_chat.message;
+                this.chats.pop();
+                this.chats.push(name_chat);
+            }
+          },
+          {
+            text: 'Confirm',
+            handler: () => {
+              let name_chat = {'message' : '','type' : 'user','btn':'1','req_info' : 'subdomainbtn_conf'};
+              name_chat.message = name_chat.message + this.subdomainname;
+              this.chats.pop();
+              this.chats.pop();
+              this.chats.push(name_chat);
+              this.pushChat();
+            }
+          }
+        ]
+      });
+      alert.present();
+      
     }
     else{
       this.pushChat();

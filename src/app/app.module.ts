@@ -12,10 +12,15 @@ import { CreatemywebsitePage } from '../pages/createmywebsite/createmywebsite';
 import { MapPage } from '../pages/map/map';
 import { DashboradPage } from '../pages/dashborad/dashborad';
 import { SubDomaininfoPage } from '../pages/sub-domaininfo/sub-domaininfo';
+import { AddProductPage } from '../pages/add-product/add-product';
+
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { ConstantProvider } from '../providers/constant/constant';
 import { HttpInterceptorProvider } from '../providers/http-interceptor/http-interceptor';
 import { CompinfoPage } from '../pages/compinfo/compinfo';
+import { Camera } from '@ionic-native/camera';
+import { Base64 } from '@ionic-native/base64';
+import { Crop } from '@ionic-native/crop';
 
 export function httpServiceInterceptor(backend: XHRBackend,
   options: RequestOptions
@@ -31,7 +36,8 @@ export function httpServiceInterceptor(backend: XHRBackend,
     MapPage,
     SubDomaininfoPage,
     DashboradPage,
-    CompinfoPage
+    CompinfoPage,
+    AddProductPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,8 @@ export function httpServiceInterceptor(backend: XHRBackend,
     MapPage,
     SubDomaininfoPage,
     DashboradPage,
-    CompinfoPage
+    CompinfoPage,
+    AddProductPage
   ],
   providers: [
     StatusBar,
@@ -67,6 +74,9 @@ export function httpServiceInterceptor(backend: XHRBackend,
     //   useClass: HttpInterceptorProvider,
     //   multi : true
     // },
+    Camera,
+    Crop,
+    Base64
   ]
 })
 export class AppModule {}

@@ -1,0 +1,135 @@
+page-add-product {
+
+        /*======== global-header ========*/
+    .global-hdr{background: #ce271e; color: #fff;}
+    .global-hdr .title{color: #fff; font-family: 'RobotoRegular'; font-size: 1.12em;}
+    .tf-logo img{width: 20px;}
+    .tf-logo{width: 30px; text-align: right; line-height: 44px;}
+    .global-hdr .button{color: #fff;}
+
+
+    .item{
+        white-space: normal !important;
+        padding: 16px !important;
+    } 
+    .select-icon{
+        display: none;
+    }
+    .select-md {
+        padding: 13px 8px 13px 0px !important;
+    }
+    ion-select {
+        max-width: 85% !important;
+    }
+    .item-radio{
+        width: 50%;
+        float: left;
+        min-height: 0 !important;
+    }
+    .item-md .radio-md[item-left], .item-md .radio-md[item-start] {
+        margin: 0px 8px 3px 4px !important; 
+    }
+    .radioright{
+        float: right !important;
+        width: 40% !important;
+        .item-md {
+            padding: 0px !important; 
+        }
+        
+    
+    }
+    .radioleft{
+        width: 59% !important;
+
+    }
+    .item-radio-checked.item-md ion-label {
+        color: #000 !important 
+    }
+    .radio-md .radio-checked {
+        border-color: #ce271e !important;
+    }
+    .radio-md .radio-inner {
+        background-color: #ce271e !important;
+    }
+    .label-md {
+        margin: 0px 8px 1px 0 !important;
+    }
+    .update-lead .btn-block {
+        height: 170px;
+    }
+
+    .red-txt{
+        text-align: center;
+        float: left;
+        width: 100%;
+        font-size: 18px;
+        color: #ce271e;
+    }
+    .red-txt2{
+    float: right;
+    text-align: end;
+    text-decoration: underline;
+    font-weight: bold;
+    margin: 15px;
+    font-size: 16px;
+
+    width: 100%;
+
+    color: #ce271e;
+    }
+    /*======== update-lead ========*/
+    .call-txt{color: #12ba29; font-family: 'RobotoRegular';}
+    .call-txt img{width: 24px; vertical-align: middle; margin: -3px 0 0;}
+    .call-txt span{ border-bottom: 1px solid #12ba29; margin-left: 5px;}
+    .inner-txt{margin: 5px 0;}
+    .item-right .select-box .item-select{height: 40px; line-height: 40px; border: 1px solid #c9c9c9 !important;}
+    .item-right .select-box .item-select select{background-size: 15px; background-position: calc(100% - 6px) center; padding: 0 24px 0 10px;}
+    .form-box .item{background: #f4f4f4 !important; font-size: 1em; padding: 0 10px; height: 40px; line-height: 40px; position: relative; border: 1px solid #c9c9c9 !important;}
+    .form-box .item input{padding: 0; font-family: 'RobotoLight'; font-size: 1em;} 
+    .date_icn input{background: url('../img/dateIcon.png')no-repeat 100% center/20px;}
+    .comment-item .item-left{width: 100%; margin: 0 0 10px;}
+    .comment-item textarea{background: #f4f4f4; resize: none; padding: 10px; border: 1px solid #ddd; width: 100%; font-size: 1em; border: 1px solid #c9c9c9;}
+    .btn-yellow{background-color: #fdc519; color: #1d1d1d;}
+    .btn-yellow.activated, .btn-yellow:hover, .btn-yellow:focus{background-color: #f4bd12; color: #1d1d1d; border: 1px solid #f4bd12;}
+    .btn-green{background-color: #0edc22; color: #1d1d1d;}
+    .btn-green.activated, .btn-green:hover, .btn-green:focus{background-color: #2db33a; color: #1d1d1d; border: 1px solid #0af521;}
+    .btn-block .button{font-weight: 500; font-family: 'RobotoRegular'; padding: 0 5px; font-size: 0.9em; min-height: 42px; line-height: 42px;}
+    .btn-block{padding: 0 5px;}
+    .update-lead .btn-block .button{margin: 0 0 5px;}
+    .update-lead .btn-block{margin-top: 10px;}
+    .item-radio .radio-icon {
+            
+        visibility: visible !important;
+        padding: 0px !important;
+    
+    }
+    .item-md.item-block .item-inner {
+        padding-right: 0px !important; 
+        border-bottom: none !important; 
+    }
+    .item-left{
+        float: left;
+        width: 35%;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    .item-right{
+        float: left;
+        width: 65%;
+        font-size: 13px;
+    
+    }
+    .company-profile {
+    margin-top: 0px !important; 
+    }
+    ion-icon {
+        font-size: 2.2em !important;
+    }
+    .scroll-content{
+        margin-top: 12% !important;
+    }
+    .bar-subheader{
+        background: #a7a6a6;
+    }
+
+}

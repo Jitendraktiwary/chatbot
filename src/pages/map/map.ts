@@ -242,7 +242,7 @@ export class MapPage {
           this.show_enter_details = false;
           this.show_details = true;
         }else{
-          this.navCtrl.push(DashboardPage);
+          this.navCtrl.setRoot(DashboardPage);
         }
        
         

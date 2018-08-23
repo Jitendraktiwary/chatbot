@@ -10,9 +10,13 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CreatemywebsitePage } from '../pages/createmywebsite/createmywebsite';
 import { MapPage } from '../pages/map/map';
-import { DashboradPage } from '../pages/dashborad/dashborad';
+import { DashboardPage } from '../pages/dashboard/dashboard';
 import { SubDomaininfoPage } from '../pages/sub-domaininfo/sub-domaininfo';
 import { AddProductPage } from '../pages/add-product/add-product';
+// import { CompanyDetailPage } from '../pages/company-detail/company-detail';
+import { CompanyDetailPageModule } from '../pages/company-detail/company-detail.module';
+import { FilePath } from '@ionic-native/file-path';
+import { FileChooser } from '@ionic-native/file-chooser';
 
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { ConstantProvider } from '../providers/constant/constant';
@@ -36,15 +40,17 @@ export function httpServiceInterceptor(backend: XHRBackend,
     CreatemywebsitePage,
     MapPage,
     SubDomaininfoPage,
-    DashboradPage,
+    DashboardPage,
     CompinfoPage,
-    AddProductPage
+    AddProductPage,
+    // CompanyDetailPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
     // HttpClientModule
+    CompanyDetailPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,9 +59,10 @@ export function httpServiceInterceptor(backend: XHRBackend,
     CreatemywebsitePage,
     MapPage,
     SubDomaininfoPage,
-    DashboradPage,
+    DashboardPage,
     CompinfoPage,
-    AddProductPage
+    AddProductPage,
+    // CompanyDetailPage
   ],
   providers: [
     StatusBar,
@@ -79,7 +86,9 @@ export function httpServiceInterceptor(backend: XHRBackend,
     Crop,
     Base64,
     FCM,
-    Device
+    Device,
+    FilePath,
+    FileChooser,
   ]
 })
 export class AppModule {}

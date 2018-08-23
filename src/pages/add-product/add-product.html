@@ -41,6 +41,19 @@
                         <img src="{{imgData}}" (click)="ChooseOption()">
                       </div>
                 </li>
+                <li class="item comment-item">
+                  <div class="fileImage">
+                      <div class="v-align">
+                      <h5 class="ptop5 inqh5" id="filetoupload">{{file_name_final}}</h5>
+                      <button ion-fab class="fileBtns light" (click)="clear_img()" style="float: right !important;">
+                      <i class="fa fa-remove" ></i>
+                      </button>
+                      <button ion-fab class="fileBtns light" (click)="selectFile()" style="float: right !important;">
+                      <i class="fa fa-paperclip" ></i>
+                      </button>
+                      </div>
+                  </div>
+                </li>
     
               </ul>
             </div>

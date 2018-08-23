@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { Platform } from 'ionic-angular/platform/platform';
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
-
+import { DashboardPage } from '../dashboard/dashboard';
 /**
  * Generated class for the MapPage page.
  *
@@ -35,6 +35,7 @@ export class MapPage {
   locality:any;
   otp:any;
   userid:any
+  newuser:any;
   constructor(public alertCtrl: AlertController,private ApiServiceProvider: ApiServiceProvider,public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams,public platform: Platform) {
     
   }
@@ -172,9 +173,8 @@ export class MapPage {
           this.show_map = 2;
           localStorage.setItem('userid',res.SUCCESS.userid);
           this.userid=res.SUCCESS.userid;
-          // this.button_type = 9999; //to hide okay button
-          localStorage.setItem('otp',res.new_user);
-          localStorage.setItem('new_user',res.new_user);
+          this.newuser=res.SUCCESS.new_user
+           localStorage.setItem('new_user',res.SUCCESS.new_user);
         }, (error) => {
           console.log(error);
         })
@@ -214,7 +214,17 @@ export class MapPage {
   }
 
   verify_otp(){
-    let json_data :any=[]
+    
+    if(this.otp == undefined){
+      let alert = this.alertCtrl.create({
+        title:'OTP',
+        message:'Please enter OTP',
+        buttons: ['Ok']
+      });
+      alert.present();
+    }else {
+
+      let json_data :any=[]
       json_data = {
         "mobile_no":this.mobile.trim(),
         "userid":this.userid.trim(),
@@ -222,52 +232,37 @@ export class MapPage {
        
         }
     this.ApiServiceProvider.otp_verify(json_data).subscribe((res) => {
-      localStorage.setItem('AUTH_TOKEN',res.SUCCESS.AUTH_TOKEN);
-      console.log(res);
-      this.show_map = 3;
-      this.show_otp = false;
-      this.show_enter_details = false;
-      this.show_details = true;
+      if(res.STATUS == 0 || res['STATUS'] == 0){
+        localStorage.setItem('AUTH_TOKEN',res.SUCCESS.AUTH_TOKEN);
+
+
+        if(this.newuser == 1){
+          this.show_map = 3;
+          this.show_otp = false;
+          this.show_enter_details = false;
+          this.show_details = true;
+        }else{
+          this.navCtrl.push(DashboardPage);
+        }
+       
+        
+      }else{
+        let alert = this.alertCtrl.create({
+          title:'OTP',
+          message:'OTP you have entered is invalid',
+          buttons: ['Ok']
+        });
+        alert.present();
+      }
+      
       }, (error) => {
       console.log(error);
     })
    
-    // if(this.otp == undefined){
-    //   let alert = this.alertCtrl.create({
-    //     title:'OTP',
-    //     message:'Please enter OTP',
-    //     buttons: ['Ok']
-    //   });
-    //   alert.present();
-    // }else if(this.otp != localStorage.getItem('otp')){
-    //   let alert = this.alertCtrl.create({
-    //     title:'OTP',
-    //     message:'OTP you have entered is invalid',
-    //     buttons: ['Ok']
-    //   });
-    //   alert.present();
-    // }else{
-    //   this.show_map = 3;
-    //   this.show_otp = false;
-    //   this.show_enter_details = false;
-    //   this.show_details = true;
       
-    // }
+    }
 
-    // if(this.otp == undefined){
-    //   let alert = this.alertCtrl.create({
-    //     title:'OTP',
-    //     message:'Please enter OTP',
-    //     buttons: ['Ok']
-    //   });
-    //   alert.present();
-    // }else{
-    //   this.show_map = 3;
-    //   this.show_otp = false;
-    //   this.show_enter_details = false;
-    //   this.show_details = true;
-      
-    // }
+   
   }
 
   edit_address(){

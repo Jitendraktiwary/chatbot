@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AddProductPage } from '../add-product/add-product';
 
+import { DashboardPage } from '../dashboard/dashboard';
 /**
  * Generated class for the CreatemywebsitePage page.
  *
@@ -29,5 +30,9 @@ export class CreatemywebsitePage {
 
   add_product(){
     this.navCtrl.push(AddProductPage);
+  }
+
+  gotoDashboard(){
+    this.navCtrl.push(DashboardPage);
   }
 }

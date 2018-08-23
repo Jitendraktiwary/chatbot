@@ -1,5 +1,5 @@
 import { Component,ViewChild, ElementRef } from '@angular/core';
-import { NavController,Content, AlertController,ModalController } from 'ionic-angular';
+import { NavController, AlertController,ModalController } from 'ionic-angular';
 import { MapPage } from '../map/map';
 import { SubDomaininfoPage } from '../sub-domaininfo/sub-domaininfo';
 import { CompinfoPage } from '../compinfo/compinfo';
@@ -45,8 +45,7 @@ export class HomePage {
     {'option' : 'Automobile','value' :28},
     {'option' : 'Brass Hardware & Components','value' :29},
   ];
-  private mutationObserver: MutationObserver;
-  headervalue:any=" is Typing..."
+   headervalue:any=" is Typing..."
   constructor(private ApiServiceProvider :ApiServiceProvider,public modalCtrl: ModalController,public navCtrl: NavController,public alertCtrl: AlertController) {
     this.pushChat();
     this.ApiServiceProvider.get_categories().subscribe((res) => {
@@ -62,12 +61,12 @@ export class HomePage {
     }, 5);
     this.chats.push({'message' : '....','type' : 'bot','btn':'0'});
     
-    setTimeout(function () {
-      var itemList = document.getElementById("scrollBottom");
-      var chatList = document.getElementById("chatscroll");
-    }, 10);
-    // this.content.scrollToBottom();
-    // document.getElementById('scrollBottom').scrollIntoView();
+    // setTimeout(function () {
+    //   var itemList = document.getElementById("scrollBottom");
+    //   var chatList = document.getElementById("chatscroll");
+    // }, 10);
+    // // this.content.scrollToBottom();
+    // // document.getElementById('scrollBottom').scrollIntoView();
     setTimeout(() =>  {
       this.headervalue='';
       this.current_ques = this.questions.shift();

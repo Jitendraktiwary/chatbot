@@ -29,6 +29,11 @@
             <li class="item comment-item">
                 <ion-input type="number" id="turnover" [(ngModel)]="turnover" placeholder="Turn Over"></ion-input>
             </li>
+            <li class="item comment-item">
+              <div class="add-img">
+                  <img src="{{imgData}}" (click)="ChooseOption()">
+              </div>
+            </li>
            
           </ul>
       </div>

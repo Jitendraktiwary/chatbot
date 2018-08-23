@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, AlertController, LoadingController, normalizeURL } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, AlertController, LoadingController, normalizeURL, Platform, ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Base64 } from '@ionic-native/base64';
 import { Crop } from '@ionic-native/crop';
-
+import { FileChooser } from '@ionic-native/file-chooser';
+import { FilePath } from '@ionic-native/file-path';
+declare var cordova: any;
 /**
  * Generated class for the AddProductPage page.
  *
@@ -23,10 +25,15 @@ export class AddProductPage {
   product_desc:any;
   price:any;
   moq:any;
+  file_name_final:any;
+  certificate_img:any;
+  certificate_base64:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private base64: Base64,
               public actionsheetCtrl: ActionSheetController,private crop: Crop,private camera: Camera,
-              private alertCtrl: AlertController,public loadingCtrl: LoadingController) {
+              private alertCtrl: AlertController,public loadingCtrl: LoadingController,
+              private FileChooser: FileChooser,public platform:Platform,private filePath: FilePath,
+              public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -170,10 +177,13 @@ export class AddProductPage {
         price:this.price,
         minimum_order_quantity:this.moq,
         image_data: this.base64image,
-        image_file_name: this.imgData.substr(this.imgData.lastIndexOf('?') + 1) + this.imgData.substr(this.imgData.lastIndexOf('.')),
-        image_type: 'jpg'
+        image_file_name: this.imgData.substr(this.imgData.lastIndexOf('?') + 1),// + this.imgData.substr(this.imgData.lastIndexOf('.')),
+        image_type: 'jpg',
+        cert_img: this.certificate_base64,
+        cert_name: this.file_name_final
       };
-      alert('API');
+      alert('API hit...see params in log');
+      console.log(json_data);
       // this.ApiServiceProvider.postProductFPU(json_data).subscribe(res => {
       //   if(res.STATUS == 0){
       //     loader.dismiss();
@@ -211,6 +221,92 @@ export class AddProductPage {
       // });
       loader.dismiss();
     }
+  }
+
+  selectFile(){
+    let actionSheet = this.actionsheetCtrl.create({
+      title: 'Select File',
+      cssClass: 'action-sheets-basic-page',
+      buttons: [
+      {
+        text: 'Open camera',
+        icon: 'md-camera',
+        handler: () => {
+                    var options = {
+                      quality: 50,
+                      destinationType: this.camera.DestinationType.FILE_URI,
+                      sourceType: this.camera.PictureSourceType.CAMERA,
+                      allowEdit: true,
+                      encodingType: this.camera.EncodingType.JPEG,
+                      saveToPhotoAlbum: false,
+                      correctOrientation: true,
+                      targetWidth: 720,
+                      targetHeight: 720,
+                    };
+                    this.camera.getPicture(options).then((imageData) => {
+                      imageData = normalizeURL(imageData);
+                      this.certificate_img = imageData;
+                      this.base64.encodeFile(imageData).then((base64File: string) => {
+                        
+                        let arr = base64File.split('base64,');
+                        this.certificate_base64 = arr[1];
+                        console.log(this.certificate_img);
+                        this.file_name_final = this.certificate_img.match(/[\w-?]+.(jpe?g|png|pdf)/)[0];
+                      }, (err) => {
+                        console.log('Error in converting to base64');
+                        console.log(err);
+                      });
+                    }, (err) => {
+                      console.log('Error in getting image');
+                      console.log(err);
+                    });
+        }
+    },
+    {
+      text: 'Select from gallery',
+      icon: 'md-images',
+      handler: () => {
+
+
+          this.FileChooser.open()
+           .then((uri) => {
+           this.filePath.resolveNativePath(uri)
+          .then((filePath) =>
+            {
+              console.log(filePath);
+              filePath = normalizeURL(filePath);
+              console.log('normalize>>>' , filePath);
+              this.certificate_img = filePath;
+              this.base64.encodeFile(filePath).then((base64File: string) => {
+                let arr = base64File.split('base64,');
+                this.certificate_base64 = arr[1];
+                console.log(this.certificate_img);
+                this.file_name_final = this.certificate_img.match(/[\w-?]+.(jpe?g|png|pdf)/)[0];
+              }, (err) => {
+                console.log('Error in converting to base64');
+                console.log(err);
+              });
+            }
+
+            )
+          .catch(err => console.log(err));
+
+         }
+      )
+      .catch(e => console.log(e));          
+      }
+    }
+
+    ]
+    });
+  actionSheet.present();
+  }
+
+  clear_img()
+  {
+    this.certificate_img = '';
+    this.certificate_base64 = '';
+    this.file_name_final = '';
   }
 
 }

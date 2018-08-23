@@ -21,7 +21,8 @@ import { CompinfoPage } from '../pages/compinfo/compinfo';
 import { Camera } from '@ionic-native/camera';
 import { Base64 } from '@ionic-native/base64';
 import { Crop } from '@ionic-native/crop';
-
+import { FCM } from '@ionic-native/fcm';
+import { Device } from '@ionic-native/device';
 export function httpServiceInterceptor(backend: XHRBackend,
   options: RequestOptions
 ) {
@@ -76,7 +77,9 @@ export function httpServiceInterceptor(backend: XHRBackend,
     // },
     Camera,
     Crop,
-    Base64
+    Base64,
+    FCM,
+    Device
   ]
 })
 export class AppModule {}

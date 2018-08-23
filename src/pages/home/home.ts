@@ -77,7 +77,7 @@ export class HomePage {
       this.pushChat();
     }
     if(this.current_ques.req_info == 'co_add'){
-      const modal = this.modalCtrl.create(MapPage);
+      const modal = this.modalCtrl.create(MapPage,{'name':this.name,'co_name':this.co_name,'business_type':this.business_type});
       modal.onDidDismiss(res => {
         console.log(res);
         let name_chat = {'message' : ' ','type' : 'user' ,'btn':'0'};
@@ -117,13 +117,6 @@ export class HomePage {
         label: 'Service',
         value: 'Service'
       });
-      alert.addInput({
-        type: 'checkbox',
-        label: 'Provider',
-        value: 'Provider',
-       
-      });
-  
       alert.addInput({
         type: 'checkbox',
         label: 'Distributor',

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "786322389913",
+    "firebase_url": "https://tradeindiatradechat.firebaseio.com",
+    "project_id": "tradeindiatradechat",
+    "storage_bucket": "tradeindiatradechat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786322389913:android:79fbb06c657e20e2",
+        "android_client_info": {
+          "package_name": "com.tradeindia.tradechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786322389913-1v1c8r5ik35kancqnbn448t89rks1nff.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_4y8sR9MfWnUUQMMs8B-YBzRzzEb5qEM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

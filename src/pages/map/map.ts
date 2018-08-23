@@ -34,7 +34,7 @@ export class MapPage {
   flat:any;
   locality:any;
   otp:any;
-
+  userid:any
   constructor(public alertCtrl: AlertController,private ApiServiceProvider: ApiServiceProvider,public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams,public platform: Platform) {
     
   }
@@ -130,14 +130,51 @@ export class MapPage {
     }else{
       console.log(this.otp_count);
       this.show_map = 2;
+      let json_data :any=[]
+      json_data = {
+        "mobile_no":this.mobile.trim(),
+        "email":this.email.trim(),
+        "co_name":this.navParams.get('co_name').trim(),
+        "username":this.navParams.get('name').trim(),
+        "pincode":this.pincode.trim(),
+        "address":this.flat.trim(),
+        "latitude":localStorage.getItem('client_lat'),
+	      "longitude":localStorage.getItem('client_long')
+        }
+        console.log(json_data);
+        console.log(this.navParams.get('business_type'));
+        //let toArray=this.navParams.get('business_type');
+        let bussnestype =this.navParams.get('business_type')
+        console.log("bussnestype>>>>"+bussnestype);
+        for(let i in bussnestype)
+        { 
+          if(bussnestype[i] == 'Exporter'){
+            json_data.ifexporter='1';
+          } else if(bussnestype[i] == 'Importer'){
+            json_data.ifimporter='1';
+          }else if(bussnestype[i] == 'Manufacturer'){
+            json_data.ifmanu='1';
+          }else if(bussnestype[i] == 'Service'){
+            json_data.ifservice='1';
+          }else if(bussnestype[i] == 'Distributor'){
+            json_data.ifdistributor='1';
+          }else if(bussnestype[i] == 'Supplier'){
+            json_data.ifsupplier='1';
+          }else if(bussnestype[i] == 'Trader'){
+            json_data.iftrader='1';
+          }          
+        }
       if(this.otp_count <= 3){
-        this.ApiServiceProvider.send_otp(this.mobile).subscribe((res) => {
+        this.ApiServiceProvider.check_registration(json_data).subscribe((res) => {
           console.log(res);
           this.otp_count++;
           this.show_otp = true;
           this.show_map = 2;
+          localStorage.setItem('userid',res.SUCCESS.userid);
+          this.userid=res.SUCCESS.userid;
           // this.button_type = 9999; //to hide okay button
-          localStorage.setItem('otp',res['OTP']);
+          localStorage.setItem('otp',res.new_user);
+          localStorage.setItem('new_user',res.new_user);
         }, (error) => {
           console.log(error);
         })
@@ -177,6 +214,23 @@ export class MapPage {
   }
 
   verify_otp(){
+    let json_data :any=[]
+      json_data = {
+        "mobile_no":this.mobile.trim(),
+        "userid":this.userid.trim(),
+        "otp":this.otp.trim(),
+       
+        }
+    this.ApiServiceProvider.otp_verify(json_data).subscribe((res) => {
+      localStorage.setItem('AUTH_TOKEN',res.SUCCESS.AUTH_TOKEN);
+      console.log(res);
+      this.show_map = 3;
+      this.show_otp = false;
+      this.show_enter_details = false;
+      this.show_details = true;
+      }, (error) => {
+      console.log(error);
+    })
    
     // if(this.otp == undefined){
     //   let alert = this.alertCtrl.create({
@@ -200,20 +254,20 @@ export class MapPage {
       
     // }
 
-    if(this.otp == undefined){
-      let alert = this.alertCtrl.create({
-        title:'OTP',
-        message:'Please enter OTP',
-        buttons: ['Ok']
-      });
-      alert.present();
-    }else{
-      this.show_map = 3;
-      this.show_otp = false;
-      this.show_enter_details = false;
-      this.show_details = true;
+    // if(this.otp == undefined){
+    //   let alert = this.alertCtrl.create({
+    //     title:'OTP',
+    //     message:'Please enter OTP',
+    //     buttons: ['Ok']
+    //   });
+    //   alert.present();
+    // }else{
+    //   this.show_map = 3;
+    //   this.show_otp = false;
+    //   this.show_enter_details = false;
+    //   this.show_details = true;
       
-    }
+    // }
   }
 
   edit_address(){

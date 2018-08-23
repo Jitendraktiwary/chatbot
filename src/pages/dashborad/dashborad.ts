@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
 
 /**
  * Generated class for the DashboradPage page.
@@ -15,7 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DashboradPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public menuCtrl: MenuController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AddProductPage } from '../add-product/add-product';
+
 /**
  * Generated class for the CreatemywebsitePage page.
  *

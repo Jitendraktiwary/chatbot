@@ -13,6 +13,7 @@ import { MapPage } from '../pages/map/map';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { SubDomaininfoPage } from '../pages/sub-domaininfo/sub-domaininfo';
 import { AddProductPage } from '../pages/add-product/add-product';
+import { LoginPage } from '../pages/login/login';
 // import { CompanyDetailPage } from '../pages/company-detail/company-detail';
 import { CompanyDetailPageModule } from '../pages/company-detail/company-detail.module';
 import { FilePath } from '@ionic-native/file-path';
@@ -43,6 +44,7 @@ export function httpServiceInterceptor(backend: XHRBackend,
     DashboardPage,
     CompinfoPage,
     AddProductPage,
+    LoginPage
     // CompanyDetailPage
   ],
   imports: [
@@ -62,6 +64,7 @@ export function httpServiceInterceptor(backend: XHRBackend,
     DashboardPage,
     CompinfoPage,
     AddProductPage,
+    LoginPage
     // CompanyDetailPage
   ],
   providers: [

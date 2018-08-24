@@ -48,11 +48,6 @@ export class HomePage {
    headervalue:any=" is Typing..."
   constructor(private ApiServiceProvider :ApiServiceProvider,public modalCtrl: ModalController,public navCtrl: NavController,public alertCtrl: AlertController) {
     this.pushChat();
-    this.ApiServiceProvider.get_categories().subscribe((res) => {
-      console.log('api service hit');
-    },(error) => {
-      console.log('error');
-    })
   }
 
   pushChat(){

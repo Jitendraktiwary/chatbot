@@ -16,25 +16,37 @@
 <ion-content padding>
   <p>hello world</p>
 </ion-content>
-
 <ion-menu [content]="content">
-  <ion-header>
-    
-    <ion-toolbar>
-      <ion-title>Dasborad</ion-title>
-    </ion-toolbar>
-    
-    </ion-header>
-
-<ion-content padding>
+<ion-header class="slideMenu">
+  <ion-toolbar>
+      <figure>
+          <img src="assets/imgs/user.svg">
+      </figure>
+      <ion-title>
+          <h3>{{username}}</h3>
+          <h4>+91-{{mob}}</h4>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="slideMenuList">
   <ion-list>
-    <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">
-        <ion-icon item-start [name]="p.icon"></ion-icon>
-        {{ p.title }}
-      </button>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+       <ion-icon item-left [name]="p.icon"></ion-icon>
+      {{p.title}} </button>
   </ion-list>
 </ion-content>
-</ion-menu> 
+<ion-footer class="socialLink">
+  <ion-list>
+      <button onClick="window.open('https://www.facebook.com/tradeindia','_blank','location=yes');return false;">
+    <img src="assets/imgs/facebook.svg">
+  </button>
+      <button onClick="window.open('https://twitter.com/tradeindia','_blank','location=yes');return false;">
+    <img src="assets/imgs/twitter.svg">
+  </button>
+
+  </ion-list>
+</ion-footer>
+</ion-menu>
 <ion-content>
   <p>Dashboard</p>
 </ion-content>

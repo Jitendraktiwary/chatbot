@@ -18,8 +18,11 @@ export class DashboardPage {
   pages = [
     { title: 'Company Detail', pageName: 'CompanyDetailPage', icon: 'home' },
   ];
-
+ username:any;
+ mob:any;
   constructor(public menuCtrl: MenuController,public navCtrl: NavController, public navParams: NavParams) {
+   this.username=localStorage.getItem('username');
+   this.mob=localStorage.getItem('mob');
   }
 
   ionViewDidLoad() {

@@ -142,6 +142,8 @@ export class MapPage {
         "latitude":localStorage.getItem('client_lat'),
 	      "longitude":localStorage.getItem('client_long')
         }
+        localStorage.setItem('username',this.navParams.get('co_name').trim());
+        localStorage.setItem('mob',this.mobile.trim());
         console.log(json_data);
         console.log(this.navParams.get('business_type'));
         //let toArray=this.navParams.get('business_type');

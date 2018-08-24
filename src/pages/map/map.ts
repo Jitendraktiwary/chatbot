@@ -133,7 +133,7 @@ export class MapPage {
       this.show_map = 2;
       let json_data :any=[]
       json_data = {
-        "mobile_no":this.mobile.trim(),
+        "mobile_no": '91'+this.mobile.trim(),
         "email":this.email.trim(),
         "co_name":this.navParams.get('co_name').trim(),
         "username":this.navParams.get('name').trim(),
@@ -228,14 +228,14 @@ export class MapPage {
 
       let json_data :any=[]
       json_data = {
-        "mobile_no":this.mobile.trim(),
+        "mobile_no": '91'+this.mobile.trim(),
         "userid":this.userid.trim(),
         "otp":this.otp.trim(),
        
         }
     this.ApiServiceProvider.otp_verify(json_data).subscribe((res) => {
       if(res.STATUS == 0 || res['STATUS'] == 0){
-        localStorage.setItem('AUTH_TOKEN',res.SUCCESS.AUTH_TOKEN);
+        localStorage.setItem('AUTH_TOKEN',res.SUCCESS.auth_token);
 
 
         if(this.newuser == 1){

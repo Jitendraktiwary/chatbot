@@ -18,6 +18,7 @@ export class ConstantProvider {
 
   initConfig(){
     this.config = {
+      //live url : http://www.tradeindia.com/ti-mobile-apps/seller-onboarding/apis/category_list.html
      'version':'1.1.3',
       'baseUrl':'http://www.trade-india-local.com:33209/ti-mobile-apps/',
       'get_loc_pinURL' : 'http://maps.googleapis.com/maps/api/geocode/json?components=country:IN|postal_code:',

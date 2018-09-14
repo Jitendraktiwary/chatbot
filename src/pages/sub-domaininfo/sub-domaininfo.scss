@@ -208,4 +208,30 @@ ion-icon {
     position: absolute;
      background: #ce271e;
   }
+
+
+  //.......................//
+  .card-md{
+    padding: 10px 20px !important;
+    position: relative;
+    .icon-md{
+        font-size: 35px;
+        color: #ce271e;
+        float: right;
+        margin-top: -50px;
+    }
+    .left{
+        width: 25%;
+       display: inline-block;
+       img{
+           margin: 10px;
+       }
+    }
+    .right{
+        width: 75%;
+       display: inline-block;
+       
+    }
+}
+
 }

@@ -109,9 +109,15 @@ export class LoginPage {
        
         }
     this.ApiServiceProvider.otp_verify(json_data).subscribe((res) => {
+      console.log(res);
       if(res.STATUS == 0 || res['STATUS'] == 0){
         if(res.SUCCESS.auth_token){
           localStorage.setItem('AUTH_TOKEN',res.SUCCESS.auth_token);
+          localStorage.setItem('profile_id',res.SUCCESS.profile_id);
+          localStorage.setItem('mobile',res.SUCCESS.mobile_no);
+          localStorage.setItem('email',res.SUCCESS.email);
+          localStorage.setItem('name',res.SUCCESS.username);
+          
           this.navCtrl.setRoot(DashboardPage);
         }else{
           this.navCtrl.push(HomePage);

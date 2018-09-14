@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 
+
 @NgModule({
   declarations: [
-  
+    
   ],
   imports: [
    
   ],
 })
-export class DashboardPageModule {}
+export class UpdateComPageModule {}

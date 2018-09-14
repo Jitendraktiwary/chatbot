@@ -93,5 +93,194 @@ export class ApiServiceProvider {
     url += this.constant.config.otp_verify;
     return this.http.post(url,json_data,this.requestoptions).map((res:Response) => res.json());
   }
+  extra_details(json_data){
+    let url = this.constant.config.baseUrl;
+    this.header = new Headers({
+      'Content-Type': 'application/json',
+       'APP-ID':'SELLER-ONBOARDING-APP',
+      'MODEL':localStorage.getItem('MODEL'),
+      'PUSH-TOKEN':localStorage.getItem('PUSH-TOKEN'),
+      'TI-LOGIN-KEY':localStorage.getItem('userid'),
+      'OS-TYPE':localStorage.getItem('OS-TYPE'),
+      'OS-VERSION':localStorage.getItem('OS-VERSION'),
+      'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
+       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+      'X-TI-MOBILE-APP': 1,
+      'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
+    });
+    this.requestoptions = new RequestOptions({
+      headers: this.header,
+      withCredentials: true
+     });    
+    url += this.constant.config.extra_details;
+    return this.http.post(url,json_data,this.requestoptions).map((res:Response) => res.json());
+  }
+  get_company_details(json_data){
+    let url = this.constant.config.baseUrl;
+    this.header = new Headers({
+      'Content-Type': 'application/json',
+      'APP-ID':'SELLER-ONBOARDING-APP',
+      'MODEL':localStorage.getItem('MODEL'),
+      'PUSH-TOKEN':localStorage.getItem('PUSH-TOKEN'),
+      'TI-LOGIN-KEY':localStorage.getItem('userid'),
+      'OS-TYPE':localStorage.getItem('OS-TYPE'),
+      'OS-VERSION':localStorage.getItem('OS-VERSION'),
+      'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
+       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+      'X-TI-MOBILE-APP': 1,
+      'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
+    });
+    this.requestoptions = new RequestOptions({
+      headers: this.header,
+      withCredentials: true
+     });    
+    url += this.constant.config.get_company_details;
+    return this.http.post(url,json_data,this.requestoptions).map((res:Response) => res.json());
+  }
+  update_company_details(json_data){
+    let url = this.constant.config.baseUrl;
+    this.header = new Headers({
+      'Content-Type': 'application/json',
+      'APP-ID':'SELLER-ONBOARDING-APP',
+      'MODEL':localStorage.getItem('MODEL'),
+      'PUSH-TOKEN':localStorage.getItem('PUSH-TOKEN'),
+      'TI-LOGIN-KEY':localStorage.getItem('userid'),
+      'OS-TYPE':localStorage.getItem('OS-TYPE'),
+      'OS-VERSION':localStorage.getItem('OS-VERSION'),
+      'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
+       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+      'X-TI-MOBILE-APP': 1,
+      'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
+    });
+    this.requestoptions = new RequestOptions({
+      headers: this.header,
+      withCredentials: true
+     });    
+    url += this.constant.config.update_company_details;
+    return this.http.post(url,json_data,this.requestoptions).map((res:Response) => res.json());
+  }
 
+  profile_status(json_data){
+    let url = this.constant.config.baseUrl;
+    this.header = new Headers({
+      'Content-Type': 'application/json',
+      'APP-ID':'SELLER-ONBOARDING-APP',
+      'MODEL':localStorage.getItem('MODEL'),
+      'PUSH-TOKEN':localStorage.getItem('PUSH-TOKEN'),
+      'TI-LOGIN-KEY':localStorage.getItem('userid'),
+      'OS-TYPE':localStorage.getItem('OS-TYPE'),
+      'OS-VERSION':localStorage.getItem('OS-VERSION'),
+      'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
+       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+      'X-TI-MOBILE-APP': 1,
+      'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
+    });
+    this.requestoptions = new RequestOptions({
+      headers: this.header,
+      withCredentials: true
+     });    
+    url += this.constant.config.profile_status;
+    return this.http.post(url,json_data,this.requestoptions).map((res:Response) => res.json());
+  }
+  featured_product_list(json_data){
+    let url = this.constant.config.baseUrl;
+    this.header = new Headers({
+      'Content-Type': 'application/json',
+      'APP-ID':'SELLER-ONBOARDING-APP',
+      'MODEL':localStorage.getItem('MODEL'),
+      'PUSH-TOKEN':localStorage.getItem('PUSH-TOKEN'),
+      'TI-LOGIN-KEY':localStorage.getItem('userid'),
+      'OS-TYPE':localStorage.getItem('OS-TYPE'),
+      'OS-VERSION':localStorage.getItem('OS-VERSION'),
+      'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
+       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+      'X-TI-MOBILE-APP': 1,
+      'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
+    });
+    this.requestoptions = new RequestOptions({
+      headers: this.header,
+      withCredentials: true
+     });    
+    url += this.constant.config.featured_product_list;
+    return this.http.post(url,json_data,this.requestoptions).map((res:Response) => res.json());
+  }
+  
+  featured_product_details(json_data){
+    let url = this.constant.config.baseUrl;
+    this.header = new Headers({
+      'Content-Type': 'application/json',
+      'APP-ID':'SELLER-ONBOARDING-APP',
+      'MODEL':localStorage.getItem('MODEL'),
+      'PUSH-TOKEN':localStorage.getItem('PUSH-TOKEN'),
+      'TI-LOGIN-KEY':localStorage.getItem('userid'),
+      'OS-TYPE':localStorage.getItem('OS-TYPE'),
+      'OS-VERSION':localStorage.getItem('OS-VERSION'),
+      'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
+       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+      'X-TI-MOBILE-APP': 1,
+      'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
+    });
+    this.requestoptions = new RequestOptions({
+      headers: this.header,
+      withCredentials: true
+     });    
+    url += this.constant.config.featured_product_details;
+    return this.http.post(url,json_data,this.requestoptions).map((res:Response) => res.json());
+  }
+  
+  add_edit_featured_product(json_data){
+    let url = this.constant.config.baseUrl;
+    this.header = new Headers({
+      'Content-Type': 'application/json',
+      'APP-ID':'SELLER-ONBOARDING-APP',
+      'MODEL':localStorage.getItem('MODEL'),
+      'PUSH-TOKEN':localStorage.getItem('PUSH-TOKEN'),
+      'TI-LOGIN-KEY':localStorage.getItem('userid'),
+      'OS-TYPE':localStorage.getItem('OS-TYPE'),
+      'OS-VERSION':localStorage.getItem('OS-VERSION'),
+      'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
+       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+      'X-TI-MOBILE-APP': 1,
+      'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
+    });
+    this.requestoptions = new RequestOptions({
+      headers: this.header,
+      withCredentials: true
+     });    
+    url += this.constant.config.add_edit_featured_product;
+    return this.http.post(url,json_data,this.requestoptions).map((res:Response) => res.json());
+  }
+  
+  add_category_dd(json_data){
+    let url = this.constant.config.baseUrl;
+    this.header = new Headers({
+      'Content-Type': 'application/json',
+      'APP-ID':'SELLER-ONBOARDING-APP',
+      'MODEL':localStorage.getItem('MODEL'),
+      'PUSH-TOKEN':localStorage.getItem('PUSH-TOKEN'),
+      'TI-LOGIN-KEY':localStorage.getItem('userid'),
+      'OS-TYPE':localStorage.getItem('OS-TYPE'),
+      'OS-VERSION':localStorage.getItem('OS-VERSION'),
+      'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
+       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+      'X-TI-MOBILE-APP': 1,
+      'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
+    });
+    this.requestoptions = new RequestOptions({
+      headers: this.header,
+      withCredentials: true
+     });    
+    url += this.constant.config.category_list;
+    return this.http.post(url,json_data,this.requestoptions).map((res:Response) => res.json());
+  }
+
+  
 }

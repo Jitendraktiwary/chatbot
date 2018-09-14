@@ -1,0 +1,97 @@
+<!--
+  Generated template for the PdpPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>pdp</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="one" *ngIf="showdiv == 0">
+     <ion-list>
+      <ion-item>
+        <ion-label stacked>Product Name</ion-label>
+        <ion-input type="text" [(ngModel)]="product_name" placeholder="enter Product name"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+          <button ion-button color="danger" (click)="getcategory()" round>Submit</button>
+      </ion-item>
+    
+    </ion-list>
+  </div>
+
+  <div class="two" *ngIf="showdiv == 1">
+      
+          <ion-list>
+              <ion-item>
+                  <ion-label>Category</ion-label>
+                  <ion-select [(ngModel)]="catvalue">
+                    <ion-option *ngFor="let data of category" [value]="data.value">{{data.option}}</ion-option>
+                  </ion-select>
+             </ion-item>
+         
+           <ion-item>
+               <button ion-button color="danger" (click)="next()" round>Next</button>
+               <button ion-button color="danger" (click)="back()" round>Back</button>
+           </ion-item>
+         
+         </ion-list>
+      
+
+  </div>
+
+  <div class="two" *ngIf="showdiv == 2">
+      
+      <ion-list>
+          <ion-item>
+              <ion-label stacked>Product Name</ion-label>
+              <ion-input type="text" [(ngModel)]="product_name" placeholder="enter Product name" readonly></ion-input>
+           </ion-item>
+           <ion-item>
+              <ion-label>Category</ion-label>
+              <ion-select [(ngModel)]="catvalue">
+                <ion-option *ngFor="let data of category" [value]="data.value">{{data.option}}</ion-option>
+              </ion-select>
+            </ion-item>
+          
+           <ion-item>
+              <ion-label stacked>Product Discription</ion-label>
+              <ion-textarea  rows="3" type="text" [(ngModel)]="desc" placeholder="enter Product Discription" ></ion-textarea >
+           </ion-item>
+
+           <ion-item>
+              <ion-label stacked>Price</ion-label>
+              <ion-input type="number" [(ngModel)]="price" placeholder="enter Product price" ></ion-input>
+           </ion-item>
+
+           <ion-item>
+              <ion-label stacked>MOQ(minmum order qunatity)</ion-label>
+              <ion-input type="number" [(ngModel)]="price" placeholder="enter MOQ" ></ion-input>
+           </ion-item>
+         
+         <ion-item class="item comment-item">
+            <h6>product Image</h6>
+            <div class="add-img" (click)="ChooseOption()">
+                <img src="{{imgData}}" >
+            </div>
+          </ion-item>
+     
+       <ion-item>
+               <button ion-button color="danger" (click)="submit()" round>Submit</button>
+       </ion-item>
+     
+     </ion-list>
+  
+
+</div>
+
+</ion-content>

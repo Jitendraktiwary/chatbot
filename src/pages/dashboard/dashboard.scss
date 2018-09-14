@@ -1,5 +1,22 @@
 page-dashboard {
-    
+    .global-hdr{background: #ce271e; color: #fff;}
+    .global-hdr .title{color: #fff; font-family: 'RobotoRegular'; font-size: 1.12em;}
+    .tf-logo img{width: 20px;}
+    .tf-logo{width: 30px; text-align: right; line-height: 44px;}
+    .global-hdr .button{color: #fff;}
+    .toolbar-title-md{
+        color: #fff !important;
+    }
+    .scroll-content {
+        padding: 10px 5px !important;
+        background: rgba(4, 4, 4, 0.02);
+    }
+        
+    .menuspan{
+        span{
+            color: #fff !important;  
+        }
+    }
     .slideMenu {
         padding: 15px 10px;
         background: #f5f5f5 !important;
@@ -1666,4 +1683,128 @@ page-dashboard {
        .range-has-pin{
         padding: 20px 24px 15px 8px !important;
     }
+    .card-md{
+        padding: 10px 20px !important;
+        position: relative;
+        .icon-md{
+            font-size: 35px;
+            color: #ce271e;
+            float: right;
+            margin-top: -50px;
+        }
+        .left{
+            width: 25%;
+           float: left;
+           img{
+               width: 100%;
+           }
+        }
+        .right{
+            width: 75%;
+           float: right;
+           padding-top: 10px;
+           .compdetail{
+               padding: 10px 0 0 0;
+           }
+           .view-name{
+            width: 100%;
+            display: block;
+            text-align: center;
+            font-size: 1.3em;
+            color: rgba(12, 12, 12, 0.68);
+            font-weight: bold;
+            
+            
+           }
+           .view-value{
+            width: 100%;
+            display: block;
+            
+            text-align: center;
+          }
+          .viewtextshadow{
+            font-size: 3.5em;
+            text-shadow: 2px 0px 5px #505050;
+            color: #f4f7fb;
+            span{
+                font-size: 0.3em;
+                text-shadow: none;
+                color: #0c5823;
+            }
+          }
+          .view-star{
+          
+                font-size: 35px;
+                color: #bdbdbd;
+                 float: none !important;
+                 margin-top: 0px !important; 
+                text-shadow: 1px 1px 1px;
+               
+          }
+          .view-staractive{
+            color: #000 !important; 
+        }
+        .starpadding{
+            padding: 5px 0;
+        }
+        .noproduct{
+            font-size: .9em;
+               display: flex;
+             line-height: 2em;
+            margin-top: 6px;
+            background-color: white;
+            justify-content: center;
+            color: #777777
+            span{
+              font-size: 2em;
+              color: #e13838;
+          }
+        }
+           
+        }
+    }
+    .img_container {
+		height: 80px;
+		width: 80px;
+		border-radius: 50px;
+		overflow: hidden;
+		border: 1px solid #ececec;
+		margin: 0 auto;
+		background-size: cover;
+		padding: 15px;
+		//background-image: url(../assets/images/preload-img.png);
+		img{
+			filter: brightness(0) invert(20);
+		}
+	}
+    #catbg-0{
+		color: #25a89a !important;
+		}
+		#catbg-1{
+            color: #ffcb00 !important;
+		}
+		#catbg-2{
+            color: #e41512 !important;
+		}
+		#catbg-3{
+            color: #1e99bc !important;
+		}
+		#catbg-4{
+            color: #08b910 !important;
+		}
+		#catbg-5{
+            color: #ff9800;
+        }
+        #catbg-6{
+            color: #034b7a;
+            }
+        #catbg-7{
+            color: #e41512;
+                }
+		
+		
+        .color{
+            color: red !important;
+        }
+    
 }

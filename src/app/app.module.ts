@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
-// import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+ import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CreatemywebsitePage } from '../pages/createmywebsite/createmywebsite';
@@ -14,8 +14,10 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 import { SubDomaininfoPage } from '../pages/sub-domaininfo/sub-domaininfo';
 import { AddProductPage } from '../pages/add-product/add-product';
 import { LoginPage } from '../pages/login/login';
-// import { CompanyDetailPage } from '../pages/company-detail/company-detail';
-import { CompanyDetailPageModule } from '../pages/company-detail/company-detail.module';
+ import { UpadteProfilePage } from '../pages/upadte-profile/upadte-profile';
+ import { UpdateComPage } from '../pages/update-com/update-com';
+ import { CompanyDetailPage } from '../pages/company-detail/company-detail';
+ import { PdpPage } from '../pages/pdp/pdp';
 import { FilePath } from '@ionic-native/file-path';
 import { FileChooser } from '@ionic-native/file-chooser';
 
@@ -28,6 +30,7 @@ import { Base64 } from '@ionic-native/base64';
 import { Crop } from '@ionic-native/crop';
 import { FCM } from '@ionic-native/fcm';
 import { Device } from '@ionic-native/device';
+
 export function httpServiceInterceptor(backend: XHRBackend,
   options: RequestOptions
 ) {
@@ -44,15 +47,18 @@ export function httpServiceInterceptor(backend: XHRBackend,
     DashboardPage,
     CompinfoPage,
     AddProductPage,
-    LoginPage
-    // CompanyDetailPage
+    LoginPage,
+     CompanyDetailPage,
+     UpadteProfilePage,
+     UpdateComPage,
+     PdpPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    // HttpClientModule
-    CompanyDetailPageModule
+     HttpClientModule
+    //CompanyDetailPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -64,8 +70,11 @@ export function httpServiceInterceptor(backend: XHRBackend,
     DashboardPage,
     CompinfoPage,
     AddProductPage,
-    LoginPage
-    // CompanyDetailPage
+    LoginPage,
+     CompanyDetailPage,
+     UpadteProfilePage,
+     UpdateComPage,
+     PdpPage
   ],
   providers: [
     StatusBar,

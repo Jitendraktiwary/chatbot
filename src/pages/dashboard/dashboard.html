@@ -6,15 +6,71 @@
 -->
 
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
+  <ion-navbar class="bar bar-header global-hdr">
+    <button ion-button menuToggle class="menuspan">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>DASHBOARD</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <p>hello world</p>
+  <div class="maintab" >
+           
+    <ion-card >
+
+       <div class="card-block">
+            <div class="left"> <img src="assets/imgs/user.png"></div>
+              <div class="right">
+                  <label class="view-name">{{username}}</label>
+                  <span class="view-value viewtextshadow">{{percencomp}}%<span>completed</span></span>
+              </div>
+             
+        </div> 
+     
+</ion-card>
+<ion-card >
+
+  <div class="card-block">
+    <div class="left"> <img src="assets/imgs/comp.png"></div>
+      <div class="right" (click)="goTocomDetail()">
+        <label class="view-name">{{co_name}}</label>
+        <span class="view-value compdetail">View Deatil</span>
+      </div>
+     
+</div> 
+  
+</ion-card>
+<ion-card >
+
+  <div class="card-block">
+    <div class="left"> <img src="assets/imgs/product.png"></div>
+      <div class="right">
+        <label class="view-name">My Products</label>
+        <div class="view-value noproduct">No of Product :  <span>  {{num_prod}}</span></div>
+      </div>
+     
+</div> 
+  
+</ion-card>
+<ion-card >
+
+  <div class="card-block">
+    <div class="left"> <img src="assets/imgs/myrate.png"></div>
+      <div class="right">
+        <label class="view-name">My App Rated </label>
+        <span class="view-value starpadding">
+          <ion-icon class="view-star view-staractive" name="star"></ion-icon>
+          <ion-icon name="star" class="view-star view-staractive"></ion-icon>
+          <ion-icon name="star" class="view-star view-staractive"></ion-icon>
+          <ion-icon name="star" class="view-star"></ion-icon>
+          <ion-icon name="star" class="view-star"></ion-icon>
+        </span>
+      </div>
+     
+</div> 
+  
+</ion-card>
+</div>
 </ion-content>
 <ion-menu [content]="content">
 <ion-header class="slideMenu">
@@ -24,14 +80,14 @@
       </figure>
       <ion-title>
           <h3>{{username}}</h3>
-          <h4>+91-{{mob}}</h4>
+          <h4>{{mob}}</h4>
       </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content class="slideMenuList">
   <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-       <ion-icon item-left [name]="p.icon"></ion-icon>
+      <button menuClose ion-item *ngFor="let p of pages;let i= index;" (click)="openPage(p)">
+       <ion-icon item-left [name]="p.icon"  id="catbg-{{i}}"></ion-icon>
       {{p.title}} </button>
   </ion-list>
 </ion-content>
@@ -43,12 +99,20 @@
       <button onClick="window.open('https://twitter.com/tradeindia','_blank','location=yes');return false;">
     <img src="assets/imgs/twitter.svg">
   </button>
+  <button onClick="window.open('https://www.linkedin.com/company/tradeindia','_blank','location=yes');return false;">
+    <img src="assets/imgs/linked.png">
+  </button>
+      <button onClick="window.open('https://plus.google.com/111532914140532908998?prsrc=3','_blank','location=yes');return false;">
+    <img src="assets/imgs/googleplus.png">
+  </button>
+  <button onClick="window.open('https://www.youtube.com/c/tradeindia','_blank','location=yes');return false;">
+    <img src="assets/imgs/youtube.png">
+  </button>
+
 
   </ion-list>
 </ion-footer>
 </ion-menu>
-<ion-content>
-  <p>Dashboard</p>
-</ion-content>
+
 <!-- main navigation -->
  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

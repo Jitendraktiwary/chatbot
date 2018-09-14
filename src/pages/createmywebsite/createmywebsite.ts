@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
-import { AddProductPage } from '../add-product/add-product';
+
 import { LoginPage } from '../login/login';
+import { DashboardPage } from '../dashboard/dashboard';
+import { PdpPage } from '../pdp/pdp';
 /**
  * Generated class for the CreatemywebsitePage page.
  *
@@ -28,7 +30,8 @@ export class CreatemywebsitePage {
   }
 
   add_product(){
-    this.navCtrl.push(AddProductPage);
+    //this.navCtrl.push(AddProductPage);
+    this.navCtrl.setRoot(PdpPage);
   }
 
   gotoDashboard(){

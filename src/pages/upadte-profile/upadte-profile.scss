@@ -1,7 +1,4 @@
-page-company-detail {
-    .scroll-content {
-       top: 55px !important;
-    }
+page-upadte-profile {
     .item-list{
         padding: 10px !important; 
       }
@@ -137,46 +134,4 @@ page-company-detail {
         .add-img{
             width: 150px;
         }
-        .item-list{margin: 0; border: 0;}
-    .item-list .item{white-space: normal;}
-    .item-left, .item-right{display: inline-block; width: 50%; float: left; font-size: 1em; color: #252525; vertical-align: top; line-height: 17px;}
-    .item-left{font-family: 'RobotoRegular';}
-    .item-right{font-family: 'RobotoLight';}
-    .item-heading{background-color: #f4f4f4; color: #ce271e; padding: 14px 16px; font-size: 1.05em; border: 0;}
-    .company-profile .item-heading{margin: -2px 0;}
-    .company-profile .item-list > .item:first-child{border-top: 0;}
-    .company-profile .item-list > .item:last-child{border-bottom: 0;}
-    .flag{width: 20px; height: 20px; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 5px;}
-    .item-list > .item{padding: 14px 16px;}
-    .flag:last-child{margin-right: 0;}
-    .light-green{background-color: #99cc00;}
-    .dark-green{background-color: #006633;}
-    .yellow{background-color: #d8d824;}
-    .grey{background-color: #dbdbdb;}
-    .skip-txt{color: #ce271e;font-size: 1.1em;text-decoration: underline;left: 0;right: 0;margin: 0 auto;}
-    .txt-footer{background: none;}
-    .company-profile{margin-top: 45px !important;};
-    .item-left{
-        float: left;
-        width: 35%;
-        font-weight: bold;
-        font-size: 12px;
-    }
-    .item-right{
-        float: left;
-        width: 65%;
-        font-size: 13px;
-       
-    }
-    ion-icon {
-        font-size: 2.2em !important;
-    }
-    .button-md {
-       background-color: #ce271e !important;
-    }
-    .editdash{
-        float: right;
-    color: blue;
-    text-decoration: underline;
-    }
 }

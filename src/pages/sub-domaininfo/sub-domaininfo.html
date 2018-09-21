@@ -1,48 +1,74 @@
-<!--
-  Generated template for the CmpProfilePage page.
+    
+   <ion-header>
+   <ion-navbar>
+      <ion-title>Sub Domain Info</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+<ion-content padding>
+    <div class="one" *ngIf="showdiv == 0">
+        <ion-list>
+         <ion-item>
+           <ion-label stacked>Domain Name</ion-label>
+           <ion-input  type="text" [(ngModel)]="subdomain" placeholder="Enter domain name"></ion-input>
+         </ion-item>
+       </ion-list>
+       <p class="sugestmsg" *ngIf="subdomainfo== 1">Sorry ! {{sugestmsg}} please select or try another.</p>
+         <ion-list class="radiosuggest" radio-group [(ngModel)]="sugessstedsubdomain" *ngIf="subdomainfo== 1">
+            <ion-list-header>
+              Suggested Name
+            </ion-list-header>
+          
+            <ion-item *ngFor="let data of category">
+              <ion-label>{{data.value}}</ion-label>
+              <ion-radio value="{{data.value}}"></ion-radio>
+            </ion-item>
+                  
+          </ion-list>
 
+         <ion-item class="pdploadmore">
+             <button ion-button color="danger" (click)="getsubdomaininfo()" round>Submit</button>
+         </ion-item>
+       
 
-  <div class="bar bar-header global-hdr">
-    <div class="tf-logo"><img src="assets/imgs/hdr-logo.png"></div>
-    <div class="h1 title">Sub Domain Info</div>
    </div>
-
-</ion-header>
-
-
-<ion-content >
-   <div class="maintab" >
-           
+  
+   <div class="final"  *ngIf="showdiv == 1">     
     <ion-card >
-       <div class="card-block">
-              <label class="view-left">Name</label>
-              <span class="view-right">{{name}}</span>
-        </div> 
-      <div class="card-block" >
-          <label class="view-left">Companey</label>
-          <span class="view-right">{{company}}</span>
-     </div> 
-     <div class="card-block">
-        <label class="view-left">Business Type</label>
-        <span class="view-right">{{busnesstype}}</span>
-    </div> 
-    <div class="card-block">
-      <label class="view-left">Address</label>
-      <span class="view-right">{{address}}</span>
-  </div> 
-  <div class="card-block">
-    <label class="view-left">Your Sub Domain</label>
-    <span class="view-right red-txt">www.{{subdomain}}.tradeindia.com</span>
-</div> 
- 
+        <ion-list>
+            <ion-item>
+              <ion-label stacked>Name
+              <span >{{name}}</span>
+            </ion-label>
+        </ion-item> 
+        <ion-item>
+        <ion-label stacked>Companey
+          <span >{{company}}</span>
+        </ion-label>
+        </ion-item> 
+     <ion-item>
+      <ion-label stacked>Business Type
+        <span >{{busnesstype}}</span>
+      </ion-label>
+    </ion-item> 
+    <ion-item>
+      <ion-label stacked>Address
+      <span >{{address}}</span>
+    </ion-label>
+  </ion-item> 
+  <ion-item>
+    <ion-label stacked>Your Sub Domain
+    <span >www.tradeindia.com/{{subdomain}}</span>
+  </ion-label>
+</ion-item> 
+ </ion-list>
 </ion-card>  
-   <div class="row">
-    <button class="button button-block btn-global btn-yellow" (click)="goback()" style="height:50px;">continue</button>
-  </div>       
- </div>
+<ion-item class="pdploadmore">
+  <button  ion-button icon-start  (click)="goback('product')" round><ion-icon ios="ios-add" md="md-add"></ion-icon>Product</button>
+  <button  ion-button icon-start  (click)="goback('Dashborad')" round><ion-icon ios="ios-folder" md="md-folder"></ion-icon>Dashborad</button>
+  <button  ion-button icon-start color="danger" (click)="goback('com_detail')" round><ion-icon ios="ios-briefcase" md="md-briefcase"></ion-icon>Add Companey Detail</button>
+</ion-item>
+</div>     
 </ion-content>

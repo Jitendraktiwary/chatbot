@@ -12,12 +12,15 @@ import { CreatemywebsitePage } from '../pages/createmywebsite/createmywebsite';
 import { MapPage } from '../pages/map/map';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { SubDomaininfoPage } from '../pages/sub-domaininfo/sub-domaininfo';
-import { AddProductPage } from '../pages/add-product/add-product';
 import { LoginPage } from '../pages/login/login';
  import { UpadteProfilePage } from '../pages/upadte-profile/upadte-profile';
  import { UpdateComPage } from '../pages/update-com/update-com';
  import { CompanyDetailPage } from '../pages/company-detail/company-detail';
  import { PdpPage } from '../pages/pdp/pdp';
+ import { PdplistPage } from '../pages/pdplist/pdplist';
+ import { AboutusPage } from '../pages/aboutus/aboutus';
+ import { TermandconditionPage } from '../pages/termandcondition/termandcondition';
+ import { RegistrationPage } from '../pages/registration/registration';
 import { FilePath } from '@ionic-native/file-path';
 import { FileChooser } from '@ionic-native/file-chooser';
 
@@ -30,6 +33,8 @@ import { Base64 } from '@ionic-native/base64';
 import { Crop } from '@ionic-native/crop';
 import { FCM } from '@ionic-native/fcm';
 import { Device } from '@ionic-native/device';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 export function httpServiceInterceptor(backend: XHRBackend,
   options: RequestOptions
@@ -46,12 +51,15 @@ export function httpServiceInterceptor(backend: XHRBackend,
     SubDomaininfoPage,
     DashboardPage,
     CompinfoPage,
-    AddProductPage,
     LoginPage,
      CompanyDetailPage,
      UpadteProfilePage,
      UpdateComPage,
-     PdpPage
+     PdpPage,
+     PdplistPage,
+     AboutusPage,
+     TermandconditionPage,
+     RegistrationPage
   ],
   imports: [
     BrowserModule,
@@ -69,12 +77,15 @@ export function httpServiceInterceptor(backend: XHRBackend,
     SubDomaininfoPage,
     DashboardPage,
     CompinfoPage,
-    AddProductPage,
     LoginPage,
      CompanyDetailPage,
      UpadteProfilePage,
      UpdateComPage,
-     PdpPage
+     PdpPage,
+     PdplistPage,
+     AboutusPage,
+     TermandconditionPage,
+     RegistrationPage
   ],
   providers: [
     StatusBar,
@@ -101,6 +112,8 @@ export function httpServiceInterceptor(backend: XHRBackend,
     Device,
     FilePath,
     FileChooser,
+    SocialSharing,
+    InAppBrowser
   ]
 })
 export class AppModule {}

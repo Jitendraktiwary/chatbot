@@ -14,27 +14,23 @@
 
 
 <ion-content padding>
-  <div class="company-profile update-lead" >
-    <div >
-    <div name="myForm" >
-      <ul class="list item-list">
-          <li class="item comment-item">
-              <ion-input type="text" id="comp_name" [(ngModel)]="comp_name" placeholder="company name"></ion-input>
-          </li>  
-          <li class="item comment-item">
-            <ion-input type="number" id="pincode" [(ngModel)]="pincode" placeholder="pincode"></ion-input>
-          </li>
-          <li class="item comment-item">
-              <ion-input type="text" id="address" [(ngModel)]="address" placeholder="address"></ion-input>
-          </li>
-                     
-        </ul>
-    </div>
-    <div class="btn-block">        
-      <div class="row">
-        <button class="button button-block btn-global btn-yellow" (click)="submit()">SUBMIT</button>
-      </div>
-    </div>
-  </div>
-  </div>
+  <ion-list>
+      <ion-item>
+        <ion-label stacked>Company Name</ion-label>
+       <ion-input type="text" id="comp_name" [(ngModel)]="comp_name" placeholder="company name" (keypress)="eventHandler_code($event.keyCode)"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Pincode</ion-label>
+       <ion-input type="number" id="pincode" [(ngModel)]="pincode" placeholder="pincode" (keypress)="eventHandler_code($event.keyCode)"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Address</ion-label>
+        <ion-textarea row="4" [(ngModel)]="address" name="address" (keypress)="eventHandler_code($event.keyCode)"></ion-textarea>
+    </ion-item> 
+      <ion-item class="pdploadmore">
+          <button ion-button color="danger" (click)="submit()" round>SUBMIT</button>
+     </ion-item>
+    
+    </ion-list>
+
 </ion-content>

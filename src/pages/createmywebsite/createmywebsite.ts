@@ -4,7 +4,9 @@ import { HomePage } from '../home/home';
 
 import { LoginPage } from '../login/login';
 import { DashboardPage } from '../dashboard/dashboard';
-import { PdpPage } from '../pdp/pdp';
+// import { PdpPage } from '../pdp/pdp';
+// import { SubDomaininfoPage } from '../sub-domaininfo/sub-domaininfo';
+
 /**
  * Generated class for the CreatemywebsitePage page.
  *
@@ -29,12 +31,16 @@ export class CreatemywebsitePage {
     this.navCtrl.push(HomePage);
   }
 
-  add_product(){
-    //this.navCtrl.push(AddProductPage);
-    this.navCtrl.setRoot(PdpPage);
-  }
-
+ 
   gotoDashboard(){
-    this.navCtrl.push(LoginPage);
+    let userid =localStorage.getItem('userid');
+    console.log(">>>>>>>>>>>>>>>userid"+userid);
+    if(userid == undefined ||  userid == '' || userid == null){
+      this.navCtrl.push(LoginPage);
+    }else{
+      this.navCtrl.setRoot(DashboardPage);
+    }
+   
   }
+ 
 }

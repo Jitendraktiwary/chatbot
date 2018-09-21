@@ -14,7 +14,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <div class="maintab" >
+  <div class="maintab" *ngIf="this.show ==1">
            
     <ion-card >
 
@@ -22,7 +22,7 @@
             <div class="left"> <img src="assets/imgs/user.png"></div>
               <div class="right">
                   <label class="view-name">{{username}}</label>
-                  <span class="view-value viewtextshadow">{{percencomp}}%<span>completed</span></span>
+                  <span class="view-value viewtextshadow">{{percencomp}}%<span>&nbsp;completed &nbsp;<ion-icon  class="infout" ios="ios-information-circle-outline" md="md-information-circle" (tap)="showinfo()" *ngIf="showinfom == 1"></ion-icon></span></span>
               </div>
              
         </div> 
@@ -32,9 +32,9 @@
 
   <div class="card-block">
     <div class="left"> <img src="assets/imgs/comp.png"></div>
-      <div class="right" (click)="goTocomDetail()">
+      <div class="right" >
         <label class="view-name">{{co_name}}</label>
-        <span class="view-value compdetail">View Deatil</span>
+        <span class="view-value compdetail" (tap)="goTocomDetail()">View Deatil</span>
       </div>
      
 </div> 
@@ -44,14 +44,27 @@
 
   <div class="card-block">
     <div class="left"> <img src="assets/imgs/product.png"></div>
-      <div class="right">
+      <div class="right" >
         <label class="view-name">My Products</label>
-        <div class="view-value noproduct">No of Product :  <span>  {{num_prod}}</span></div>
+        <div class="view-value noproduct" (tap)="goToproductlist()">No of Product :  <span>  {{num_prod}}</span></div>
       </div>
      
 </div> 
   
 </ion-card>
+<ion-card >
+
+    <div class="card-block">
+      <div class="left"> <img src="assets/imgs/domain.png"></div>
+        <div class="right" >
+          <label class="view-name">Sub Domain</label>
+          <div class="view-value noproduct" *ngIf="sub_domain != 0" (tap)="goTodomain('URL')">www.tradeindia.com/{{sub_domain}}</div>
+          <div class="view-value noproduct" *ngIf="sub_domain == 0" (tap)="goTodomain('CR')">Create Subdomain</div>
+        </div>
+       
+  </div> 
+    
+  </ion-card>
 <ion-card >
 
   <div class="card-block">
@@ -86,7 +99,7 @@
 </ion-header>
 <ion-content class="slideMenuList">
   <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages;let i= index;" (click)="openPage(p)">
+      <button menuClose ion-item *ngFor="let p of pages;let i= index;" (click)="openPage(p.pageName)">
        <ion-icon item-left [name]="p.icon"  id="catbg-{{i}}"></ion-icon>
       {{p.title}} </button>
   </ion-list>

@@ -1,0 +1,46 @@
+<!--
+  Generated template for the PdplistPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Product list</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="maintab" >
+           
+  
+<ion-card *ngFor="let data of pdplist" >
+
+  <div class="card-block">
+    <div class="left"> <img src="{{data.image_path}}"></div>
+      <div class="right" (click)="goTopdpDetail(data.fp_id)">
+        <label class="view-name">{{data.prod_name}}</label>
+        <p class="view-desc">{{data.prod_descr}}</p>
+         <ion-icon ios="ios-arrow-forward" class="pdparrow" md="md-arrow-forward"></ion-icon>
+      </div>
+     
+</div> 
+
+
+  
+</ion-card>
+<ion-item *ngIf="showloadmore == 0" class="pdploadmore">
+  <button ion-button color="danger" (click)="loadmore()" round>Load More</button>
+ </ion-item>
+
+</div>
+
+<ion-fab  right bottom (click)="addmore()">
+  <button ion-fab color="danger"><ion-icon name="add"></ion-icon></button>
+  
+</ion-fab>
+
+</ion-content>

@@ -51,13 +51,13 @@ export class LoginPage {
       });
       alert.present();
     }else{
-      console.log(this.otp_count);
+      
       let json_data = {
         "mobile_no": '91'+this.mobile.trim()
         }
       if(this.otp_count <= 3){
         this.ApiServiceProvider.check_registration(json_data).subscribe((res) => {
-          console.log(res);
+         
           this.newuser=res.SUCCESS.new_user;
           localStorage.setItem('new_user',res.SUCCESS.new_user);
           if(this.newuser == 2){
@@ -109,7 +109,7 @@ export class LoginPage {
        
         }
     this.ApiServiceProvider.otp_verify(json_data).subscribe((res) => {
-      console.log(res);
+     
       if(res.STATUS == 0 || res['STATUS'] == 0){
         if(res.SUCCESS.auth_token){
           localStorage.setItem('AUTH_TOKEN',res.SUCCESS.auth_token);
@@ -137,5 +137,18 @@ export class LoginPage {
     }) 
     }
    
+  }
+  eventHandler_code(code)
+  {         
+     if(code == 13)
+      {
+        if(this.show_otp == 0 ){
+          this.send_otp();   
+        }else{
+          this.verify_otp();   
+        }
+            
+      }   
+
   }
 }

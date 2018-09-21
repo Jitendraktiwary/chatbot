@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { CreatemywebsitePage } from '../pages/createmywebsite/createmywebsite';
 import { FCM } from '@ionic-native/fcm';
 import { Device } from '@ionic-native/device';
+import { DashboardPage } from '../pages/dashboard/dashboard';
 @Component({
   templateUrl: 'app.html'
 })
@@ -15,6 +16,11 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      if(localStorage.getItem('userid')){
+        this.rootPage = DashboardPage;
+      }else{
+        this.rootPage =  CreatemywebsitePage;
+      }
       statusBar.styleDefault();
       splashScreen.hide();
       this.fcm.subscribeToTopic('marketing');

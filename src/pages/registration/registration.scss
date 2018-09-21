@@ -1,4 +1,4 @@
-page-upadte-profile {
+page-registration {
     .item-md.item-block .item-inner {
       
         border-bottom: none !important;
@@ -20,17 +20,28 @@ page-upadte-profile {
    .label-md{
     font-size: 1em !important;
     color: #7b8390 !important;
-    font-weight: bold;
+    font-weight: bold;    
    }
    .add-img{
        width: 150px;
    }
    .pdploadmore{
+       .label-md {
+           text-align: center;
+       }
+       button {            
+           padding: 20px !important;         
+       }
+   }
+   .finalregis{
+    .ion-icon {
+      
+        font-size: 1.5em !important;
+      
+    }
     .label-md {
-        text-align: center;
+           border-bottom: 1px solid #f4f4f4;
+           font-weight: normal !important;   
     }
-    button {            
-        padding: 20px !important;         
-    }
-}
+   }
 }

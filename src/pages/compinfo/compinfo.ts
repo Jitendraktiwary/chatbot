@@ -29,6 +29,8 @@ export class CompinfoPage {
   compCertif:any;
   oldcomiomg:any;
   oldcertifany:any;
+  annual_currency:any;
+  annual_mult:any;
   constructor(private loadingController: LoadingController,private toastCtrl: ToastController,private ApiServiceProvider: ApiServiceProvider,private base64: Base64,public actionsheetCtrl: ActionSheetController,private crop: Crop,private camera: Camera,public viewCtrl: ViewController,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
  
     this.turnover=this.navParams.get("turnover");
@@ -38,6 +40,8 @@ export class CompinfoPage {
     this.imgData=this.navParams.get("compimg");
     this.oldcertifany=this.navParams.get("certficate");
     this.oldcomiomg=this.navParams.get("compimg");
+    this.annual_currency=this.navParams.get("annual_currency");
+    this.annual_mult=this.navParams.get("annual_mult");
 
   }
 
@@ -66,9 +70,25 @@ export class CompinfoPage {
         buttons:['Ok']
       });
       alert.present();
+    }else if(this.annual_currency == undefined){
+      let alert = this.alertCtrl.create({
+        title:'Turn over',
+        message:'Please select currency ',
+        buttons:['Ok']
+      });
+      alert.present();
+    }else if(this.annual_mult == undefined){
+      let alert = this.alertCtrl.create({
+        title:'Turn over',
+        message:'Please select "annual turn over in  ',
+        buttons:['Ok']
+      });
+      alert.present();
     }else{
+      
       let json_data:any=[];
-      json_data={'userid':localStorage.getItem('userid'),'profile_id':localStorage.getItem('profile_id'),'co_info':this.desc,'staff':this.Noofemp,'turnover':this.turnover};
+      json_data={'userid':localStorage.getItem('userid'),'profile_id':localStorage.getItem('profile_id'),'co_info':this.desc,
+      'staff':this.Noofemp,'turnover':this.turnover,'annual_mult':this.annual_mult,'annual_currency':this.annual_currency};
       
       if(this.oldcertifany != this.imgData){
         if( this.compImage){
@@ -89,9 +109,9 @@ export class CompinfoPage {
         }); 
         loader.present();
 
-     // this.viewCtrl.dismiss(json_data);
+     
         this.ApiServiceProvider.extra_details(json_data).subscribe((res) => {
-          console.log(res);
+         
          if(res.SUCCESS){
           let toast = this.toastCtrl.create({
             message: 'Company Add/update successfully',

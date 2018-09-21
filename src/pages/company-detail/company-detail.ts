@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ToastController,IonicPage, NavController, NavParams,AlertController,ViewController, ActionSheetController, normalizeURL } from 'ionic-angular';
+import { LoadingController,IonicPage, NavController, NavParams,AlertController,ViewController, ActionSheetController } from 'ionic-angular';
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 import { UpadteProfilePage } from '../upadte-profile/upadte-profile';
 import { UpdateComPage } from '../update-com/update-com';
 import { CompinfoPage } from '../compinfo/compinfo';
-import { splitAtColon } from '@angular/compiler/src/util';
+//import { splitAtColon } from '@angular/compiler/src/util';
 
 /**
  * Generated class for the CompanyDetailPage page.
@@ -40,21 +40,26 @@ export class CompanyDetailPage {
   desc:any;
   certficate:any;
   compimg:any;
-
+  turnovervalue:any;
+  turnoverimg:any; 
    
-  constructor(private toastCtrl: ToastController,private ApiServiceProvider: ApiServiceProvider,public actionsheetCtrl: ActionSheetController,public viewCtrl: ViewController,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private loadingController: LoadingController,private ApiServiceProvider: ApiServiceProvider,public actionsheetCtrl: ActionSheetController,public viewCtrl: ViewController,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
   this.getCompDetail();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CompanyDetailPage');
+    
   }
   getCompDetail(){
+    let loader = this.loadingController.create({
+      content: "Loading, Please wait"
+    }); 
+    loader.present();
     let json_data:any=[];
     json_data={'userid':localStorage.getItem('userid'),'profile_id':localStorage.getItem('profile_id')};
 
     this.ApiServiceProvider.get_company_details(json_data).subscribe((res) => {
-      console.log(res);
+     
       if(res.SUCCESS){
         this.detail=res['SUCCESS'];
         this.name= this.detail.details.user_details.username;
@@ -67,7 +72,7 @@ export class CompanyDetailPage {
         this.comp_name= this.detail.details.comp_details.co_name;
         this.pincode= this.detail.details.comp_details.pincode;
         this.address= this.detail.details.comp_details.address;
-        console.log(this.detail);
+      
         if (this.detail.details.comp_details.ifexporter == 1){
           this.Exporterchk=true;
         } 
@@ -89,7 +94,22 @@ export class CompanyDetailPage {
          if(this.detail.details.comp_details.iftrader == 1){
           this.Traderchk=true;
         }  
+        if(this.detail.details.comp_details.annual_mult == '1000000'){
+          this.turnovervalue='Million';
+        }else if(this.detail.details.comp_details.annual_mult == '1000000000'){
+          this.turnovervalue='Billion';
+        }else if(this.detail.details.comp_details.annual_mult == '10000000'){
+          this.turnovervalue='Crore';
+        }else{
+          this.turnovervalue='Lakh';
+        }
         
+        if(this.detail.details.comp_details.annual_currency == 'USD'){
+          this.turnoverimg='1';
+        }else{
+          this.turnoverimg='0'
+        }
+       
           
         this.certficate= this.detail.details.comp_details.certificate_img_url;
         this.compimg= this.detail.details.comp_details.comp_pic_img_url;
@@ -102,8 +122,9 @@ export class CompanyDetailPage {
       }else{
         this.extd=2;
       }
-      
+      loader.dismiss();
     }, (error) => {
+      loader.dismiss();
       console.log(error);
     })
   }
@@ -114,7 +135,7 @@ export class CompanyDetailPage {
    if(val == 'USER'){
      this.navCtrl.push(UpadteProfilePage,{name:this.name[1],email:this.email,mobile:this.mobile[1]});
    }else if(val == 'EXTRA'){
-    this.navCtrl.push(CompinfoPage,{certficate:this.certficate,compimg:this.compimg,desc:this.desc,staff:this.staff,turnover:this.turnover});
+    this.navCtrl.push(CompinfoPage,{annual_mult:this.detail.details.comp_details.annual_mult,annual_currency:this.detail.details.comp_details.annual_currency,certficate:this.certficate,compimg:this.compimg,desc:this.desc,staff:this.staff,turnover:this.turnover});
    }
    else if(val == 'COMP'){
     this.navCtrl.push(UpdateComPage,{comp_name:this.comp_name,pincode:this.pincode,address:this.address});
@@ -173,7 +194,7 @@ export class CompanyDetailPage {
       });
       alert.addButton('Cancel');
       alert.addButton({
-        text: 'Okay',
+        text: 'Ok',
         handler: data => {
 
           let bussnestype =data;
@@ -187,7 +208,7 @@ export class CompanyDetailPage {
           json_data.iftrader='0';
           json_data.ifexporter='0';
           json_data.ifservice='0';
-          console.log("bussnestype>>>>"+bussnestype);
+         
           for(let i in bussnestype)
           { 
             if(bussnestype[i] == 'Exporter'){
@@ -207,7 +228,7 @@ export class CompanyDetailPage {
             }          
           }
           this.ApiServiceProvider.update_company_details(json_data).subscribe((res) => {
-            console.log(res);
+           
             if(res.SUCCESS){
               this. getCompDetail();
             }

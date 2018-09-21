@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoadingController,IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 import { CompanyDetailPage } from '../company-detail/company-detail';
 /**
@@ -18,28 +18,43 @@ export class UpdateComPage {
   comp_name:any;
   address:any;
   pincode:any;
-  constructor(private ApiServiceProvider: ApiServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private loadingController: LoadingController,private ApiServiceProvider: ApiServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
     this.comp_name=this.navParams.get("comp_name");
     this.address=this.navParams.get("address");
     this.pincode=this.navParams.get("pincode");
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UpdateComPage');
+   
   }
   submit(){
     let json_data:any=[];
-    json_data={'update_section':'PROFILE', "pincode": "110096","address": "b-164/611,new ashok nagar,new delhi", "co_name": "Tradeinfo",'userid':localStorage.getItem('userid'),'profile_id':localStorage.getItem('profile_id')};
-    
+    json_data={'update_section':'PROFILE', "pincode": this.pincode,"address": this.address, "co_name": this.comp_name,'userid':localStorage.getItem('userid'),'profile_id':localStorage.getItem('profile_id')};
+    let loader = this.loadingController.create({
+      content: "Loading, Please wait"
+    }); 
+    loader.present();
     this.ApiServiceProvider.update_company_details(json_data).subscribe((res) => {
-      console.log(res);
+     
+      loader.dismiss();
       if(res.SUCCESS){
         this.navCtrl.push(CompanyDetailPage);
       }
       
     }, (error) => {
+      loader.dismiss();
       console.log(error);
     })
+  }
+
+  eventHandler_code(code,keyword:any)
+  {         
+     if(code == 13)
+      {
+        this.submit()
+            
+      }   
+
   }
 
 }

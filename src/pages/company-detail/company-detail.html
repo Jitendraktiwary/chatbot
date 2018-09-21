@@ -19,7 +19,7 @@
 
 <ion-content padding *ngIf="extd == 1">
   <div class="personal-detail"  >
-    <div class="item item-divider item-heading">User Details <span class="editdash" (click)="UpdateProfile('USER')">EDIT </span></div>
+    <div class="item item-divider item-heading">User Details <span class="editdash" (click)="UpdateProfile('USER')"><ion-icon ios="ios-create-outline" md="md-create"></ion-icon> </span></div>
     <ul class="list item-list">
       <li class="item">
         <label class="item-left">User Name</label>
@@ -29,7 +29,7 @@
         <label class="item-left">Email</label>
         <span class="item-right">{{detail.details.user_details.email}}</span>
       </li>
-      <li class="item">
+      <li class="item rmborder">
         <label class="item-left">Mobile</label>
         <div class="item-right">
           <div class="inner-txt call-txt">
@@ -42,7 +42,7 @@
     </ul>
   </div>
   <div class="personal-detail"  >
-    <div class="item item-divider item-heading">Company Details <span class="editdash" (click)="UpdateProfile('COMP')">EDIT </span> </div>
+    <div class="item item-divider item-heading">Company Details <span class="editdash" (click)="UpdateProfile('COMP')"><ion-icon ios="ios-create-outline" md="md-create"></ion-icon> </span> </div>
     <ul class="list item-list">
       <li class="item">
         <label class="item-left">Company Name</label>
@@ -52,16 +52,16 @@
         <label class="item-left">Address</label>
         <span class="item-right">{{detail.details.comp_details.address}}</span>
       </li>
-      <li class="item">
+      <li class="item rmborder">
         <label class="item-left">Pincode</label>
         <span class="item-right">{{detail.details.comp_details.pincode}}</span>
       </li>
      </ul>
   </div>
   <div class="personal-detail"  >
-    <div class="item item-divider item-heading">Nature Of Bussiness <span class="editdash" (click)="UpdateProfile('NATURE')">EDIT </span></div>
+    <div class="item item-divider item-heading">Nature Of Bussiness <span class="editdash" (click)="UpdateProfile('NATURE')"><ion-icon ios="ios-create-outline" md="md-create"></ion-icon> </span></div>
     <ul class="list item-list">
-        <li class="item">
+        <li class="item rmborder">
             <label class="item-left" *ngIf="detail.details.comp_details.ifexporter == 1">Exporter ,</label>
        
             <label class="item-left" *ngIf="detail.details.comp_details.ifimporter == 1">Importer ,</label>
@@ -76,7 +76,7 @@
             <label class="item-left" *ngIf="detail.details.comp_details.ifdistributor == 1">Distributor , </label>
             
       
-            <label class="item-left" *ngIf="detail.details.ifsupplier == 1">Supplier ,</label>
+            <label class="item-left" *ngIf="detail.details.comp_details.ifsupplier == 1">Supplier ,</label>
             
        
             <label class="item-left" *ngIf="detail.details.comp_details.iftrader == 1">Trader ,</label>
@@ -85,7 +85,7 @@
       </ul>
   </div>
   <div class="personal-detail"  >
-    <div class="item item-divider item-heading">Extra Detail <span class="editdash" (click)="UpdateProfile('EXTRA')">EDIT </span></div>
+    <div class="item item-divider item-heading">Extra Detail <span class="editdash" (click)="UpdateProfile('EXTRA')"><ion-icon ios="ios-create-outline" md="md-create"></ion-icon> </span></div>
     <ul class="list item-list">
         <li class="item">
             <label class="item-left">Comp Info</label>
@@ -97,19 +97,20 @@
           </li>
           <li class="item">
               <label class="item-left">Turn Over</label>
-              <span class="item-right">{{detail.details.comp_details.turnover}}</span>
+              <span class="item-right" *ngIf="turnoverimg == '1'"><ion-icon ios="logo-usd" md="logo-usd"></ion-icon>&nbsp; {{detail.details.comp_details.turnover}}&nbsp; {{turnovervalue}}</span>
+              <span class="item-right" *ngIf="turnoverimg == '0'"><img src="assets/imgs/rupee.png" >&nbsp; {{detail.details.comp_details.turnover}}&nbsp; {{turnovervalue}}</span>
             </li> 
             <li class="item comment-item">
-                <label>Company Image </label>
+                <label class="item-left">Company Image </label>
                 <div class="add-img">
-                    <img src="{{detail.details.comp_details.certificate_img_url}}" >
+                    <span><img src="{{detail.details.comp_details.certificate_img_url}}" ></span>
                 </div>
               </li>
   
               <li class="item comment-item">
-                  <label>Company Certificate</label>
+                  <label class="item-left">Company Certificate</label>
                   <div class="add-img">
-                      <img src="{{detail.details.comp_details.comp_pic_img_url}}" >
+                     <span> <img src="{{detail.details.comp_details.comp_pic_img_url}}" ></span>
                   </div>
              </li>
      </ul>

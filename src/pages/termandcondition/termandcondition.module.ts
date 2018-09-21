@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 
 
+
 @NgModule({
   declarations: [
-   
+    
   ],
   imports: [
-  
+    
   ],
 })
-export class AddProductPageModule {}
+export class TermandconditionPageModule {}

@@ -1,68 +1,58 @@
 <ion-header>
+  <ion-navbar>
+    <ion-title >Registration</ion-title>
+    
+  </ion-navbar>
    
- 
-     
-        <div class="bar bar-header global-hdr" *ngIf="show_map != 1">
-                <div class="tf-logo"><img src="assets/imgs/hdr-logo.png"></div>
-            <div class="h1 title">Registration</div>
-        </div>
-        <div class="bar bar-header global-hdr" *ngIf="show_map == 1">
-                <div class="tf-logo"><img src="assets/imgs/hdr-logo.png"></div>
-                <div class="h1 title">MAP</div>
-            </div>
-        <div *ngIf="show_map == 1" class="save_button" (click)="save_location('send_loc')">Save</div>
-        
 </ion-header>
-<ion-content class="has-header">
+
+
+<ion-content padding>
     <div *ngIf="show_map == 1" #map id="map" class="map_class"></div>
    
-    <div class="company-profile update-lead" *ngIf="show_map == 0">
+    <div  *ngIf="show_map == 0">
         <div *ngIf="!show_otp && show_enter_details">
-        <div name="myForm" >
-          <ul class="list item-list">
-                <li class="item comment-item">
-                        <ion-input type="number" id="mobile" [(ngModel)]="mobile" placeholder="Mobile No"></ion-input>
-                 </li>
-            <li class="item comment-item">
-                <ion-input type="email" id="email" [(ngModel)]="email" placeholder="Email Id"></ion-input>
-            </li>
-            <li class="item comment-item">
-                <ion-input type="text" id="flat" [(ngModel)]="flat" placeholder="Address"></ion-input>
-            </li>   
-             <li class="item comment-item">
-                <ion-input type="number" id="pincode" [(ngModel)]="pincode" placeholder="Pincode"></ion-input>
-            </li>             
-          </ul>
-        </div>
-        <div class="btn-block">        
-          <div class="row">
-            <button class="button button-block btn-global btn-yellow" (click)="send_otp()">SUBMIT</button>
-          </div>
-        </div>
+         <ion-list>
+          <ion-item >
+        <ion-label stacked>Mobile</ion-label>
+         <ion-input type="number" id="mobile" [(ngModel)]="mobile" placeholder="mobile no"></ion-input>
+      </ion-item>
+      <ion-item >
+        <ion-label stacked>Email</ion-label>
+         <ion-input type="email" id="email" [(ngModel)]="email" placeholder="email"></ion-input>
+      </ion-item>
+      <ion-item >
+        <ion-label stacked>Address</ion-label>
+        <ion-textarea  rows="3" type="text" [(ngModel)]="flat" placeholder="enter address" ></ion-textarea >
+      </ion-item>
+      <ion-item >
+        <ion-label stacked>Pincode</ion-label>
+         <ion-input type="number" id="pincode" [(ngModel)]="pincode" placeholder="pincode"></ion-input>
+      </ion-item>
+        <ion-item class="pdploadmore">
+            <button ion-button color="danger" (click)="send_otp()" round>SUBMIT</button>
+        </ion-item>
+      </ion-list> 
       </div>
       </div>
-      <div class="company-profile update-lead" *ngIf="show_map == 2">
+      <div  *ngIf="show_map == 2">
             <div>
-            <div name="myForm" >
-                <h5> We will soon send you a OTP on the given mobile number {{mobile}} .
-                        Please enter the OTP to verify your mobile number.</h5>
-              <ul class="list item-list">
-                
-                <li class="item comment-item">
-                        <ion-input type="number" [(ngModel)]="otp" placeholder="****"></ion-input>
-                </li>
-               </ul>
-            </div>
-            <div class="btn-block">        
-              <div class="row">
-                    <div class="col">
-                            <button class="button button-block btn-global btn-yellow" (click)="verify_otp()">Submit</button>
-                             </div>
-                          <div class="col" >
-                           <button class="button button-block btn-global btn-yellow" (click)="edit_address()">Edit Number</button>
-                       </div>
-              </div>
-            </div>
+           
+                <p style="text-align:center"> We will soon send you a OTP on the given mobile number <b>{{mobile}}</b> .
+                        Please enter the OTP to verify your mobile number.</p>
+              <ion-list>
+              <ion-item>
+                <ion-label stacked>Otp</ion-label>
+                <ion-input  type="text" [(ngModel)]="otp" placeholder="Enter otp"></ion-input>
+              </ion-item>
+            
+              <ion-item class="pdploadmore">
+                  <button ion-button color="danger" (click)="verify_otp()" round>Submit</button>
+                  <button ion-button color="danger" (click)="edit_address()" round>Edit Number</button>
+              </ion-item>
+            
+            </ion-list>
+              
           </div>
           </div>
 
@@ -78,9 +68,9 @@
                         <div class="col">
                                 <button class="button button-block btn-global btn-yellow" (click)="save_location('no_send_loc')">Confirm</button>
                                  </div>
-                              <div class="col">
+                              <!-- <div class="col">
                                <button class="button button-block btn-global btn-yellow" (click)="open_map()">Confirm Location on Mapr</button>
-                           </div>
+                              </div> -->
                   </div>
                 </div>
               </div>

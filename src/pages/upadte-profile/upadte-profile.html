@@ -15,28 +15,23 @@
 
 <ion-content padding>
     
-  <div class="company-profile update-lead" >
-      <div >
-      <div name="myForm" >
-        <ul class="list item-list">
-            <li class="item comment-item">
-                <ion-input type="text" id="desc" [(ngModel)]="name" placeholder="Name"></ion-input>
-            </li>  
-            <li class="item comment-item">
-              <ion-input type="number" id="mobile" [(ngModel)]="mobile" placeholder="Mobile No"></ion-input>
-            </li>
-            <li class="item comment-item">
-                <ion-input type="email" id="email" [(ngModel)]="email" placeholder="Email Id"></ion-input>
-            </li>
-                       
-          </ul>
-      </div>
-      <div class="btn-block">        
-        <div class="row">
-          <button class="button button-block btn-global btn-yellow" (click)="submit()">SUBMIT</button>
-        </div>
-      </div>
-    </div>
-    </div>
+     <ion-list>
+        <ion-item>
+          <ion-label stacked>Name</ion-label>
+         <ion-input type="text" id="name" [(ngModel)]="name" placeholder="Name" (keypress)="eventHandler_code($event.keyCode)"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label stacked>Mobile</ion-label>
+         <ion-input type="number" id="mobile" [(ngModel)]="mobile" placeholder="mobile no" (keypress)="eventHandler_code($event.keyCode)"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label stacked>Email</ion-label>
+         <ion-input type="email" id="email" [(ngModel)]="email" placeholder="email" (keypress)="eventHandler_code($event.keyCode)"></ion-input>
+      </ion-item> 
+        <ion-item class="pdploadmore">
+            <button ion-button color="danger" (click)="submit()" round>Submit</button>
+        </ion-item>
+      
+      </ion-list>
 </ion-content>
 

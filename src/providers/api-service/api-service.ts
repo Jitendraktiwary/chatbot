@@ -58,8 +58,8 @@ export class ApiServiceProvider {
       'OS-TYPE':localStorage.getItem('OS-TYPE'),
       'OS-VERSION':localStorage.getItem('OS-VERSION'),
       'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
-      //'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
-      //'AUTH_ID':localStorage.getItem('AUTH_ID'),
+      //'AUTH-TOKEN':localStorage.getItem('AUTH_TOKEN'),
+      //'AUTH-ID':localStorage.getItem('AUTH_ID'),
       'X-TI-MOBILE-APP': 1,
       'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
     });
@@ -81,8 +81,8 @@ export class ApiServiceProvider {
       'OS-TYPE':localStorage.getItem('OS-TYPE'),
       'OS-VERSION':localStorage.getItem('OS-VERSION'),
       'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
-      //'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
-      //'AUTH_ID':localStorage.getItem('AUTH_ID'),
+      //'AUTH-TOKEN':localStorage.getItem('AUTH_TOKEN'),
+      //'AUTH-ID':localStorage.getItem('AUTH_ID'),
       'X-TI-MOBILE-APP': 1,
       'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
     });
@@ -104,8 +104,8 @@ export class ApiServiceProvider {
       'OS-TYPE':localStorage.getItem('OS-TYPE'),
       'OS-VERSION':localStorage.getItem('OS-VERSION'),
       'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
-       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
-       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+       'AUTH-TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH-ID':localStorage.getItem('AUTH_ID'),
       'X-TI-MOBILE-APP': 1,
       'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
     });
@@ -127,8 +127,8 @@ export class ApiServiceProvider {
       'OS-TYPE':localStorage.getItem('OS-TYPE'),
       'OS-VERSION':localStorage.getItem('OS-VERSION'),
       'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
-       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
-       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+       'AUTH-TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH-ID':localStorage.getItem('AUTH_ID'),
       'X-TI-MOBILE-APP': 1,
       'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
     });
@@ -150,8 +150,8 @@ export class ApiServiceProvider {
       'OS-TYPE':localStorage.getItem('OS-TYPE'),
       'OS-VERSION':localStorage.getItem('OS-VERSION'),
       'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
-       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
-       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+       'AUTH-TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH-ID':localStorage.getItem('AUTH_ID'),
       'X-TI-MOBILE-APP': 1,
       'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
     });
@@ -174,8 +174,8 @@ export class ApiServiceProvider {
       'OS-TYPE':localStorage.getItem('OS-TYPE'),
       'OS-VERSION':localStorage.getItem('OS-VERSION'),
       'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
-       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
-       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+       'AUTH-TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH-ID':localStorage.getItem('AUTH_ID'),
       'X-TI-MOBILE-APP': 1,
       'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
     });
@@ -197,8 +197,8 @@ export class ApiServiceProvider {
       'OS-TYPE':localStorage.getItem('OS-TYPE'),
       'OS-VERSION':localStorage.getItem('OS-VERSION'),
       'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
-       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
-       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+       'AUTH-TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH-ID':localStorage.getItem('AUTH_ID'),
       'X-TI-MOBILE-APP': 1,
       'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
     });
@@ -221,8 +221,8 @@ export class ApiServiceProvider {
       'OS-TYPE':localStorage.getItem('OS-TYPE'),
       'OS-VERSION':localStorage.getItem('OS-VERSION'),
       'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
-       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
-       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+       'AUTH-TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH-ID':localStorage.getItem('AUTH_ID'),
       'X-TI-MOBILE-APP': 1,
       'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
     });
@@ -245,8 +245,8 @@ export class ApiServiceProvider {
       'OS-TYPE':localStorage.getItem('OS-TYPE'),
       'OS-VERSION':localStorage.getItem('OS-VERSION'),
       'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
-       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
-       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+       'AUTH-TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH-ID':localStorage.getItem('AUTH_ID'),
       'X-TI-MOBILE-APP': 1,
       'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
     });
@@ -269,8 +269,8 @@ export class ApiServiceProvider {
       'OS-TYPE':localStorage.getItem('OS-TYPE'),
       'OS-VERSION':localStorage.getItem('OS-VERSION'),
       'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
-       'AUTH_TOKEN':localStorage.getItem('AUTH_TOKEN'),
-       'AUTH_ID':localStorage.getItem('AUTH_ID'),
+       'AUTH-TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH-ID':localStorage.getItem('AUTH_ID'),
       'X-TI-MOBILE-APP': 1,
       'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
     });
@@ -281,6 +281,53 @@ export class ApiServiceProvider {
     url += this.constant.config.category_list;
     return this.http.post(url,json_data,this.requestoptions).map((res:Response) => res.json());
   }
+  logoff(json_data){
+    let url = this.constant.config.baseUrl;
+    this.header = new Headers({
+      'Content-Type': 'application/json',
+      'APP-ID':'SELLER-ONBOARDING-APP',
+      'MODEL':localStorage.getItem('MODEL'),
+      'PUSH-TOKEN':localStorage.getItem('PUSH-TOKEN'),
+      'TI-LOGIN-KEY':localStorage.getItem('userid'),
+      'OS-TYPE':localStorage.getItem('OS-TYPE'),
+      'OS-VERSION':localStorage.getItem('OS-VERSION'),
+      'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
+       'AUTH-TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH-ID':localStorage.getItem('AUTH_ID'),
+      'X-TI-MOBILE-APP': 1,
+      'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
+    });
+    this.requestoptions = new RequestOptions({
+      headers: this.header,
+      withCredentials: true
+     });    
+    url += this.constant.config.logoff;
+    return this.http.post(url,json_data,this.requestoptions).map((res:Response) => res.json());
 
+  }
+  create_domain(json_data){
+    let url = this.constant.config.baseUrl;
+    this.header = new Headers({
+      'Content-Type': 'application/json',
+      'APP-ID':'SELLER-ONBOARDING-APP',
+      'MODEL':localStorage.getItem('MODEL'),
+      'PUSH-TOKEN':localStorage.getItem('PUSH-TOKEN'),
+      'TI-LOGIN-KEY':localStorage.getItem('userid'),
+      'OS-TYPE':localStorage.getItem('OS-TYPE'),
+      'OS-VERSION':localStorage.getItem('OS-VERSION'),
+      'DEVICE_ID':localStorage.getItem('DEVICE_ID'),
+       'AUTH-TOKEN':localStorage.getItem('AUTH_TOKEN'),
+       'AUTH-ID':localStorage.getItem('AUTH_ID'),
+      'X-TI-MOBILE-APP': 1,
+      'X-SELLER-ONBOARDING-APP-VERSION-ANDROID':this.constant.config.version
+    });
+    this.requestoptions = new RequestOptions({
+      headers: this.header,
+      withCredentials: true
+     });    
+    url += this.constant.config.create_domain;
+    return this.http.post(url,json_data,this.requestoptions).map((res:Response) => res.json());
+
+  }
   
 }

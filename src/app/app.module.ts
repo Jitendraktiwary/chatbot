@@ -4,8 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
-// import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
-import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
+// import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CreatemywebsitePage } from '../pages/createmywebsite/createmywebsite';
@@ -15,12 +15,13 @@ import { SubDomaininfoPage } from '../pages/sub-domaininfo/sub-domaininfo';
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { ConstantProvider } from '../providers/constant/constant';
 import { HttpInterceptorProvider } from '../providers/http-interceptor/http-interceptor';
+import { CompinfoPage } from '../pages/compinfo/compinfo';
 
-// export function httpServiceInterceptor(backend: XHRBackend,
-//   options: RequestOptions
-// ) {
-//   return new HttpInterceptorProvider(backend, options);
-// };
+export function httpServiceInterceptor(backend: XHRBackend,
+  options: RequestOptions
+) {
+  return new HttpInterceptorProvider(backend, options);
+};
 
 @NgModule({
   declarations: [
@@ -29,13 +30,14 @@ import { HttpInterceptorProvider } from '../providers/http-interceptor/http-inte
     CreatemywebsitePage,
     MapPage,
     SubDomaininfoPage,
-    DashboradPage
+    DashboradPage,
+    CompinfoPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    //HttpModule
-    HttpClientModule
+    HttpModule
+    // HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,7 +46,8 @@ import { HttpInterceptorProvider } from '../providers/http-interceptor/http-inte
     CreatemywebsitePage,
     MapPage,
     SubDomaininfoPage,
-    DashboradPage
+    DashboradPage,
+    CompinfoPage
   ],
   providers: [
     StatusBar,
@@ -52,13 +55,18 @@ import { HttpInterceptorProvider } from '../providers/http-interceptor/http-inte
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiServiceProvider,
     ConstantProvider,
-    // HttpInterceptorProvider,
+    HttpInterceptorProvider,
     {
-      provide: HTTP_INTERCEPTORS,
-      // useFactory: HttpInterceptorProvider,
-      useClass: HttpInterceptorProvider,
-      multi : true
+      provide: Http,
+      useFactory: httpServiceInterceptor,
+      deps: [XHRBackend, RequestOptions]
     },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   // useFactory: HttpInterceptorProvider,
+    //   useClass: HttpInterceptorProvider,
+    //   multi : true
+    // },
   ]
 })
 export class AppModule {}

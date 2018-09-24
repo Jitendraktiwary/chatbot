@@ -27,12 +27,9 @@
                 <ion-input type="email" id="email" [(ngModel)]="email" placeholder="Email Id"></ion-input>
             </li>
             <li class="item comment-item">
-                <ion-input type="text" id="flat" [(ngModel)]="flat" placeholder="House No/Flat/Building"></ion-input>
+                <ion-input type="text" id="flat" [(ngModel)]="flat" placeholder="Address"></ion-input>
             </li>   
-            <li class="item comment-item">
-                <ion-input type="text" id="locality" [(ngModel)]="locality" placeholder="Street"></ion-input>
-            </li>
-            <li class="item comment-item">
+             <li class="item comment-item">
                 <ion-input type="number" id="pincode" [(ngModel)]="pincode" placeholder="Pincode"></ion-input>
             </li>             
           </ul>
@@ -81,7 +78,7 @@
                         <div class="col">
                                 <button class="button button-block btn-global btn-yellow" (click)="save_location('no_send_loc')">Confirm</button>
                                  </div>
-                              <div class="col" *ngIf="showUser == 1">
+                              <div class="col">
                                <button class="button button-block btn-global btn-yellow" (click)="open_map()">Confirm Location on Mapr</button>
                            </div>
                   </div>

@@ -67,7 +67,7 @@ export class MapPage {
   }
 
   save_location(with_loc){
-    let json_data = {'pincode':this.pincode,'mobile':this.mobile,'email':this.email,'flat':this.flat,'locality':this.locality};
+    let json_data = {'pincode':this.pincode,'mobile':this.mobile,'email':this.email,'flat':this.flat};
     if(with_loc == 'send_loc'){
       let user_location = {'lat' : localStorage.getItem('client_lat'),'lng':localStorage.getItem('client_lng')};
       json_data['userlocation'] = user_location;
@@ -108,8 +108,8 @@ export class MapPage {
       alert.present();
     }else if(this.flat == undefined){
       let alert = this.alertCtrl.create({
-        title:'House No/Flat/Building',
-        message:'Please enter House No/Flat/Building',
+        title:'Address',
+        message:'Please enter Address',
         buttons:['Ok']
       });
       alert.present();
@@ -156,6 +156,7 @@ export class MapPage {
   }
 
   open_map(){
+    this.show_map = 0;
     this.platform.ready().then(() => {
       console.log('platform ready');
       this.ApiServiceProvider.get_loc_pincode(this.pincode).subscribe((res) => {
@@ -177,16 +178,33 @@ export class MapPage {
 
   verify_otp(){
    
+    // if(this.otp == undefined){
+    //   let alert = this.alertCtrl.create({
+    //     title:'OTP',
+    //     message:'Please enter OTP',
+    //     buttons: ['Ok']
+    //   });
+    //   alert.present();
+    // }else if(this.otp != localStorage.getItem('otp')){
+    //   let alert = this.alertCtrl.create({
+    //     title:'OTP',
+    //     message:'OTP you have entered is invalid',
+    //     buttons: ['Ok']
+    //   });
+    //   alert.present();
+    // }else{
+    //   this.show_map = 3;
+    //   this.show_otp = false;
+    //   this.show_enter_details = false;
+    //   this.show_details = true;
+      
+    // }
+
     if(this.otp == undefined){
       let alert = this.alertCtrl.create({
         title:'OTP',
-        message:'Please enter OTP'
-      });
-      alert.present();
-    }else if(this.otp != localStorage.getItem('otp')){
-      let alert = this.alertCtrl.create({
-        title:'OTP',
-        message:'OTP you have entered is invalid'
+        message:'Please enter OTP',
+        buttons: ['Ok']
       });
       alert.present();
     }else{
@@ -194,7 +212,7 @@ export class MapPage {
       this.show_otp = false;
       this.show_enter_details = false;
       this.show_details = true;
-      // this.viewCtrl.dismiss(json_data);
+      
     }
   }
 

@@ -17,13 +17,10 @@ declare var google: any;
 })
 export class RegistrationPage {
   show_map:number = 0;
-  // button_type:number = 0;
   show_otp:boolean=false;
   show_details:boolean=false;
   show_enter_details:boolean=true;
   otp_count:number = 0;
-  // map:any;
-  // marker:any;
   @ViewChild('map') mapElement: ElementRef;
   initial_lat:any;
   initial_lng:any;

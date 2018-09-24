@@ -289,11 +289,15 @@ export class HomePage {
         text: 'Ok',
         handler: data => {
          // this.showhidesendmsg=0;
-          console.log('Checkbox data:', data);
-            let business_chat = {'message' : data,'type' : 'user'};
-            this.business_type=data;
-            this.chats.push(business_chat);
-            this.pushChat();
+      if(data.length > 0){
+        let business_chat = {'message' : data,'type' : 'user'};
+        this.business_type=data;
+        this.chats.push(business_chat);
+        this.pushChat();
+      }else{
+        this.bussniessinf();
+      }
+           
         }
       });
       alert.present();

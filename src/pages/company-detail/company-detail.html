@@ -8,6 +8,7 @@
 
     <ion-navbar>
         <ion-title>Company Info</ion-title>
+        <ion-icon ios="ios-home" md="md-home" (click)="gohome()" class="home"></ion-icon>
       </ion-navbar>
 </ion-header>
 
@@ -117,7 +118,7 @@
                     <span><img src="{{certficate}}" ></span>
                 </div>
                 <div  *ngIf="certficate =='application'" class="download">
-                   Download document &nbsp;&nbsp;<ion-icon ios="ios-download" md="md-download"></ion-icon>
+                   Download document &nbsp;&nbsp;<ion-icon ios="ios-download" md="md-download" (click)="download()"></ion-icon>
                 </div>
               </li>
   

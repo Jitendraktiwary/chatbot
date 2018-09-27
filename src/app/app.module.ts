@@ -37,6 +37,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
+
 export function httpServiceInterceptor(backend: XHRBackend,
   options: RequestOptions
 ) {
@@ -114,7 +115,8 @@ export function httpServiceInterceptor(backend: XHRBackend,
     FilePath,
     FileChooser,
     SocialSharing,
-    InAppBrowser
+    InAppBrowser,
+    
   ]
 })
 export class AppModule {}

@@ -115,6 +115,14 @@ page-company-detail {
         .download{
             .ion-md-download:before {
                  color: #f6b800 !important;
+                 padding: 10px;
             }
+        }
+        .home{
+          position: absolute;
+        right: 0;
+        top: 0;
+        padding: 15px;
+        color: #fff;
         }
 }

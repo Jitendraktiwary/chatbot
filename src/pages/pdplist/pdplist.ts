@@ -3,6 +3,7 @@ import { ToastController,LoadingController,IonicPage, NavController, NavParams }
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 
 import { PdpPage } from '../pdp/pdp';
+import { DashboardPage } from '../dashboard/dashboard';
 /**
  * Generated class for the PdplistPage page.
  *
@@ -119,5 +120,8 @@ export class PdplistPage {
   addmore(){
     this.navCtrl.push(PdpPage);
     
+  }
+  gohome(){
+    this.navCtrl.setRoot(DashboardPage);
   }
 }

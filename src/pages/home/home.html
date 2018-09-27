@@ -80,7 +80,7 @@
    
     <ion-footer>
         <p text-center *ngIf="sending">sending...</p>
-        <div class="flex-items" padding>
+        <div class="flex-items msgsend" padding>
 
             <ion-input [(ngModel)]="message" name="message" class="please enter" placeholder="send message ..." (keypress)="eventHandler_code($event.keyCode)"></ion-input>
             <ion-icon (click)="sendMessage()" class="send" name="send" ></ion-icon>

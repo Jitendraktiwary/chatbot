@@ -25,6 +25,7 @@
     "@ionic-native/core": "~4.10.0",
     "@ionic-native/crop": "^4.12.0",
     "@ionic-native/device": "^4.12.0",
+    "@ionic-native/document-viewer": "^4.15.0",
     "@ionic-native/fcm": "^4.12.0",
     "@ionic-native/file-chooser": "^4.14.0",
     "@ionic-native/file-path": "^4.14.0",

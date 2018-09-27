@@ -5,6 +5,10 @@ import { UpadteProfilePage } from '../upadte-profile/upadte-profile';
 import { UpdateComPage } from '../update-com/update-com';
 import { CompinfoPage } from '../compinfo/compinfo';
 //import { splitAtColon } from '@angular/compiler/src/util';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { DashboardPage } from '../dashboard/dashboard';
+
+
 
 /**
  * Generated class for the CompanyDetailPage page.
@@ -44,8 +48,11 @@ export class CompanyDetailPage {
   turnoverimg:any; 
   pet: string = "puppies";
   
-  constructor(private loadingController: LoadingController,private ApiServiceProvider: ApiServiceProvider,public actionsheetCtrl: ActionSheetController,public viewCtrl: ViewController,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private iab: InAppBrowser,private loadingController: LoadingController,private ApiServiceProvider: ApiServiceProvider,public actionsheetCtrl: ActionSheetController,public viewCtrl: ViewController,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
   this.getCompDetail();
+  if(this.navParams.get('selected')){
+    this.pet=this.navParams.get('selected');
+  }
   }
 
   ionViewDidLoad() {
@@ -239,6 +246,7 @@ export class CompanyDetailPage {
           this.ApiServiceProvider.update_company_details(json_data).subscribe((res) => {
            
             if(res.SUCCESS){
+              this.pet='ducklings';
               this. getCompDetail();
             }
             
@@ -250,5 +258,17 @@ export class CompanyDetailPage {
       });
       alert.present();
    }
+  }
+  download(){
+    this.iab.create(this.detail.details.comp_details.certificate_img_url, '_system','location=no');
+    // window.open(this.detail.details.comp_details.certificate_img_url);
+    // const options: DocumentViewerOptions = {
+    //   title: 'My PDF'
+    // }
+    
+   
+  }
+  gohome(){
+    this.navCtrl.setRoot(DashboardPage);
   }
 }

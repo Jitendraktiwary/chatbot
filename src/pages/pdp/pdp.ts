@@ -6,6 +6,7 @@ import { Base64 } from '@ionic-native/base64';
 import { Crop } from '@ionic-native/crop';
 import { Camera } from '@ionic-native/camera';
 import { PdplistPage } from '../pdplist/pdplist';
+import { DashboardPage } from '../dashboard/dashboard';
 /**
  * Generated class for the PdpPage page.
  *
@@ -349,6 +350,10 @@ export class PdpPage {
             
       }   
 
+  }
+
+  gohome(){
+    this.navCtrl.setRoot(DashboardPage);
   }
 
 }

@@ -7,6 +7,7 @@ import { Camera } from '@ionic-native/camera';
 import { CompanyDetailPage } from '../company-detail/company-detail';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
+import { DashboardPage } from '../dashboard/dashboard';
 declare var cordova: any;
 
 /**
@@ -145,7 +146,7 @@ export class CompinfoPage {
           });
           toast.present();
           loader.dismiss();
-          this.navCtrl.push(CompanyDetailPage) .then(() =>{
+          this.navCtrl.push(CompanyDetailPage,{'selected':'ExtraDetail'}) .then(() =>{
             const index =this.viewCtrl.index;
              this.navCtrl.remove(index);
          
@@ -283,6 +284,7 @@ export class CompinfoPage {
                 
                       this.certimg_type_name=this.imgCertificate[0];
                       this.imgCertificate = imageData;
+                      this.certimg_type='jpg';
                       this.base64.encodeFile(imageData).then((base64File: string) => {
                         
                         let arr = base64File.split('base64,');
@@ -403,6 +405,9 @@ export class CompinfoPage {
     ]
     });
     actionSheet.present();
+  }
+  gohome(){
+    this.navCtrl.setRoot(DashboardPage);
   }
 
 }

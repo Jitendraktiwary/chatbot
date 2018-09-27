@@ -194,6 +194,7 @@ export class HomePage {
   
 }
   edit(val){
+    alert("ok2");
     this.showhidesendmsg=0;
     setTimeout( ()=> {
       this.scrollElement.nativeElement.scrollTop = this.scrollElement.nativeElement.scrollHeight+10;
@@ -210,6 +211,7 @@ export class HomePage {
     
   }
   confrim(val){
+    alert("ok");
     this.showhidesendmsg=0;
     setTimeout( ()=> {
       this.scrollElement.nativeElement.scrollTop = this.scrollElement.nativeElement.scrollHeight+10;

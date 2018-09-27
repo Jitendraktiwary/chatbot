@@ -219,7 +219,7 @@ export class DashboardPage {
   goTodomain(val){
     if(val == 'URL'){
      // window.open('https://www.tradeindia.com/'+this.sub_domain, '_system');
-       this.iab.create('https://www.tradeindia.com/'+this.sub_domain);
+       this.iab.create('https://www.tradeindia.com/'+this.sub_domain,'_blank','location=no');
     }else{
       this.navCtrl.push(SubDomaininfoPage);
     }

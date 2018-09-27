@@ -52,7 +52,7 @@
 </ion-content>
 <div class="logfooter" *ngIf="show_otp == 0">
         <ion-icon class="arrowlog" name="ios-arrow-down-outline"></ion-icon>
-        <span class="forget"><a>forgot password</a></span>
-        <span class="ac">Create Account</span>
+        <!-- <span class="forget"><a>forgot password</a></span> -->
+        <span class="ac" (click)="gotohome()">Create Account</span>
        
  </div>  

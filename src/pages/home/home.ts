@@ -2,7 +2,7 @@ import { Component,ViewChild, ElementRef,Renderer } from '@angular/core';
 import { NavController, AlertController,ModalController } from 'ionic-angular';
 import { RegistrationPage } from '../registration/registration';
 import { SubDomaininfoPage } from '../sub-domaininfo/sub-domaininfo';
-import { CompinfoPage } from '../compinfo/compinfo';
+//import { CompinfoPage } from '../compinfo/compinfo';
 import { DashboardPage } from '../dashboard/dashboard';
 //import { ApiServiceProvider } from '../../providers/api-service/api-service';
 @Component({

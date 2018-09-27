@@ -6,21 +6,30 @@
 -->
 <ion-header>
 
-  <div class="bar bar-header global-hdr" >
-      <!-- <button class="button button-icon icon ion-ios-arrow-back"></button> -->
-      <button ion-button icon-only  (click)="goback()">
-          <ion-icon name="md-arrow-back"></ion-icon>
-     </button>
-    <div class="tf-logo"><img src="assets/imgs/hdr-logo.png"></div>
-<div class="h1 title">Company Info</div>
-</div>
+    <ion-navbar>
+        <ion-title>Company Info</ion-title>
+      </ion-navbar>
 </ion-header>
 
 
 <ion-content padding *ngIf="extd == 1">
-  <div class="personal-detail"  >
-    <div class="item item-divider item-heading">User Details <span class="editdash" (click)="UpdateProfile('USER')"><ion-icon ios="ios-create-outline" md="md-create"></ion-icon> </span></div>
-    <ul class="list item-list">
+    <ion-segment [(ngModel)]="pet" class="seg">
+        <ion-segment-button value="puppies">
+            User 
+        </ion-segment-button>
+        <ion-segment-button value="kittens">
+            Company
+        </ion-segment-button>
+        <ion-segment-button value="ducklings">
+           Bussiness
+        </ion-segment-button>
+        <ion-segment-button value="ExtraDetail">
+            More Info 
+        </ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="pet">
+  <div class="personal-detail" *ngSwitchCase="'puppies'" >
+     <ul class="list item-list">
       <li class="item">
         <label class="item-left">User Name</label>
         <span class="item-right">{{detail.details.user_details.username}}</span>
@@ -40,10 +49,10 @@
         </div>
       </li>
     </ul>
+    <button ion-button color="danger" (click)="UpdateProfile('USER')" round>Update</button>
   </div>
-  <div class="personal-detail"  >
-    <div class="item item-divider item-heading">Company Details <span class="editdash" (click)="UpdateProfile('COMP')"><ion-icon ios="ios-create-outline" md="md-create"></ion-icon> </span> </div>
-    <ul class="list item-list">
+  <div class="personal-detail" *ngSwitchCase="'kittens'" >
+      <ul class="list item-list">
       <li class="item">
         <label class="item-left">Company Name</label>
         <span class="item-right">{{detail.details.comp_details.co_name}}</span>
@@ -57,35 +66,37 @@
         <span class="item-right">{{detail.details.comp_details.pincode}}</span>
       </li>
      </ul>
+     <button ion-button color="danger" (click)="UpdateProfile('COMP')" round>Update</button>
   </div>
-  <div class="personal-detail"  >
-    <div class="item item-divider item-heading">Nature Of Bussiness <span class="editdash" (click)="UpdateProfile('NATURE')"><ion-icon ios="ios-create-outline" md="md-create"></ion-icon> </span></div>
-    <ul class="list item-list">
-        <li class="item rmborder">
-            <label class="item-left" *ngIf="detail.details.comp_details.ifexporter == 1">Exporter ,</label>
+  <div class="personal-detail"  *ngSwitchCase="'ducklings'">
+  
+    <ol class="list item-list" start="1">
+        <li class="item rmborder" *ngIf="detail.details.comp_details.ifexporter == 1">
+            Exporter 
+         </li>
        
-            <label class="item-left" *ngIf="detail.details.comp_details.ifimporter == 1">Importer ,</label>
+            <li class="item rmborder" *ngIf="detail.details.comp_details.ifimporter == 1">Importer</li>
             
       
-            <label class="item-left" *ngIf="detail.details.comp_details.ifmanu == 1">Manufacturer ,</label>
+            <li class="item rmborder" *ngIf="detail.details.comp_details.ifmanu == 1">Manufacturer</li>
             
   
-            <label class="item-left" *ngIf="detail.details.comp_details.ifservice == 1">Service , </label>
+            <li class="item rmborder" *ngIf="detail.details.comp_details.ifservice == 1">Service </li>
             
        
-            <label class="item-left" *ngIf="detail.details.comp_details.ifdistributor == 1">Distributor , </label>
+            <li class="item rmborder" *ngIf="detail.details.comp_details.ifdistributor == 1">Distributor </li>
             
       
-            <label class="item-left" *ngIf="detail.details.comp_details.ifsupplier == 1">Supplier ,</label>
+            <li class="item rmborder" *ngIf="detail.details.comp_details.ifsupplier == 1">Supplier</li>
             
        
-            <label class="item-left" *ngIf="detail.details.comp_details.iftrader == 1">Trader ,</label>
-          </li>  
+            <li class="item rmborder" *ngIf="detail.details.comp_details.iftrader == 1">Trader</li>
+            
        
-      </ul>
+        </ol>
+      <button ion-button color="danger" (click)="UpdateProfile('NATURE')" round>Update</button>
   </div>
-  <div class="personal-detail"  >
-    <div class="item item-divider item-heading">Extra Detail <span class="editdash" (click)="UpdateProfile('EXTRA')"><ion-icon ios="ios-create-outline" md="md-create"></ion-icon> </span></div>
+  <div class="personal-detail"  *ngSwitchCase="'ExtraDetail'">
     <ul class="list item-list">
         <li class="item">
             <label class="item-left">Comp Info</label>
@@ -100,20 +111,24 @@
               <span class="item-right" *ngIf="turnoverimg == '1'"><ion-icon ios="logo-usd" md="logo-usd"></ion-icon>&nbsp; {{detail.details.comp_details.turnover}}&nbsp; {{turnovervalue}}</span>
               <span class="item-right" *ngIf="turnoverimg == '0'"><img src="assets/imgs/rupee.png" >&nbsp; {{detail.details.comp_details.turnover}}&nbsp; {{turnovervalue}}</span>
             </li> 
-            <li class="item comment-item">
-                <label class="item-left">Company Image </label>
-                <div class="add-img">
-                    <span><img src="{{detail.details.comp_details.certificate_img_url}}" ></span>
+            <li class="item comment-item" style="list-style-type: none">
+                <label class="item-left">Company Certificate </label>
+                <div class="add-img" *ngIf="certficate !='application'">
+                    <span><img src="{{certficate}}" ></span>
+                </div>
+                <div  *ngIf="certficate =='application'" class="download">
+                   Download document &nbsp;&nbsp;<ion-icon ios="ios-download" md="md-download"></ion-icon>
                 </div>
               </li>
   
               <li class="item comment-item">
-                  <label class="item-left">Company Certificate</label>
+                  <label class="item-left">Company Image</label>
                   <div class="add-img">
-                     <span> <img src="{{detail.details.comp_details.comp_pic_img_url}}" ></span>
+                     <span> <img src="{{compimg}}" ></span>
                   </div>
              </li>
      </ul>
+     <button ion-button color="danger" (click)="UpdateProfile('EXTRA')" round>Update</button>
   </div>
-
+</div>
 </ion-content>

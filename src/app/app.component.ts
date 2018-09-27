@@ -10,7 +10,7 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = CreatemywebsitePage;
+  rootPage:any;
 
   constructor(private device: Device,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,private fcm: FCM) {
     platform.ready().then(() => {
@@ -26,7 +26,6 @@ export class MyApp {
       this.fcm.subscribeToTopic('marketing');
 
         this.fcm.getToken().then(token => {
-          console.log(">>>>>>>>>>>>>"+token);
           localStorage.setItem('MODEL',this.device.model);
           localStorage.setItem('DEVICE_ID',this.device.uuid);
           localStorage.setItem('OS-TYPE',this.device.platform);
@@ -34,13 +33,13 @@ export class MyApp {
           localStorage.setItem('PUSH-TOKEN',token);
         });
 
-        this.fcm.onNotification().subscribe(data => {
-          if(data.wasTapped){
-            console.log("Received in background");
-          } else {
-            console.log("Received in foreground");
-          };
-        });
+        // this.fcm.onNotification().subscribe(data => {
+        //   if(data.wasTapped){
+        //     console.log("Received in background");
+        //   } else {
+        //     console.log("Received in foreground");
+        //   };
+        // });
 
     });
   }

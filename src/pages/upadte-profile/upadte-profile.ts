@@ -23,6 +23,7 @@ export class UpadteProfilePage {
     this.name=this.navParams.get("name");
     this.email=this.navParams.get("email");
     this.mobile=this.navParams.get("mobile");
+    
   }
 
   ionViewDidLoad() {

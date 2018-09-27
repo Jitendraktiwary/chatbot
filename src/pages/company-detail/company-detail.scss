@@ -87,4 +87,34 @@ page-company-detail {
            .ion-logo-usd{
                font-size: 1.3em !important;
            } 
+        .personal-detail{
+            text-align: center;
+            ul{
+                text-align: left;
+            }
+            ol{
+                li{
+                    
+                    padding: 10px 15px !important;
+                        
+                    background: #f4f4f4;
+                    display: inline-block !important;
+                    margin: 5px 3px !important;
+                }
+            }
+        }  
+        .segment-md .segment-button {
+    
+            color: #252525 !important;
+            
+        }
+        .segment-md .segment-button.segment-activated {
+            border-color: #e13838 !important;
+           font-weight: bold;
+        } 
+        .download{
+            .ion-md-download:before {
+                 color: #f6b800 !important;
+            }
+        }
 }

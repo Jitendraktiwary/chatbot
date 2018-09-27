@@ -85,4 +85,15 @@ page-compinfo {
      }
     }
 }
+.upload{
+    text-align: center;
+    .ion-md-cloud-upload:before {
+        color: #f6b800 !important;
+        font-size: 3.5em !important;
+        
+    }
+    span{
+        display: block;
+    }
+}
 }

@@ -1,0 +1,36 @@
+page-upadte-profile {
+    .item-md.item-block .item-inner {
+      
+        border-bottom: none !important;
+        padding-right: 0px !important;
+
+       -webkit-box-shadow:unset !important; 
+       box-shadow: unset !important;
+   }
+   .item-md {
+      padding-left: 0px !important;
+   }
+  
+   .text-input-md {
+       border: 1px solid #dedede;
+        margin-top: 10px !important;
+         padding: 15px;
+         width: 100% !important; 
+   }
+   .label-md{
+    font-size: 1em !important;
+    color: #7b8390 !important;
+    font-weight: bold;
+   }
+   .add-img{
+       width: 150px;
+   }
+   .pdploadmore{
+    .label-md {
+        text-align: center;
+    }
+    button {            
+        padding: 20px !important;         
+    }
+}
+}

@@ -5,17 +5,36 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
-// import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+ import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CreatemywebsitePage } from '../pages/createmywebsite/createmywebsite';
 import { MapPage } from '../pages/map/map';
-import { DashboradPage } from '../pages/dashborad/dashborad';
+import { DashboardPage } from '../pages/dashboard/dashboard';
 import { SubDomaininfoPage } from '../pages/sub-domaininfo/sub-domaininfo';
+import { LoginPage } from '../pages/login/login';
+ import { UpadteProfilePage } from '../pages/upadte-profile/upadte-profile';
+ import { UpdateComPage } from '../pages/update-com/update-com';
+ import { CompanyDetailPage } from '../pages/company-detail/company-detail';
+ import { PdpPage } from '../pages/pdp/pdp';
+ import { PdplistPage } from '../pages/pdplist/pdplist';
+ import { AboutusPage } from '../pages/aboutus/aboutus';
+ import { TermandconditionPage } from '../pages/termandcondition/termandcondition';
+ import { RegistrationPage } from '../pages/registration/registration';
+import { FilePath } from '@ionic-native/file-path';
+import { FileChooser } from '@ionic-native/file-chooser';
+
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { ConstantProvider } from '../providers/constant/constant';
 import { HttpInterceptorProvider } from '../providers/http-interceptor/http-interceptor';
 import { CompinfoPage } from '../pages/compinfo/compinfo';
+import { Camera } from '@ionic-native/camera';
+import { Base64 } from '@ionic-native/base64';
+import { Crop } from '@ionic-native/crop';
+import { FCM } from '@ionic-native/fcm';
+import { Device } from '@ionic-native/device';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 export function httpServiceInterceptor(backend: XHRBackend,
   options: RequestOptions
@@ -30,14 +49,24 @@ export function httpServiceInterceptor(backend: XHRBackend,
     CreatemywebsitePage,
     MapPage,
     SubDomaininfoPage,
-    DashboradPage,
-    CompinfoPage
+    DashboardPage,
+    CompinfoPage,
+    LoginPage,
+     CompanyDetailPage,
+     UpadteProfilePage,
+     UpdateComPage,
+     PdpPage,
+     PdplistPage,
+     AboutusPage,
+     TermandconditionPage,
+     RegistrationPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
-    // HttpClientModule
+    HttpModule,
+     HttpClientModule
+    //CompanyDetailPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,8 +75,17 @@ export function httpServiceInterceptor(backend: XHRBackend,
     CreatemywebsitePage,
     MapPage,
     SubDomaininfoPage,
-    DashboradPage,
-    CompinfoPage
+    DashboardPage,
+    CompinfoPage,
+    LoginPage,
+     CompanyDetailPage,
+     UpadteProfilePage,
+     UpdateComPage,
+     PdpPage,
+     PdplistPage,
+     AboutusPage,
+     TermandconditionPage,
+     RegistrationPage
   ],
   providers: [
     StatusBar,
@@ -67,6 +105,15 @@ export function httpServiceInterceptor(backend: XHRBackend,
     //   useClass: HttpInterceptorProvider,
     //   multi : true
     // },
+    Camera,
+    Crop,
+    Base64,
+    FCM,
+    Device,
+    FilePath,
+    FileChooser,
+    SocialSharing,
+    InAppBrowser
   ]
 })
 export class AppModule {}

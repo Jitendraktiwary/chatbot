@@ -1,0 +1,90 @@
+page-company-detail {
+    .scroll-content{
+        margin-top: 0px !important;
+    }
+     
+    .item-md.item-block .item-inner {
+                 padding-right: 0px !important; 
+                border-bottom: none !important; 
+            }
+            .item-list{margin: 0; border: 0;}
+            .item-list .item{white-space: normal;}
+            .item-left, .item-right{display: inline-block; width: 50%; float: left; font-size: 1em; color: #252525; vertical-align: top; line-height: 17px;}
+            .item-left{font-family: 'RobotoRegular';}
+            .item-right{font-family: 'RobotoLight';}
+            .item-heading{background-color: #f4f4f4; color: #ce271e; padding: 14px 16px; font-size: 1.05em; border: 0;}
+        
+
+    .item-left{
+        float: left;
+        width: 35%;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    .item-right{
+        float: left;
+        width: 65%;
+        font-size: 13px;
+       
+    }
+    .rmborder{
+      border-bottom: none !important
+    }
+    ion-icon {
+        font-size: 2.2em !important;
+    }
+    .button-md {
+       background-color: #ce271e !important;
+    }
+    .editdash{
+        float: right;
+        color: #5f94f3;
+        ion-icon {
+            font-size: 1.7em !important;
+        }
+      }
+    .item{
+                white-space: normal !important;
+                padding: 10px !important;
+                border-bottom: 1px solid #c9c9c9;
+                line-height: 1.5em;
+            } 
+
+    .scroll-content {
+           top: 55px !important;
+        }
+        .item-list{
+            padding: 10px !important; 
+          }
+          .global-hdr{background: #ce271e; color: #fff;}
+          .global-hdr .title{color: #fff; font-family: 'RobotoRegular'; font-size: 1.4em;display: inline-block;}
+          .tf-logo img{width: 20px;}
+          .tf-logo{width: 30px; text-align: right; line-height: 44px;display: inline-block;
+            margin: 10px;}
+          .global-hdr .button{color: #fff; box-shadow: unset;}
+            .map_class{
+                position: initial !important;
+                // overflow: hidden;
+                height: 90%;
+        
+            }
+
+            .add-img{
+                width: 100%;
+                text-align: center;
+              span{
+                border: 1px solid #f4f4f4;
+                width: 150px;
+                height: 150px;
+                padding: 5px;
+                display: inline-block;
+                img{
+                   width: 100%;
+                   height: 100%; 
+                }
+             }
+            }
+           .ion-logo-usd{
+               font-size: 1.3em !important;
+           } 
+}

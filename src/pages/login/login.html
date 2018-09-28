@@ -1,0 +1,49 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+      <ion-navbar *ngIf="show_otp == 0">
+        <ion-title>Login</ion-title>
+    </ion-navbar>
+
+    <ion-navbar *ngIf="show_otp == 1">
+        <ion-title>Verify OTP</ion-title>
+      </ion-navbar>
+      
+</ion-header>
+<ion-content padding>
+  
+   <div  *ngIf="show_otp == 0">
+      <ion-list>
+          <ion-item >
+        <ion-label stacked>Mobile</ion-label>
+         <ion-input type="number" id="mobile" [(ngModel)]="mobile" placeholder="mobile no" (keypress)="eventHandler_code($event.keyCode)"></ion-input>
+      </ion-item>
+        <ion-item class="pdploadmore">
+            <button ion-button color="danger" (click)="send_otp()" round>SUBMIT</button>
+        </ion-item>
+       </ion-list>
+     </div>
+     <div  *ngIf="show_otp == 1">
+         
+
+      <ion-list>
+          <h5> We will soon send you a OTP on the given mobile number {{mobile}} .
+              Please enter the OTP to verify your mobile number.</h5>
+        <ion-item >
+      <ion-label stacked>OTP</ion-label>
+       <ion-input type="number" id="otp" [(ngModel)]="otp" placeholder="****" (keypress)="eventHandler_code($event.keyCode)"></ion-input>
+    </ion-item>
+      <ion-item class="pdploadmore">
+          <button ion-button color="danger" (click)="verify_otp()" round>SUBMIT</button>
+          <button ion-button color="danger" (click)="edit_number()" round>Edit Number</button>
+      </ion-item>
+     </ion-list>
+                
+         </div>
+
+      
+</ion-content>

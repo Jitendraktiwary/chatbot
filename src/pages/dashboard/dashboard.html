@@ -1,0 +1,131 @@
+<!--
+  Generated template for the DashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar class="bar bar-header global-hdr">
+    <button ion-button menuToggle class="menuspan">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>DASHBOARD</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="maintab" *ngIf="this.show ==1">
+           
+    <ion-card >
+
+       <div class="card-block">
+            <div class="left"> <img src="assets/imgs/user.png"></div>
+              <div class="right">
+                  <label class="view-name">{{username}}</label>
+                  <span class="view-value viewtextshadow">{{percencomp}}%<span>&nbsp;completed &nbsp;<ion-icon  class="infout" ios="ios-information-circle-outline" md="md-information-circle" (tap)="showinfo()" *ngIf="showinfom == 1"></ion-icon></span></span>
+              </div>
+             
+        </div> 
+     
+</ion-card>
+<ion-card >
+
+  <div class="card-block">
+    <div class="left"> <img src="assets/imgs/comp.png"></div>
+      <div class="right" >
+        <label class="view-name">{{co_name}}</label>
+        <span class="view-value compdetail" (tap)="goTocomDetail()">View Deatil</span>
+      </div>
+     
+</div> 
+  
+</ion-card>
+<ion-card >
+
+  <div class="card-block">
+    <div class="left"> <img src="assets/imgs/product.png"></div>
+      <div class="right" >
+        <label class="view-name">My Products</label>
+        <div class="view-value noproduct" (tap)="goToproductlist()">No of Product :  <span>  {{num_prod}}</span></div>
+      </div>
+     
+</div> 
+  
+</ion-card>
+<ion-card >
+
+    <div class="card-block">
+      <div class="left"> <img src="assets/imgs/domain.png"></div>
+        <div class="right" >
+          <label class="view-name">Sub Domain</label>
+          <div class="view-value noproduct" *ngIf="sub_domain != 0" (tap)="goTodomain('URL')">www.tradeindia.com/{{sub_domain}}</div>
+          <div class="view-value noproduct" *ngIf="sub_domain == 0" (tap)="goTodomain('CR')">Create Subdomain</div>
+        </div>
+       
+  </div> 
+    
+  </ion-card>
+<ion-card >
+
+  <div class="card-block">
+    <div class="left"> <img src="assets/imgs/myrate.png"></div>
+      <div class="right">
+        <label class="view-name">My App Rated </label>
+        <span class="view-value starpadding">
+          <ion-icon class="view-star view-staractive" name="star"></ion-icon>
+          <ion-icon name="star" class="view-star view-staractive"></ion-icon>
+          <ion-icon name="star" class="view-star view-staractive"></ion-icon>
+          <ion-icon name="star" class="view-star"></ion-icon>
+          <ion-icon name="star" class="view-star"></ion-icon>
+        </span>
+      </div>
+     
+</div> 
+  
+</ion-card>
+</div>
+</ion-content>
+<ion-menu [content]="content">
+<ion-header class="slideMenu">
+  <ion-toolbar>
+      <figure>
+          <img src="assets/imgs/user.svg">
+      </figure>
+      <ion-title>
+          <h3>{{username}}</h3>
+          <h4>{{mob}}</h4>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="slideMenuList">
+  <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages;let i= index;" (click)="openPage(p.pageName)">
+       <ion-icon item-left [name]="p.icon"  id="catbg-{{i}}"></ion-icon>
+      {{p.title}} </button>
+  </ion-list>
+</ion-content>
+<ion-footer class="socialLink">
+  <ion-list>
+      <button onClick="window.open('https://www.facebook.com/tradeindia','_blank','location=yes');return false;">
+    <img src="assets/imgs/facebook.svg">
+  </button>
+      <button onClick="window.open('https://twitter.com/tradeindia','_blank','location=yes');return false;">
+    <img src="assets/imgs/twitter.svg">
+  </button>
+  <button onClick="window.open('https://www.linkedin.com/company/tradeindia','_blank','location=yes');return false;">
+    <img src="assets/imgs/linked.png">
+  </button>
+      <button onClick="window.open('https://plus.google.com/111532914140532908998?prsrc=3','_blank','location=yes');return false;">
+    <img src="assets/imgs/googleplus.png">
+  </button>
+  <button onClick="window.open('https://www.youtube.com/c/tradeindia','_blank','location=yes');return false;">
+    <img src="assets/imgs/youtube.png">
+  </button>
+
+
+  </ion-list>
+</ion-footer>
+</ion-menu>
+
+<!-- main navigation -->
+ <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

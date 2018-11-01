@@ -3,6 +3,7 @@ import { ToastController,LoadingController,IonicPage, NavController, NavParams }
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 
 import { PdpPage } from '../pdp/pdp';
+import { DashboardPage } from '../dashboard/dashboard';
 /**
  * Generated class for the PdplistPage page.
  *
@@ -19,6 +20,7 @@ export class PdplistPage {
   pdplist:any=[];
   pagenum:any=1;
   showloadmore:any=1;
+  nomoreproduct:any;
   lead_statusoption:any={
     title: 'Tradeindia',
     subTitle: 'category'
@@ -48,12 +50,19 @@ export class PdplistPage {
         }else{
           this.showloadmore=0;
         }
+       if(res.SUCCESS.FP_LIST.length > 0){
+           this.nomoreproduct=0;
+       }else{
+        this.nomoreproduct=1;
+       }
+        
       }
      else{
-       
+      this.nomoreproduct=1;
       }
       
     }, (error) => {
+      
       loader.dismiss();
       console.log(error);
     })
@@ -111,5 +120,8 @@ export class PdplistPage {
   addmore(){
     this.navCtrl.push(PdpPage);
     
+  }
+  gohome(){
+    this.navCtrl.setRoot(DashboardPage);
   }
 }

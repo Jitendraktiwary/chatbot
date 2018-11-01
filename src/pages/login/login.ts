@@ -151,4 +151,7 @@ export class LoginPage {
       }   
 
   }
+  gotohome(){
+    this.navCtrl.push(HomePage);
+  }
 }

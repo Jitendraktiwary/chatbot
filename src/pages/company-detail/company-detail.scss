@@ -48,6 +48,7 @@ page-company-detail {
                 padding: 10px !important;
                 border-bottom: 1px solid #c9c9c9;
                 line-height: 1.5em;
+                
             } 
 
     .scroll-content {
@@ -87,4 +88,100 @@ page-company-detail {
            .ion-logo-usd{
                font-size: 1.3em !important;
            } 
+        .personal-detail{
+            text-align: center;
+            ul{
+                text-align: left;
+            }
+            ol{
+                li{
+                    
+                    padding: 10px 15px !important;
+                        
+                    background: #f4f4f4;
+                    display: inline-block !important;
+                    margin: 5px 3px !important;
+                }
+            }
+        }  
+        .segment-md .segment-button {
+    
+            color: #252525 !important;
+            
+        }
+        .segment-md .segment-button.segment-activated {
+            border-color: #e13838 !important;
+           font-weight: bold;
+        } 
+        .download{
+            .ion-md-download:before {
+                 color: #f6b800 !important;
+                 padding: 10px;
+            }
+        }
+        .home{
+          position: absolute;
+        right: 0;
+        top: 0;
+        padding: 15px;
+        color: #fff;
+        }
+    //.............ios .....//
+    
+    
+    .item-ios.item-block .item-inner {
+                 padding-right: 0px !important; 
+                border-bottom: none !important; 
+            }
+            
+    .button-ios {
+       background-color: #ce271e !important;
+        margin-top: 30px;
+    }
+    
+
+    
+        
+            
+        
+        .segment-ios .segment-button {
+    
+            color: #252525 !important;
+            border: none !important;
+            border-bottom: 2px solid #c0c0c0 !important;
+        }
+        .segment-ios .segment-button.segment-activated {
+            border-bottom: 2px solid #e13838 !important;
+           font-weight: bold;
+            background: transparent;
+            border-radius: unset;
+        } 
+    
+        .download{
+            .ion-ios-download:before {
+                 color: #f6b800 !important;
+                 padding: 10px;
+            }
+        }
+    
+    
+    .ion-ios-home{
+   
+  top: 10px ;
+  }  
+    .item{
+        width: 100%;
+        float:left;
+    }
+     li{
+               color: #fff !important;
+         list-style-type: none;
+                
+            } 
+    .rmborder{
+        float: unset !important;
+        width: unset !important;
+        color: #000 !important;
+    }
+    //........end .......//
 }

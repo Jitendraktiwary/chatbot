@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
-import { LoadingController,ToastController,IonicPage, NavController, NavParams,AlertController,ViewController, ActionSheetController, normalizeURL } from 'ionic-angular';
+import { LoadingController,ToastController,IonicPage, NavController, NavParams,AlertController,ViewController, ActionSheetController, normalizeURL,Platform } from 'ionic-angular';
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 import { Base64 } from '@ionic-native/base64';
 import { Crop } from '@ionic-native/crop';
 import { Camera } from '@ionic-native/camera';
 import { CompanyDetailPage } from '../company-detail/company-detail';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { FilePath } from '@ionic-native/file-path';
+import { DashboardPage } from '../dashboard/dashboard';
+declare var cordova: any;
 
 /**
  * Generated class for the CompinfoPage page.
@@ -29,19 +33,41 @@ export class CompinfoPage {
   compCertif:any;
   oldcomiomg:any;
   oldcertifany:any;
-  annual_currency:any;
-  annual_mult:any;
-  constructor(private loadingController: LoadingController,private toastCtrl: ToastController,private ApiServiceProvider: ApiServiceProvider,private base64: Base64,public actionsheetCtrl: ActionSheetController,private crop: Crop,private camera: Camera,public viewCtrl: ViewController,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
+  annual_currency:any=0;
+  annual_mult:any=0;
+  file_name:any;
+  certimg_type:any='jpg';
+  certimg_type_name:any;
+  
+  constructor(public platform:Platform,private FileChooser: FileChooser,
+    private filePath: FilePath,private loadingController: LoadingController,private toastCtrl: ToastController,private ApiServiceProvider: ApiServiceProvider,private base64: Base64,public actionsheetCtrl: ActionSheetController,private crop: Crop,private camera: Camera,public viewCtrl: ViewController,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
  
     this.turnover=this.navParams.get("turnover");
     this.Noofemp=this.navParams.get("staff");
     this.desc=this.navParams.get("desc");
     this.imgCertificate=this.navParams.get("certficate");
+    if(this.imgCertificate == 'application'){
+      this.certimg_type ='application';
+      
+    }
     this.imgData=this.navParams.get("compimg");
     this.oldcertifany=this.navParams.get("certficate");
     this.oldcomiomg=this.navParams.get("compimg");
-    this.annual_currency=this.navParams.get("annual_currency");
-    this.annual_mult=this.navParams.get("annual_mult");
+    console.log(this.navParams.get("annual_currency"));
+    console.log(this.navParams.get("annual_mult"));
+    if(this.navParams.get("annual_currency") != null || this.navParams.get("annual_currency") != undefined){
+      this.annual_currency=this.navParams.get("annual_currency");
+    }else{
+      this.annual_currency=0;
+    }
+
+    if(this.navParams.get("annual_mult") != null || this.navParams.get("annual_mult") != undefined){
+      this.annual_mult=this.navParams.get("annual_mult");
+    }else{
+      this.annual_mult=0;
+    }
+    
+  
 
   }
 
@@ -101,7 +127,7 @@ export class CompinfoPage {
         if( this.compCertif){
           json_data.certimg_file_name='certificate';
           json_data.certimg_data=this.compCertif;
-          json_data.certimg_type='jpg'
+          json_data.certimg_type=this.certimg_type;
         }
       }
         let loader = this.loadingController.create({
@@ -120,7 +146,7 @@ export class CompinfoPage {
           });
           toast.present();
           loader.dismiss();
-          this.navCtrl.push(CompanyDetailPage) .then(() =>{
+          this.navCtrl.push(CompanyDetailPage,{'selected':'ExtraDetail'}) .then(() =>{
             const index =this.viewCtrl.index;
              this.navCtrl.remove(index);
          
@@ -252,10 +278,18 @@ export class CompinfoPage {
                     this.camera.getPicture(options).then((imageData) => {
                       imageData = normalizeURL(imageData);
                       this.imgCertificate = imageData;
+                      console.log(this.imgCertificate);
+                      this.imgCertificate = this.imgCertificate.split('cache/');
+                      this.imgCertificate = this.imgCertificate[1].split('?');
+                
+                      this.certimg_type_name=this.imgCertificate[0];
+                      this.imgCertificate = imageData;
+                      this.certimg_type='jpg';
                       this.base64.encodeFile(imageData).then((base64File: string) => {
                         
                         let arr = base64File.split('base64,');
                         this.compCertif = arr[1];
+
                         
                       }, (err) => {
                         console.log(err);
@@ -267,47 +301,59 @@ export class CompinfoPage {
         }
     },
     {
-      text: 'Select from gallery',
+      text: 'Select from Directory',
       icon: 'md-images',
       handler: () => {
         var options = {
-          quality: 50,
-          destinationType: this.camera.DestinationType.FILE_URI,
-          sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-          allowEdit: true,
-          encodingType: this.camera.EncodingType.JPEG,
-          saveToPhotoAlbum: false,
-          correctOrientation: true,
-          targetWidth: 720,
-          targetHeight: 720,
-        };
-        this.camera.getPicture(options).then((imageData) => {
-          console.log(imageData);
+           quality: 50,
+           destinationType: this.camera.DestinationType.FILE_URI,
+           sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+           allowEdit: true,
+           encodingType: this.camera.EncodingType.JPEG,
+           saveToPhotoAlbum: false,
+           correctOrientation: true,
+           targetWidth: 720,
+           targetHeight: 720,
+         };
+         this.camera.getPicture(options).then((imageData) => {
+           console.log(imageData);
           
-          this.crop.crop(imageData, {quality: 100, targetWidth: -1, targetHeight: -1 })
-          .then(
+           this.crop.crop(imageData, {quality: 100, targetWidth: -1, targetHeight: -1 })
+           .then(
             newImage => {
-              this.imgCertificate = normalizeURL(newImage);
-              this.base64.encodeFile(newImage).then((base64File: string) => {
-                console.log(base64File);
-                let arr = base64File.split('base64,');
-                this.compCertif = arr[1];
-              }, (err) => {
-                console.log(err);
-              });
-            },
-            error => console.error('Error cropping image', error)
-          );
+               this.imgCertificate = normalizeURL(newImage);
+           this.base64.encodeFile(newImage).then((base64File: string) => {
+               console.log(base64File);
+                 let arr = base64File.split('base64,');
+                 this.compCertif = arr[1];
+               }, (err) => {
+                 console.log(err);
+               });
+             },
+             error => console.error('Error cropping image', error)
+           );
           
-        }, (err) => {
+         }, (err) => {
           
-            });
+             });
+
+        
+
+                      
+
+          }
+
       }
-    }
+
+      
+    
 
     ]
     });
     actionSheet.present();
+  }
+  gohome(){
+    this.navCtrl.setRoot(DashboardPage);
   }
 
 }

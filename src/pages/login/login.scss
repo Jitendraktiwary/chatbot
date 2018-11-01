@@ -1,4 +1,5 @@
 page-login {
+  
     .item-md.item-block .item-inner {
       
         border-bottom: none !important;
@@ -9,28 +10,147 @@ page-login {
    }
    .item-md {
       padding-left: 0px !important;
+      background: transparent !important;
    }
   
    .text-input-md {
-       border: 1px solid #dedede;
-        margin-top: 10px !important;
-         padding: 15px;
-         width: 100% !important; 
+    border: 1px solid #dedede;
+    margin-top: 40px !important;
+    padding: 15px;
+    width: 100% !important;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    background: #efdbd4 !important;
    }
    .label-md{
-       font-size: 1.5em !important;
-       color: #7b8390 !important;      
+    font-size: 2.5em !important;
+    color: #fff !important;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 50px 0 0 0;   
    }
+    
+
    .add-img{
        width: 150px;
    }
+   .pdploadmore2{
+    h5{
+        text-align: center;
+        color: #fff;
+       }
+       b{
+        color: gray; 
+       } 
+   }
    .pdploadmore{
+       
        .label-md {
            text-align: center;
+           margin: 10px !important;
        }
        button {            
            padding: 20px !important;         
        }
    }
-        
+
+   .headcr{
+    margin-bottom: 15px;
+    .headcrp1{
+        padding: 10px 30px;
+    }
+    
+  }
+
+  .ion-input {
+    
+    background: #efdbd4 !important;
+   
+}
+.button-outline-md-secondary {
+    border-color: white;
+    color: white;
+    background-color: transparent;
+}
+.logfooter{
+    position: absolute !important;
+    background: #fff !important;
+    bottom: 0;
+    /* right: 0; */
+    width: 100%;
+    z-index: 9;
+    .ion-ios-arrow-down-outline:before {
+        content: "\f3d0";
+        background: #fff;
+        padding: 0 12px;
+        border-radius: 41px;
+        box-shadow: 0px 1px 1px #000;
+    }
+    .arrowlog{
+        display: block !important;
+        font-size: 5em !important;
+        text-align: center !important;
+        color: #000 !important;
+        margin: -30px 0 0 0;
+    }
+    background: #fff !important;
+    .forget{
+        display: block;
+    text-align: center;
+    padding: 25px 10px 10px;
+    }
+    .ac{
+        padding: 0 0 50px;
+        display: block;
+        text-align: center;
+        font-size: 18px;
+        color: gray;
+    }
+}
+    
+    
+    
+    //..............for ios ..........//
+    .item-ios.item-block .item-inner {
+      
+        border-bottom: none !important;
+        padding-right: 0px !important;
+
+       -webkit-box-shadow:unset !important; 
+       box-shadow: unset !important;
+   }
+   .item-ios {
+      padding-left: 0px !important;
+      background: transparent !important;
+   }
+  
+   .text-input-ios {
+    border: 1px solid #dedede;
+    margin-top: 40px !important;
+    padding: 15px;
+    width: 100% !important;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    background: #efdbd4 !important;
+   }
+   .label-ios{
+    font-size: 2.5em !important;
+    color: #fff !important;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0px 0 0 0;   
+   }
+    
+     .list-ios > .item-block:first-child {
+ border-top: none !important; 
+}
+    .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+ border-bottom: none !important; 
+}
+    
+    //......end..........//
+   
+    
 }

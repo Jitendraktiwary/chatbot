@@ -6,13 +6,15 @@
 -->
 <ion-header>
 
-        <ion-navbar>
-          <ion-title>Company Info</ion-title>
-        </ion-navbar>
+    <ion-navbar>
+        <ion-title>Update More Info</ion-title>
+        <ion-icon ios="ios-home" md="md-home" (click)="gohome()" class="home"></ion-icon>
+      </ion-navbar>
       
  </ion-header>
 
 <ion-content padding>
+    
       <ion-list>
             <ion-item>
               <ion-label stacked>Description</ion-label>
@@ -31,17 +33,17 @@
         </ion-item>
         <ion-item class="selectborder" >
              <ion-select [(ngModel)]="annual_currency">
-                <ion-option value="0" selected="true">Select Currency</ion-option>
+                <ion-option value="0" >Select Currency</ion-option>
                 <ion-option value="Rs" >RS</ion-option>
                 <ion-option value="USD" >USD</ion-option>             
             </ion-select>
        </ion-item>
        <ion-item >
-        <ion-label stacked>Currency</ion-label>
+        <ion-label stacked>Turn over</ion-label>
     </ion-item>
     <ion-item class="selectborder" >
          <ion-select [(ngModel)]="annual_mult">
-            <ion-option value="0" selected="true">Select Turn over In</ion-option>
+            <ion-option value="0" >Select Turn over In</ion-option>
             <ion-option value="100000" >Lakh</ion-option>
             <ion-option value="10000000" >Crore</ion-option>
             <ion-option value="1000000" >Million</ion-option>
@@ -63,11 +65,18 @@
                     <ion-label stacked>Company Certificate</ion-label>
                 </ion-item>
                <ion-item class="item comment-item">
-                      <div class="add-img" (click)="ChooseOption()">
+                      <div class="add-img" (click)="ChooseOption()" *ngIf="certimg_type == 'jpg'">
                         <span>
-                      <img src="{{imgCertificate}}"  >
+                         <img src="{{imgCertificate}}"   >
+                         
                     </span>
                   </div>
+                     
+                  <div class="upload" (click)="ChooseOption()" *ngIf="certimg_type != 'jpg'">
+                      <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
+                      <span>{{certimg_type_name}}</span> 
+                </div>
+
                 </ion-item>
         
           <ion-item class="pdploadmore">
@@ -75,4 +84,5 @@
           </ion-item>
           
           </ion-list>
+         
 </ion-content>

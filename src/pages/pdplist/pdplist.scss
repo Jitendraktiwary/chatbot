@@ -103,4 +103,125 @@ page-pdplist {
          
         }
     }
+
+    .home{
+        position: absolute;
+      right: 0;
+      top: 0;
+      padding: 15px;
+      color: #fff;
+      font-size: 2em;
+      }
+//...........ios ........//
+    
+     
+    .item-ios.item-block .item-inner {
+       border-bottom: none !important;
+    }
+    
+    .card-ios{
+        padding: 10px 20px !important;
+        width: calc(100% - 0px) !important;
+        margin: 10px 0 20px !important;
+        position: relative;
+         .left{
+            width: 25%;
+           float: left;
+           img{
+               width: 100%;
+           }
+        }
+        .right{
+            width: 75%;
+           float: right;
+           padding-top: 10px;
+           .compdetail{
+               padding: 10px 0 0 0;
+           }
+           .view-name{
+            width: 100%;
+            display: block;
+            text-align: center;
+            font-size: 1.3em;
+            color:rgba(123, 119, 119, 0.68);
+            font-weight: bold;
+            
+            
+           }
+           .view-desc{
+            color: #000;
+            font-size: 1em;
+            font-weight: normal;
+            text-align: center;
+           }
+           .view-value{
+            width: 100%;
+            display: block;
+            
+            text-align: center;
+          }
+          .viewtextshadow{
+            font-size: 3.5em;
+            text-shadow: 2px 0px 5px #505050;
+            color: #f4f7fb;
+            span{
+                font-size: 0.3em;
+                text-shadow: none;
+                color: #0c5823;
+            }
+          }
+          .view-star{
+          
+                font-size: 35px;
+                color: #bdbdbd;
+                 float: none !important;
+                 margin-top: 0px !important; 
+                text-shadow: 1px 1px 1px;
+               
+          }
+          .view-staractive{
+            color: #000 !important; 
+        }
+        .starpadding{
+            padding: 5px 0;
+        }
+        .noproduct{
+            font-size: .9em;
+               display: flex;
+             line-height: 2em;
+            margin-top: 6px;
+            background-color: white;
+            justify-content: center;
+            color: #777777
+            span{
+              font-size: 2em;
+              color: #e13838;
+          }
+        }
+           
+        }
+    }
+    .pdploadmore{
+        .label-ios {
+            text-align: center;
+        }
+        
+    }
+
+        
+     .ion-ios-home{
+   
+  top: 10px ;
+  }  
+    
+     .list-ios > .item-block:first-child {
+ border-top: none !important; 
+}
+    .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+ border-bottom: none !important; 
+}
+    
+//.......end..........//    
+    
+    
 }

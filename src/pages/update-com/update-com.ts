@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoadingController,IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 import { CompanyDetailPage } from '../company-detail/company-detail';
+import { DashboardPage } from '../dashboard/dashboard';
 /**
  * Generated class for the UpdateComPage page.
  *
@@ -38,7 +39,7 @@ export class UpdateComPage {
      
       loader.dismiss();
       if(res.SUCCESS){
-        this.navCtrl.push(CompanyDetailPage);
+        this.navCtrl.push(CompanyDetailPage,{'selected':'kittens'});
       }
       
     }, (error) => {
@@ -55,6 +56,9 @@ export class UpdateComPage {
             
       }   
 
+  }
+  gohome(){
+    this.navCtrl.setRoot(DashboardPage);
   }
 
 }

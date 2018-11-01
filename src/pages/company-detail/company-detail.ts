@@ -5,6 +5,10 @@ import { UpadteProfilePage } from '../upadte-profile/upadte-profile';
 import { UpdateComPage } from '../update-com/update-com';
 import { CompinfoPage } from '../compinfo/compinfo';
 //import { splitAtColon } from '@angular/compiler/src/util';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { DashboardPage } from '../dashboard/dashboard';
+
+
 
 /**
  * Generated class for the CompanyDetailPage page.
@@ -38,13 +42,17 @@ export class CompanyDetailPage {
   turnover:any;
   staff:any;
   desc:any;
-  certficate:any;
-  compimg:any;
+  certficate:any= 'assets/imgs/no-product.png';
+  compimg:any='assets/imgs/no-product.png';
   turnovervalue:any;
   turnoverimg:any; 
-   
-  constructor(private loadingController: LoadingController,private ApiServiceProvider: ApiServiceProvider,public actionsheetCtrl: ActionSheetController,public viewCtrl: ViewController,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
+  pet: string = "puppies";
+  
+  constructor(private iab: InAppBrowser,private loadingController: LoadingController,private ApiServiceProvider: ApiServiceProvider,public actionsheetCtrl: ActionSheetController,public viewCtrl: ViewController,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
   this.getCompDetail();
+  if(this.navParams.get('selected')){
+    this.pet=this.navParams.get('selected');
+  }
   }
 
   ionViewDidLoad() {
@@ -100,23 +108,33 @@ export class CompanyDetailPage {
           this.turnovervalue='Billion';
         }else if(this.detail.details.comp_details.annual_mult == '10000000'){
           this.turnovervalue='Crore';
-        }else{
+        }else if(this.detail.details.comp_details.annual_mult == '100000'){
           this.turnovervalue='Lakh';
         }
         
         if(this.detail.details.comp_details.annual_currency == 'USD'){
           this.turnoverimg='1';
-        }else{
+        }else if(this.detail.details.comp_details.annual_currency == 'Rs'){
           this.turnoverimg='0'
         }
        
-          
-        this.certficate= this.detail.details.comp_details.certificate_img_url;
-        this.compimg= this.detail.details.comp_details.comp_pic_img_url;
+          if(this.detail.details.comp_details.certificate_img_url){
+            if(this.detail.details.comp_details.certificatecontent_type == 'application'){
+              this.certficate ='application'
+            }else{
+              this.certficate= this.detail.details.comp_details.certificate_img_url;
+            }
+            
+          }
+       
+          if(this.detail.details.comp_details.comp_pic_img_url){
+            this.compimg= this.detail.details.comp_details.comp_pic_img_url;
+          }
+        
         this.desc= this.detail.details.comp_details.co_info;
         this.staff= this.detail.details.comp_details.staff;
         this.turnover= this.detail.details.comp_details.turnover;
-
+        
 
         this.extd=1;
       }else{
@@ -128,9 +146,7 @@ export class CompanyDetailPage {
       console.log(error);
     })
   }
-  goback(){
-    this.navCtrl.pop();
-  }
+  
   UpdateProfile(val){
    if(val == 'USER'){
      this.navCtrl.push(UpadteProfilePage,{name:this.name[1],email:this.email,mobile:this.mobile[1]});
@@ -230,6 +246,7 @@ export class CompanyDetailPage {
           this.ApiServiceProvider.update_company_details(json_data).subscribe((res) => {
            
             if(res.SUCCESS){
+              this.pet='ducklings';
               this. getCompDetail();
             }
             
@@ -241,5 +258,17 @@ export class CompanyDetailPage {
       });
       alert.present();
    }
+  }
+  download(){
+    this.iab.create(this.detail.details.comp_details.certificate_img_url, '_system','location=no');
+    // window.open(this.detail.details.comp_details.certificate_img_url);
+    // const options: DocumentViewerOptions = {
+    //   title: 'My PDF'
+    // }
+    
+   
+  }
+  gohome(){
+    this.navCtrl.setRoot(DashboardPage);
   }
 }

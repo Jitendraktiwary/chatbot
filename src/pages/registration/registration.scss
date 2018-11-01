@@ -44,4 +44,55 @@ page-registration {
            font-weight: normal !important;   
     }
    }
+//........ios.....//
+    
+    .item-ios.item-block .item-inner {
+      
+        border-bottom: none !important;
+        padding-right: 0px !important;
+
+       -webkit-box-shadow:unset !important; 
+       box-shadow: unset !important;
+   }
+   .item-ios {
+      padding-left: 0px !important;
+   }
+  
+   .text-input-ios {
+       border: 1px solid #dedede;
+        margin-top: 10px !important;
+         padding: 15px;
+         width: 100% !important; 
+   }
+   .label-ios{
+    font-size: 1em !important;
+    color: #7b8390 !important;
+    font-weight: bold;    
+   }
+   
+   .pdploadmore{
+       .label-ios {
+           text-align: center;
+       }
+       
+       
+       
+   }
+   .finalregis{
+    
+    .label-ios {
+           border-bottom: 1px solid #f4f4f4;
+           font-weight: normal !important;   
+    }
+   }
+     .list-ios > .item-block:first-child {
+ border-top: none !important; 
+}
+    .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+ border-bottom: none !important; 
+}
+    
+//.....end........//    
+    
+    
 }

@@ -85,4 +85,84 @@ page-compinfo {
      }
     }
 }
+.upload{
+    text-align: center;
+    .ion-md-cloud-upload:before {
+        color: #f6b800 !important;
+        font-size: 3.5em !important;
+        
+    }
+    span{
+        display: block;
+    }
+}
+.home{
+    position: absolute;
+  right: 0;
+  top: 0;
+  padding: 15px;
+  color: #fff;
+  font-size: 2em;
+  }
+//...........ios .......//  
+    
+    .item-ios.item-block .item-inner {
+      
+        border-bottom: none !important;
+        padding-right: 0px !important;
+
+       -webkit-box-shadow:unset !important; 
+       box-shadow: unset !important;
+   }
+   .item-ios {
+      padding-left: 0px !important;
+   }
+  
+   .text-input-ios {
+       border: 1px solid #dedede;
+        margin-top: 10px !important;
+         padding: 15px;
+         width: 100% !important; 
+   }
+   .label-ios{
+    font-size: 1em !important;
+    color: #7b8390 !important;
+    font-weight: bold;
+   }
+  
+   .pdploadmore{
+    .label-ios {
+        text-align: center;
+    }
+    
+}
+
+.pdpdetail{
+    .label-ios {
+        font-size: 1em !important;
+        margin-top: 5px !important;
+        font-weight: bold;
+    }
+    .text-input-ios {
+        margin-top: 5px !important;
+       }
+   
+}
+.upload{
+    text-align: center;
+    .ion-ios-cloud-upload:before {
+        color: #f6b800 !important;
+        font-size: 3.5em !important;
+        
+    }
+    
+}
+    
+    
+    
+.ion-ios-home{
+   
+  top: 10px ;
+  }  
+//...........end........//    
 }

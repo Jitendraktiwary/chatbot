@@ -1,4 +1,6 @@
 page-home {
+  
+
   .global-hdr{background: #ce271e; color: #fff;}
   .global-hdr .title{color: #fff; font-family: 'RobotoRegular'; font-size: 1.4em;display: inline-block;}
   .tf-logo img{width: 20px;}
@@ -9,6 +11,8 @@ page-home {
     .flex-items{
         display:  flex;
         background-color: #fff;
+        padding: 16px;
+        border-radius: 58px;
     }
     .icon{
         font-size: 50px;
@@ -31,6 +35,7 @@ page-home {
     .footer{
         position: fixed;
         bottom: 0%;
+        padding: 10px;
     }
     .chats {
         height: 100%;
@@ -77,27 +82,29 @@ page-home {
       margin: 16px 0 8px;
     }
     .message.received {
-      background: #ccc;
-      border-radius: 0px 5px 5px 5px;
+      background: #e3d5b2;
+      border: 1px solid #e3d5b2;
+      border-radius: 25px;
+      padding: 10px 20px;
+      color: #413f40;
       float: left;
     }
 
-    .message.received:after {
-      border-width: 0px 10px 10px 0;
-      border-color: transparent #ccc transparent transparent;
-      top: 0;
-      left: -10px;
-    }
+    
     .message.sent {
-      background: #e1ffc7;
-      border-radius: 5px 0px 5px 5px;
+     
+        background: #e3d5b2;
+        border: 1px solid #e3d5b2;
+        border-radius: 25px;
+        padding: 10px 20px;
+        color: #413f40;
       float: right;
     }
     .message.sent:after {
-      border-width: 0px 0 10px 10px;
-      border-color: transparent transparent transparent #e1ffc7;
-      top: 0;
-      right: -10px;
+      border-color: transparent #e3d5b2 transparent transparent;
+      border-width: 1px 43px 4px 0px   !important;
+      top: 9px !important;
+      right: -26px !important;
     }
     .scroll-content{
       padding: 0 !important;
@@ -132,12 +139,31 @@ page-home {
 }
 
 .message.received {
-  background: #fff !important;
+  background: #eb464c !important;
+  border: 1px solid #e3d5b2;
+  border-radius: 25px;
+  padding: 10px 20px;
+  color: white;
 }
 .message.received:after {
  
-  border-color: transparent #fff transparent transparent !important;
+  border-color: transparent #eb464c transparent transparent !important;
+  border-width: 2px 35px 3px 2px !important;
+  left: -26px !important;
+  top: 13px !important;
  
+}
+.headcr{
+  margin-bottom: 15px;
+  .headcrp1{
+      padding: 10px 30px;
+  }
+  
+}
+.msgsend{
+  .ion-md-send:before {
+     padding: 10px;
+}
 }
 
 }

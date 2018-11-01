@@ -1,6 +1,6 @@
 // import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Http, Response,Headers,RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Http, Response,Headers,RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { ConstantProvider } from '../constant/constant';
@@ -17,14 +17,13 @@ export class ApiServiceProvider {
   requestoptions:RequestOptions;
 
   constructor(public http: Http, private constant: ConstantProvider) {
-    console.log('Hello ApiServiceProvider Provider');
+  
   }
 
   get_loc_pincode(pincode){
     let url = this.constant.config.get_loc_pinURL;
     url += pincode;
-    console.log('in get pincode');
-    // return this.http.get(url);
+  
     return this.http.get(url).map((res:Response) => res.json());;
   }
 

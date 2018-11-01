@@ -1,29 +1,48 @@
 page-createmywebsite {
- .main{
-    background: #0588b5;
- }
+//  .main{
+//     background: #0588b5;
+//  }
+ 
  .button-md {
+         background-color: #f53d3d !important;
+         width: 100%;
+ }
+    .button-ios {
          background-color: #f53d3d !important;
          width: 100%;
  }
  .btncr{
    
-    margin-top: 100px;
+    margin-top: 50px;
  }
  .headcr{
     margin-bottom: 15px;
     .headcrp1{
-        color: white;
-        font-size: 35px;
-        text-align: center;
-        margin-top: 0px;
+        padding: 10px 30px;
     }
     .headcrp2{
         margin-top: -15px;
     text-align: center;
-    color: wheat;
-    font-size: 16px;
+    color: #ffffff;
+    font-size: 18px;
     margin-bottom: 50px;
     }
+ }
+ .headcrp3{
+    padding: 20px;
+    border: 8px dashed #fff;
+    margin: 20px;
+ }
+ .btnone{
+    background-color: #fff !important;
+    border-radius: 30px !important;
+    color: red !important;
+    padding: 25px 0 !important;
+ }
+ .btntwo{
+    background-color: #f7c71a !important;
+    border-radius: 30px !important;
+    color: black !important;
+    padding: 25px 0 !important;
  }
 }

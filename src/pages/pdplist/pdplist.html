@@ -8,13 +8,14 @@
 
   <ion-navbar>
     <ion-title>Product list</ion-title>
+    <ion-icon ios="ios-home" md="md-home" (click)="gohome()" class="home"></ion-icon>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <div class="maintab" >
+  <div class="maintab"  *ngIf="nomoreproduct == 0">
            
   
 <ion-card *ngFor="let data of pdplist" >
@@ -25,7 +26,7 @@
         <label class="view-name">{{data.prod_name}}</label>
         <p class="view-desc">{{data.prod_descr}}</p>
          <ion-icon ios="ios-arrow-forward" class="pdparrow" md="md-arrow-forward"></ion-icon>
-      </div>
+  </div>
      
 </div> 
 
@@ -36,6 +37,10 @@
   <button ion-button color="danger" (click)="loadmore()" round>Load More</button>
  </ion-item>
 
+</div>
+
+<div class="maintab"  *ngIf="nomoreproduct == 1">
+  <img src="assets/imgs/noproduct.png">
 </div>
 
 <ion-fab  right bottom (click)="addmore()">

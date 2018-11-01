@@ -6,6 +6,7 @@ import { Base64 } from '@ionic-native/base64';
 import { Crop } from '@ionic-native/crop';
 import { Camera } from '@ionic-native/camera';
 import { PdplistPage } from '../pdplist/pdplist';
+import { DashboardPage } from '../dashboard/dashboard';
 /**
  * Generated class for the PdpPage page.
  *
@@ -129,7 +130,7 @@ export class PdpPage {
     }else if(this.compImage == '' || this.compImage == undefined){
       let alert = this.alertCtrl.create({
         title:'MOQ',
-        message:'Please enter minmum order qunatity',
+        message:'Please select Image.',
         buttons:['Ok']
       });
       alert.present();
@@ -300,6 +301,7 @@ export class PdpPage {
          this.price=res.SUCCESS.product_details.price_information;
          this.moq=res.SUCCESS.product_details.min_quan;
          this.imgData=res.SUCCESS.product_details.image_path;
+         this.compImage=res.SUCCESS.product_details.image_path;
          this.old_image=res.SUCCESS.product_details.image_path;
          this.desc=res.SUCCESS.product_details.product_descr;
          this.catvalue=res.SUCCESS.product_details.category_id;
@@ -348,6 +350,10 @@ export class PdpPage {
             
       }   
 
+  }
+
+  gohome(){
+    this.navCtrl.setRoot(DashboardPage);
   }
 
 }

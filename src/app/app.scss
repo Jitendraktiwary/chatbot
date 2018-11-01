@@ -15,6 +15,8 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 body{
+    //background: url('../assets/imgs/bg.png') !important;
+   
     .alert-head {
         background: #e2252b !important;
        
@@ -47,4 +49,31 @@ body{
             color: #f4f4f4 !important;
             text-transform: uppercase !important;
         }
+    
+//..........ios ..........//
+    
+    .alert-ios .alert-title {
+         color: white !important;
+    }
+    .alert-ios .alert-button {
+        
+        color: #f53d3d !important;
+       text-decoration: underline;
+    }
+    .bar-button-default-ios, .bar-button-ios-default {
+        color: #f4f4f4 !important;
+        }
+        .toolbar-background-ios {
+                background: #f53d3d !important;
+        }
+        .toolbar-title-ios {
+          
+            color: #f4f4f4 !important;
+            text-transform: uppercase !important;
+        }
+    .back-button-text-ios{
+        display: none;
+    }
+    //..........end.......//
+    
 }

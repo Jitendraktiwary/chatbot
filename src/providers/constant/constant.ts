@@ -12,7 +12,6 @@ export class ConstantProvider {
   config:any;
 
   constructor() {
-    console.log('Hello ConstantProvider Provider');
     this.initConfig();
   }
 
@@ -22,7 +21,7 @@ export class ConstantProvider {
       // https://www.getpostman.com/collections/6eebf56a62be15554bef
       'baseUrl':'https://www.tradeindia.com/ti-mobile-apps/',
       'version':'1.0.1',
-     // 'baseUrl':'http://www.trade-india-local.com:33209/ti-mobile-apps/',
+      // 'baseUrl':'http://www.trade-india-local.com:34214/ti-mobile-apps/',
       'get_loc_pinURL' : 'http://maps.googleapis.com/maps/api/geocode/json?components=country:IN|postal_code:',
      // 'get_categoriesURL' : 'http://www.trade-india-local.com:30303/messenger/v_117/get_categories.html',
       // 'get_categoriesURL' : 'https://www.tradeindia.com/messenger/v_117/get_categories.html',

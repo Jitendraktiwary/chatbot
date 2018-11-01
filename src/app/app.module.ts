@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
- import { HttpClientModule } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CreatemywebsitePage } from '../pages/createmywebsite/createmywebsite';
@@ -21,8 +21,8 @@ import { LoginPage } from '../pages/login/login';
  import { AboutusPage } from '../pages/aboutus/aboutus';
  import { TermandconditionPage } from '../pages/termandcondition/termandcondition';
  import { RegistrationPage } from '../pages/registration/registration';
-import { FilePath } from '@ionic-native/file-path';
-import { FileChooser } from '@ionic-native/file-chooser';
+ import { FilePath } from '@ionic-native/file-path';
+ import { FileChooser } from '@ionic-native/file-chooser';
 
 import { ApiServiceProvider } from '../providers/api-service/api-service';
 import { ConstantProvider } from '../providers/constant/constant';
@@ -35,6 +35,8 @@ import { FCM } from '@ionic-native/fcm';
 import { Device } from '@ionic-native/device';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+
+
 
 export function httpServiceInterceptor(backend: XHRBackend,
   options: RequestOptions
@@ -65,7 +67,7 @@ export function httpServiceInterceptor(backend: XHRBackend,
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-     HttpClientModule
+    // HttpClientModule
     //CompanyDetailPageModule
   ],
   bootstrap: [IonicApp],
@@ -113,7 +115,8 @@ export function httpServiceInterceptor(backend: XHRBackend,
     FilePath,
     FileChooser,
     SocialSharing,
-    InAppBrowser
+    InAppBrowser,
+    
   ]
 })
 export class AppModule {}

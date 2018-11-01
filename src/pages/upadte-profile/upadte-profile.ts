@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoadingController,IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 import { CompanyDetailPage } from '../company-detail/company-detail';
+import { DashboardPage } from '../dashboard/dashboard';
 /**
  * Generated class for the UpadteProfilePage page.
  *
@@ -23,6 +24,7 @@ export class UpadteProfilePage {
     this.name=this.navParams.get("name");
     this.email=this.navParams.get("email");
     this.mobile=this.navParams.get("mobile");
+    
   }
 
   ionViewDidLoad() {
@@ -56,5 +58,8 @@ export class UpadteProfilePage {
             
       }   
 
+  }
+  gohome(){
+    this.navCtrl.setRoot(DashboardPage);
   }
 }

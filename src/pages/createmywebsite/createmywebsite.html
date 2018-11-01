@@ -4,20 +4,20 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-content padding class="main card-background-page">
+<ion-content padding class="main card-background-page"  style="background: url('assets/imgs/bg.png') !important;">
   <div class="headcr">
-    <p class="headcrp1">TRADEINDIA</p>
+    <p class="headcrp1"> <img src="assets/imgs/tradelogo.png"></p>
      <p class="headcrp2">!! Create a custom website in minute !!</p>
   </div>
- <div >
+ <div class="headcrp3">
   <img src="assets/imgs/create.png" >
  </div>
  <div class="btncr">
- <button ion-button icon-start (click)="gotoHome()">
+ <button ion-button icon-start (click)="gotoHome()" class="btnone">
   <ion-icon name='create'></ion-icon>
   Create Web site
 </button>
-<button ion-button icon-start (click)="gotoDashboard()">
+<button ion-button icon-start (click)="gotoDashboard()" class="btntwo">
   <ion-icon name='key'></ion-icon>
   Login
 </button>

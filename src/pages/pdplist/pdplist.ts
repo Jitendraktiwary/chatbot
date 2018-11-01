@@ -114,11 +114,11 @@ export class PdplistPage {
     }
   }
   goTopdpDetail(fp_product_id){
-    this.navCtrl.push(PdpPage,{fp_product_id:fp_product_id});
+    this.navCtrl.push(PdpPage,{fp_product_id:fp_product_id,home:1});
 
   }
   addmore(){
-    this.navCtrl.push(PdpPage);
+    this.navCtrl.push(PdpPage,{home:1});
     
   }
   gohome(){

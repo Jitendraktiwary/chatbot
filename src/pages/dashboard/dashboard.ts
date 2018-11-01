@@ -72,9 +72,18 @@ export class DashboardPage {
       }, (error) => {
       console.log(error);
     }) 
-    localStorage.setItem('AUTH_TOKEN','');
-    localStorage.setItem('userid', '');
-    localStorage.setItem('profile_id', '');
+     // localStorage.clear();
+     localStorage.removeItem('AUTH_TOKEN');
+     localStorage.removeItem('userid');
+     localStorage.removeItem('profile_id');
+     localStorage.removeItem('co_name');
+     localStorage.removeItem('email');
+     localStorage.removeItem('mobile');
+     localStorage.removeItem('name');
+     localStorage.removeItem('new_user');
+    // localStorage.setItem('AUTH_TOKEN','');
+    // localStorage.setItem('userid', '');
+    // localStorage.setItem('profile_id', '');
      this.navCtrl.push(CreatemywebsitePage);
      }else if(page == 'termsandcondition'){
       this.navCtrl.push(TermandconditionPage);
@@ -221,7 +230,7 @@ export class DashboardPage {
      // window.open('https://www.tradeindia.com/'+this.sub_domain, '_system');
        this.iab.create('https://www.tradeindia.com/'+this.sub_domain,'_blank','location=no');
     }else{
-      this.navCtrl.push(SubDomaininfoPage);
+      this.navCtrl.push(SubDomaininfoPage,{homevalue:1});
     }
     
   }

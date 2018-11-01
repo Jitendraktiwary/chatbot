@@ -27,12 +27,16 @@ export class SubDomaininfoPage {
  subdomainfo:any=0;
  category:any;
  sugestmsg:any;
+ ishome:any='1';
  @ViewChild(Navbar) navBar: Navbar;
   constructor(public platform: Platform,public alertCtrl: AlertController,private ApiServiceProvider: ApiServiceProvider,private loadingController: LoadingController,public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams) {
     this.name = this.navParams.get('name');
     this.company = this.navParams.get('comp_name');
     this.busnesstype = this.navParams.get('bussness_type');
     this.address = this.navParams.get('address');
+    if(this.navParams.get('home')){
+      this.ishome = this.navParams.get('home');
+    }
     if(this.name == '' || this.name == undefined ){
       this.name = localStorage.getItem('name');
     }
@@ -60,7 +64,13 @@ export class SubDomaininfoPage {
 
     if(val == 'product'){
       this.navCtrl.push(PdpPage);
-    }else if(val == 'Dashborad'){
+    }else if(val == 'home'){
+
+      let json_data = {'subdomain':'www.tradeindia.com/'+this.subdomain};
+      this.viewCtrl.dismiss(json_data);
+      // this.navCtrl.setRoot(DashboardPage);
+    }   
+    else if(val == 'Dashborad'){
       this.navCtrl.setRoot(DashboardPage);
     }else{
       this.navCtrl.push(UpdateComPage);
@@ -68,6 +78,8 @@ export class SubDomaininfoPage {
     
   }
   getsubdomaininfo(){
+    // let json_data = {'is_login':'1'};
+    // this.viewCtrl.dismiss(json_data);
     this.subdomainfo=0;
 
     if(this.sugessstedsubdomain == '' || this.sugessstedsubdomain == undefined){

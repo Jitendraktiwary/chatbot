@@ -38,7 +38,7 @@ page-home {
         padding: 10px;
     }
     .chats {
-        height: 100%;
+        height: 80%;
         position: relative;
         z-index: 0;
     }
@@ -125,9 +125,15 @@ page-home {
    
 }
 .scroll {
-  max-height: 403px !important; // for example
-  overflow-y: scroll !important; // show vertical scroll
-  margin: 0 10px !important;
+  // max-height: 480px!important;
+  //   overflow-y: scroll!important;
+  //   margin: 10px!important;
+
+    // margin-top: 56px !important;
+    // margin-bottom: 55px !important;
+    // overflow-y: scroll!important;
+  //  height: 80%;
+   
 }
 .btn-block .button {
    font-size: 0.8em !important;
@@ -154,10 +160,10 @@ page-home {
  
 }
 .headcr{
-  margin-bottom: 15px;
-  .headcrp1{
-      padding: 10px 30px;
-  }
+  position: fixed !important;
+  z-index: 999 !important;
+  //margin-bottom: 15px;
+  
   
 }
 .msgsend{
@@ -165,5 +171,39 @@ page-home {
      padding: 10px;
 }
 }
-
+.scrol{
+  position: relative;
+  float:left;
+   width: 100%;
+}
+.openLayer {
+  margin-top: 0 !important;
+}
+.header-md::after {
+  
+  background-image:unset !important;
+}
+.headcrp1{
+  padding: 10px 30px;
+}
+.gotodas{
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background: #fff;
+  color: black;
+  width: 141px;
+  float: left;
+  margin-right: 10px;
+  margin-top: 15px;
+  clear: unset !important;
+}
+.gotoproduct{
+  border-radius: 10px;
+  background: #fff;
+  color: black;
+  width: 113px;
+  float: left;
+  margin-top: 15px;
+  clear: unset !important;
+}
 }

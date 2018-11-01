@@ -16,7 +16,9 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      if(localStorage.getItem('userid')){
+      let userchk =localStorage.getItem('userid');
+      console.log(">>>>>>>>>>>>>"+userchk)
+      if(userchk){
         this.rootPage = DashboardPage;
       }else{
         this.rootPage =  CreatemywebsitePage;
@@ -24,7 +26,6 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       this.fcm.subscribeToTopic('marketing');
-
         this.fcm.getToken().then(token => {
           localStorage.setItem('MODEL',this.device.model);
           localStorage.setItem('DEVICE_ID',this.device.uuid);

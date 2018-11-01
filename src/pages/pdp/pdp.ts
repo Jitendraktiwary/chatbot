@@ -33,12 +33,15 @@ export class PdpPage {
   imagename:any;
   fp_product_id:any;
   old_image:any;
+  ishome:any='1';
   constructor(private loadingController: LoadingController,private crop: Crop,private camera: Camera,private base64: Base64,private toastCtrl: ToastController,private ApiServiceProvider: ApiServiceProvider,public actionsheetCtrl: ActionSheetController,public viewCtrl: ViewController,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
      if(this.navParams.get('fp_product_id')){
       this.fp_product_id=this.navParams.get('fp_product_id');
       this.getProductDetail(this.fp_product_id);
       
      }
+
+     this.ishome=this.navParams.get('ishome')
     
  
   }

@@ -73,7 +73,7 @@ export class ApiServiceProvider {
     let url = this.constant.config.baseUrl;
     this.header = new Headers({
       'Content-Type': 'application/json',
-       'APP-ID':'SELLER-ONBOARDING-APP',
+      'APP-ID':'SELLER-ONBOARDING-APP',
       'MODEL':localStorage.getItem('MODEL'),
       'PUSH-TOKEN':localStorage.getItem('PUSH-TOKEN'),
      // 'TI-LOGIN-KEY':localStorage.getItem('TI-LOGIN-KEY'),

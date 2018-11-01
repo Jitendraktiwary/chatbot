@@ -1,17 +1,14 @@
-<!-- <ion-header>
-    <div class="bar bar-header global-hdr">
-      <div class="tf-logo"><img src="assets/imgs/hdr-logo.png"></div>
-        <div class="h1 title">TradeindiaChat  {{headervalue}}</div>
-      </div>
-</ion-header> -->
+<ion-header>
+  <div >
+    <p class="headcrp1"> <img src="assets/imgs/tradelogo.png"></p> </div>
+</ion-header>
 
 <ion-content padding style="background: url('assets/imgs/bg.png') !important;">
-    <div class="headcr">
-        <p class="headcrp1"> <img src="assets/imgs/tradelogo.png"></p>
-       </div>
-    <div class="chats "  >
-        <div class="chatbox" class="scroll" #scrollMe>
-          <div *ngFor="let chat of chats" >
+   
+    
+        <div class="message-wrap">
+          <div *ngFor="let chat of chats"  class="scrol">
+              
             <div class="message sent" *ngIf="chat.type!=='bot'">
               {{chat.message}}     
             </div>
@@ -45,7 +42,7 @@
                        </div>
                     </div>
                </span>
-               <span *ngIf="chat.req_info =='conf_subdomainbtn'">
+              <span *ngIf="chat.req_info =='conf_subdomainbtn'">
                 <div class="btn-block p-0">
                     <div class="row">
                       <h6>Confirm your Sub Domain Name</h6>
@@ -59,6 +56,7 @@
                      </div>
                   </div>
              </span>
+             
                <span *ngIf="chat.req_info =='co_name_conf'">
                   <div class="btn-block p-0">
                       <div class="row">
@@ -74,16 +72,31 @@
               <!-- </div> -->
             </div>
           </div>
+          <div   class="scrol" *ngIf="showproduct =='1'">
+              <div class="message received">
+          <span class="addproduct" >
+              <div class="btn-block p-0">
+                 
+                    <h6>Please Post Your Product : {{this.upload_products}}/50</h6>
+                      <button class="button button-block btn-global btn-green editcomp gotodas" (click)="goto('dashborad')">Go to Dashboard </button>
+                      <button class="button button-block btn-global btn-yellow confrimcomp gotoproduct" (click)="goto('product')">Add Product</button>
+                  
+                  
+                </div>
+           </span>
+           </div>
+           </div>
         </div>
         
-    </div>
    
-    <ion-footer>
-        <p text-center *ngIf="sending">sending...</p>
-        <div class="flex-items msgsend" padding>
-
-            <ion-input [(ngModel)]="message" name="message" class="please enter" placeholder="send message ..." (keypress)="eventHandler_code($event.keyCode)"></ion-input>
-            <ion-icon (click)="sendMessage()" class="send" name="send" ></ion-icon>
-       </div>
-    </ion-footer>
+   
+  
 </ion-content>
+<ion-footer>
+  <p text-center *ngIf="sending">sending...</p>
+  <div class="flex-items msgsend" padding *ngIf="showproduct =='0'">
+
+      <ion-input #scrollMe [(ngModel)]="message" name="message" class="please enter" placeholder="send message ..." (keypress)="eventHandler_code($event.keyCode)"></ion-input>
+      <ion-icon (click)="sendMessage()" class="send" name="send" ></ion-icon>
+ </div>
+</ion-footer>

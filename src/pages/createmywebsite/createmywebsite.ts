@@ -4,9 +4,6 @@ import { HomePage } from '../home/home';
 
 import { LoginPage } from '../login/login';
 import { DashboardPage } from '../dashboard/dashboard';
-// import { PdpPage } from '../pdp/pdp';
-// import { SubDomaininfoPage } from '../sub-domaininfo/sub-domaininfo';
-
 /**
  * Generated class for the CreatemywebsitePage page.
  *
@@ -29,12 +26,13 @@ export class CreatemywebsitePage {
   }
   gotoHome(){
     this.navCtrl.push(HomePage);
+    
   }
 
  
   gotoDashboard(){
     let userid =localStorage.getItem('userid');
-    console.log(">>>>>>>>>>>>>>>userid"+userid);
+   
     if(userid == undefined ||  userid == '' || userid == null){
       this.navCtrl.push(LoginPage);
     }else{

@@ -19,11 +19,7 @@
     <div  *ngIf="show_map == 0">
         <div *ngIf="!show_otp && show_enter_details">
          <ion-list>
-          <ion-item >
-        <ion-label stacked>Mobile</ion-label>
-         <ion-input type="number" id="mobile" [(ngModel)]="mobile" placeholder="mobile no" (keypress)="eventHandler_code($event.keyCode)"></ion-input>
-      </ion-item>
-      <ion-item >
+        <ion-item >
         <ion-label stacked>Email</ion-label>
          <ion-input type="email" id="email" [(ngModel)]="email" placeholder="email" (keypress)="eventHandler_code($event.keyCode)"></ion-input>
       </ion-item>
@@ -54,7 +50,7 @@
             
               <ion-item class="pdploadmore">
                   <button ion-button color="danger" (click)="verify_otp()" round>Submit</button>
-                  <button ion-button color="danger" (click)="edit_address()" round>Edit Number</button>
+                  <!-- <button ion-button color="danger" (click)="edit_address()" round>Edit Number</button> -->
               </ion-item>
             
             </ion-list>

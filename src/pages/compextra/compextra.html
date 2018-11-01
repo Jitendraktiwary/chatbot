@@ -1,0 +1,110 @@
+<!--
+  Generated template for the ProductaddPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <div class="hedadd">
+   <ion-icon  name="arrow-back" (click)="back()"></ion-icon>
+  <ion-title>Company Extra detail</ion-title>
+  </div>
+
+
+</ion-header>
+
+
+<ion-content  style="background: url('assets/imgs/bg.png') !important;">
+
+ 
+<div class="cam" *ngIf="showdiv == 'two'">
+    <p class="canhead">Company Image </p>
+  <div class="backdiv">
+  
+  <div class="camdiv" (click)="ChooseOption2()">
+      <ion-icon ios="ios-camera" class="addico" md="md-camera" *ngIf="is_image == 0"></ion-icon>
+      <img src="{{imgData}}"  *ngIf="is_image == 1">
+  </div>
+  <div class="offcename">
+   
+    <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="clearOption('2')" *ngIf="is_image == 1"></ion-icon>
+  </div>
+</div>
+
+<p class="canhead margintop">Company Certificate </p>
+<div class="backdiv">
+
+  <div class="camdiv" (click)="ChooseOption()"  *ngIf="certimg_type == 'jpg'">
+    <ion-icon ios="ios-camera" class="addico" md="md-camera" *ngIf="is_certi == 0"></ion-icon>
+    <img src="{{imgCertificate}}"  *ngIf="is_certi == 1">
+</div>
+<div class="upload" (click)="ChooseOption()" *ngIf="certimg_type != 'jpg'">
+    <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
+    <span>{{certimg_type_name}}</span> 
+</div>
+<div class="offcename">
+    
+   <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="clearOption('1')" *ngIf="is_certi == 1"></ion-icon>
+  </div>
+  </div>
+
+  <button ion-button color="danger"  class= "btnadd" round (click)="show('final')">Save</button>
+
+</div>
+<div class="cam" *ngIf="showdiv == 'one'">
+ 
+       <ion-card class="cardmain">
+
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label stacked>Description</ion-label>
+              <ion-textarea row="4" class="borderadd" [(ngModel)]="desc" name="desc" ></ion-textarea>
+          </ion-item>
+          <ion-item>
+              <ion-label stacked>No of Empolyee</ion-label>
+             <ion-input type="number" class="borderadd" id="Noofemp" [(ngModel)]="Noofemp" ></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label stacked>Turn Over</ion-label>
+             <ion-input type="number" class="borderadd" id="turnover" [(ngModel)]="turnover" ></ion-input>
+          </ion-item> 
+          <ion-item >
+            <ion-label stacked>Currency</ion-label>
+        </ion-item>
+        <ion-item class="selectborder" class="borderadd" >
+             <ion-select [(ngModel)]="annual_currency">
+                <ion-option value="0" >Select Currency</ion-option>
+                <ion-option value="Rs" >RS</ion-option>
+                <ion-option value="USD" >USD</ion-option>             
+            </ion-select>
+       </ion-item>
+       <ion-item >
+        <ion-label stacked>Turn over</ion-label>
+    </ion-item>
+    <ion-item class="selectborder" >
+         <ion-select [(ngModel)]="annual_mult">
+            <ion-option value="0" >Select Turn over In</ion-option>
+            <ion-option value="100000" >Lakh</ion-option>
+            <ion-option value="10000000" >Crore</ion-option>
+            <ion-option value="1000000" >Million</ion-option>
+            <ion-option value="1000000000" >Billion</ion-option>         
+        </ion-select>
+      </ion-item>
+        
+          </ion-list>
+              
+       
+        </ion-card-content>
+      
+    </ion-card>
+
+   
+  <button ion-button color="danger" class= "btnadd" round (click)="show('two')">Submit</button>
+  </div>
+
+
+    
+
+</ion-content>

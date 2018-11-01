@@ -1,0 +1,41 @@
+<ion-content padding class="main card-background-page"  style="background: url('assets/imgs/bg.png') !important;">
+  <div class="headcr">
+    <p class="headcrp1"> <img src="assets/imgs/tradelogo.png"></p>
+     <p class="headcrp2">SUB DOMAIN INFO</p>
+  </div>
+  <div class="cam" >
+   
+     
+              <p class="sugestmsgurl" >Domain URL Name</p>
+              <div class="search">
+              <span>  https://www.tradeindia.com/ </span>
+          
+      
+                      <ion-input type="text"  [(ngModel)]="subdomain"></ion-input>
+       
+                
+                                
+               
+                
+              </div>
+         
+
+      <p class="sugestmsg2" *ngIf="subdomainfo== 1">Sorry ! <span> {{subdomain}}</span>  is taken.</p>
+         <ion-list class="radiosuggest" radio-group [(ngModel)]="sugessstedsubdomain" *ngIf="subdomainfo== 1">
+            <ion-list-header class="sugestmsg3">
+              Suggested Name
+            </ion-list-header>
+          
+            <ion-item  *ngFor="let data of category">
+              <ion-label>{{data.value}}</ion-label>
+              <ion-radio value="{{data.value}}"></ion-radio>
+            </ion-item>
+                          
+          </ion-list>
+        
+    
+    </div>
+
+    <button ion-button color="danger" class= "btnadd" round (click)="getsubdomaininfo()">Submit</button>
+
+</ion-content>

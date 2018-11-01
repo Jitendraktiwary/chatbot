@@ -33,7 +33,7 @@ export class RegistrationPage {
   userid:any
   newuser:any;
   constructor(private loadingController: LoadingController,public alertCtrl: AlertController,private ApiServiceProvider: ApiServiceProvider,public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams,public platform: Platform) {
-    
+    this.mobile=this.navParams.get('mobile').trim()
   }
 
 
@@ -77,21 +77,22 @@ export class RegistrationPage {
   send_otp(){
     
     let email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(this.mobile == undefined){
-      let alert = this.alertCtrl.create({
-        title:'Mobile',
-        message:'Please enter mobile no',
-        buttons:['Ok']
-      });
-      alert.present();
-    }else if(this.mobile.length < 10 || this.mobile.length > 15){
-      let alert = this.alertCtrl.create({
-        title:'Mobile',
-        message:'Invalid Mobile Length',
-        buttons:['Ok']
-      });
-      alert.present();
-    }else if(this.email == undefined){
+    // if(this.mobile == undefined){
+    //   let alert = this.alertCtrl.create({
+    //     title:'Mobile',
+    //     message:'Please enter mobile no',
+    //     buttons:['Ok']
+    //   });
+    //   alert.present();
+    // }else if(this.mobile.length < 10 || this.mobile.length > 15){
+    //   let alert = this.alertCtrl.create({
+    //     title:'Mobile',
+    //     message:'Invalid Mobile Length',
+    //     buttons:['Ok']
+    //   });
+    //   alert.present();
+    // }else 
+    if(this.email == undefined){
       let alert = this.alertCtrl.create({
         title:'Email',
         message:'Please enter Email Id',
@@ -181,9 +182,12 @@ export class RegistrationPage {
             this.otp_count++;
             this.show_otp = true;
             this.show_map = 2;
-            localStorage.setItem('userid',res.SUCCESS.userid);
+           
             this.userid=res.SUCCESS.userid;
             this.newuser=res.SUCCESS.new_user
+
+             localStorage.setItem('userid',res.SUCCESS.userid);
+
              localStorage.setItem('new_user',res.SUCCESS.new_user);
           }
          
@@ -227,6 +231,9 @@ export class RegistrationPage {
   }
 
   verify_otp(){
+
+    let json_data = {'is_login':'1'};
+    this.viewCtrl.dismiss(json_data);
     
     if(this.otp == undefined){
       let alert = this.alertCtrl.create({

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController,ViewController } from 'ionic-angular';
 import { ApiServiceProvider } from '../../providers/api-service/api-service';
 import { DashboardPage } from '../dashboard/dashboard';
 import { HomePage } from '../home/home';
 
 /**
- * Generated class for the LoginPage page.
+ * Generated class for the BeforeloginPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,19 +13,18 @@ import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: 'page-beforelogin',
+  templateUrl: 'beforelogin.html',
 })
-export class LoginPage {
+export class BeforeloginPage {
+
   show_otp:any = 0;
   mobile:any;
-  otp:any;
+  otp:any= undefined;
   otp_count:number = 0;
   userid:any;
   newuser:any;
-  constructor(private ApiServiceProvider: ApiServiceProvider,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
- 
- 
+  constructor(public viewCtrl: ViewController,private ApiServiceProvider: ApiServiceProvider,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -53,33 +52,28 @@ export class LoginPage {
       });
       alert.present();
     }else{
-      
+      console.log(this.otp_count);
       let json_data = {
         "mobile_no": '91'+this.mobile.trim()
         }
       if(this.otp_count <= 3){
         this.ApiServiceProvider.check_registration(json_data).subscribe((res) => {
-         
-         if(res.SUCCESS.new_user){
+          console.log(res);
+          if(res.SUCCESS.new_user){
             this.newuser=res.SUCCESS.new_user;
-          }else{
-            localStorage.setItem('AUTH_TOKEN',res.SUCCESS.auth_token);
-            localStorage.setItem('profile_id',res.SUCCESS.profile_id);
-             localStorage.setItem('mobile',res.SUCCESS.mobile_no);
-             localStorage.setItem('email',res.SUCCESS.email);
-             localStorage.setItem('name',res.SUCCESS.username);
-             localStorage.setItem('userid',res.SUCCESS.userid);
-             this.newuser = 0;
           }
          
-          localStorage.setItem('new_user',this.newuser);
-          
-          if(this.newuser == 1){
+          localStorage.setItem('new_user',res.SUCCESS.new_user);
+          if(this.newuser == 0 )
+            {
+             localStorage.setItem('userid',res.SUCCESS.userid);
+            }
+          if(this.newuser == 2){
             this.navCtrl.push(HomePage);
           }else{
             this.otp_count++;
             this.show_otp = 1;
-               
+                   
             this.userid=res.SUCCESS.userid;
           }
           
@@ -116,32 +110,39 @@ export class LoginPage {
     }else {
 
       let json_data :any=[]
-       let userid:any;
-        if(localStorage.getItem('userid')){
-          userid=localStorage.getItem('userid');
-          json_data = {
-            "mobile_no": '91'+this.mobile.trim(),
-            "userid":userid,
-            "otp":this.otp.trim(),
-           
-            }
-        }else{
-          userid='';
-          json_data = {
-            "mobile_no": '91'+this.mobile.trim(),
-            "otp":this.otp.trim(),
-            }
-        }
-
-
-    this.ApiServiceProvider.otp_verify(json_data).subscribe((res) => {
+      let userid:any;
+      if(localStorage.getItem('userid')){
+        userid=localStorage.getItem('userid');
+        json_data = {
+          "mobile_no": '91'+this.mobile.trim(),
+          "userid":userid,
+          "otp":this.otp.trim(),
+         
+          }
+      }else{
+        userid='';
+        json_data = {
+          "mobile_no": '91'+this.mobile.trim(),
+          "otp":this.otp.trim(),
+          }
+      }
      
+    this.ApiServiceProvider.otp_verify(json_data).subscribe((res) => {
+      console.log(res);
       if(res.STATUS == 0 || res['STATUS'] == 0){
-        if(this.userid){
-                 
+        if(res.SUCCESS.auth_token){
+          localStorage.setItem('AUTH_TOKEN',res.SUCCESS.auth_token);
+          localStorage.setItem('profile_id',res.SUCCESS.profile_id);
+          localStorage.setItem('mobile',res.SUCCESS.mobile_no);
+          localStorage.setItem('email',res.SUCCESS.email);
+          localStorage.setItem('name',res.SUCCESS.username);
+          
           this.navCtrl.setRoot(DashboardPage);
         }else{
-          this.navCtrl.push(HomePage);
+          let json_data = {'newuser':this.newuser,'mobile':this.mobile};
+          
+          this.viewCtrl.dismiss(json_data);
+         // this.navCtrl.push(HomePage);
         }
         
       }else{
@@ -158,21 +159,5 @@ export class LoginPage {
     }) 
     }
    
-  }
-  eventHandler_code(code)
-  {         
-     if(code == 13)
-      {
-        if(this.show_otp == 0 ){
-          this.send_otp();   
-        }else{
-          this.verify_otp();   
-        }
-            
-      }   
-
-  }
-  gotohome(){
-    this.navCtrl.push(HomePage);
-  }
+}
 }

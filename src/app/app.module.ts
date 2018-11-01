@@ -16,11 +16,18 @@ import { LoginPage } from '../pages/login/login';
  import { UpadteProfilePage } from '../pages/upadte-profile/upadte-profile';
  import { UpdateComPage } from '../pages/update-com/update-com';
  import { CompanyDetailPage } from '../pages/company-detail/company-detail';
+ import { ProductaddPage } from '../pages/productadd/productadd';
+ import { SubdmainurlPage } from '../pages/subdmainurl/subdmainurl';
+ import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
+
+
+ 
  import { PdpPage } from '../pages/pdp/pdp';
  import { PdplistPage } from '../pages/pdplist/pdplist';
  import { AboutusPage } from '../pages/aboutus/aboutus';
  import { TermandconditionPage } from '../pages/termandcondition/termandcondition';
  import { RegistrationPage } from '../pages/registration/registration';
+ import { BeforeloginPage } from '../pages/beforelogin/beforelogin';
  import { FilePath } from '@ionic-native/file-path';
  import { FileChooser } from '@ionic-native/file-chooser';
 
@@ -35,7 +42,8 @@ import { FCM } from '@ionic-native/fcm';
 import { Device } from '@ionic-native/device';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-
+import {WordbreakPipe} from '../pipes/wordbreak/wordbreak';
+import { CompextraPage } from '../pages/compextra/compextra';
 
 
 export function httpServiceInterceptor(backend: XHRBackend,
@@ -61,7 +69,13 @@ export function httpServiceInterceptor(backend: XHRBackend,
      PdplistPage,
      AboutusPage,
      TermandconditionPage,
-     RegistrationPage
+     RegistrationPage,
+     BeforeloginPage,
+     ProductaddPage,
+     ProgressBarComponent,
+     SubdmainurlPage,
+     WordbreakPipe,
+     CompextraPage
   ],
   imports: [
     BrowserModule,
@@ -87,7 +101,11 @@ export function httpServiceInterceptor(backend: XHRBackend,
      PdplistPage,
      AboutusPage,
      TermandconditionPage,
-     RegistrationPage
+     RegistrationPage,
+     BeforeloginPage,
+     ProductaddPage,
+     SubdmainurlPage,
+     CompextraPage
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,215 @@
+page-productadd {
+
+    .header-md::after {
+  
+        background-image:unset !important;
+      }
+      .toolbar-title-md {
+        text-align: center;
+        padding-right: 40px;
+    }
+    .toolbar-background-md {
+        
+        background: transparent !important;
+       
+    }
+    .camdiv{
+        background: #c7c7c7;
+        font-size: 8em;
+        width: 100%;
+        text-align: center;
+        min-height: 300px;
+        line-height: 270px;
+        border-radius: 10px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+    .cam{
+        margin: 0 5%;
+        text-align: center;
+    }
+    .btnadd{
+        margin-top: 10%;
+        border: 1px solid #fff;
+    }
+    .addico{
+        border: 5px solid;
+    border-radius: 50%;
+    padding: 30px;
+    height: 150px;
+    width: 150px;
+    font-size: .7em !important;
+    }
+    .hedadd{
+        text-align: center;
+        padding: 15px;
+        display: block;
+       width: 100%;
+       .icon-md{
+        font-size: 2.5em;
+        color: white !important;
+        float: left;
+       }
+       .title-md{
+        margin-top: 5px;
+        font-size: 1.8rem !important;
+       }
+    }
+    .cardmain{
+        background: #f7f7f7 !important;
+        border-radius: 10px;
+        .item-md{
+            background: transparent !important;
+        }
+        .label-md[stacked] {
+            font-size: 1.6rem !important;
+        }
+    }
+    .borderadd{
+        border-bottom: 1px solid #dedede ;
+    }
+    .addlist{
+      width: 40%;
+      float: left;
+    }
+    .addprogress{
+        width: 45%;
+        float: left;
+        padding-top: 30px;
+    }
+    .addcross{
+        width: 10%;
+        float: left;
+        color: #808080;
+        .ion-md-close-circle{
+            font-size: 2.2em;
+            margin-top: 40px;
+            margin-left: 10px;
+        }
+        
+    }
+     .progress-outer {
+        
+        background-color: #ffffff !important;
+        border-radius: 0px !important; 
+        margin-top: 0px !important;
+        padding: 0px !important;
+    }
+    .progress-inner {
+        border-radius: 0px !important; 
+       background-color: #808080 !important;
+       padding: 4px !important;
+       
+   }
+   .addradio{
+       .item-md{
+        padding-left: 0px !important;
+       }
+    .item-inner {
+       
+        display: inline-block !important;
+        -webkit-box-flex: unset !important; 
+        -webkit-flex: 0 !important; 
+        flex: unset !important;
+       
+       
+      
+    }
+    .input-wrapper {
+         display: inline-block !important;
+         -webkit-box-flex: unset !important; 
+        -webkit-flex: 0 !important; 
+        flex: unset !important;
+           
+    }
+    .item-block {
+        display: inline-block !important;
+        -webkit-box-flex: unset !important; 
+        -webkit-flex: 0 !important; 
+        flex: unset !important;
+        width: auto !important;
+    }
+    .radio-md .radio-icon {
+        
+        display: none !important;
+       
+    }
+     .label-md {
+        color: #515151 !important;
+    }
+   .item-radio-checked{
+    
+     .input-wrapper{
+        border: 1px solid  #515151 !important;
+        background: #fff !important
+     }
+    }
+    .input-wrapper {
+        background: #e6e3e3;
+        border-radius: 24px;
+        padding: 0 10px 0 20px;
+    }
+    
+   }
+   .card-content-md {
+    padding: 5px 8px !important;
+    
+}
+.addlabel{
+  
+         float: left;
+        padding: 10px;
+        font-weight: bold;
+   
+}
+.input-has-focus .label-md[stacked]{
+    color: #515151 !important;
+}
+.list-md .item-input.item-input-has-focus:last-child, .list-md .item-input.input-has-focus:last-child {
+    border-bottom-color: #515151 !important;
+    -webkit-box-shadow: inset 0 -1px 0 0 #515151 !important;
+    box-shadow: inset 0 -1px 0 0 #515151 !important;
+}
+.addfwdarrow{
+    position: absolute;
+    right: 7%;
+    top: 30px;
+    font-weight: bold;
+    font-size: x-large;
+    color: #808080;
+}
+.relative{
+    position: relative;
+
+}
+.full{
+    margin: 10px 0 !important;
+    width: 100% !important;
+    text-align: left;
+    padding: 0 15px;
+    .item-md {
+        padding-left: 0px !important;
+        .label-md[stacked] {
+            font-size: 18px !important;
+            color: #808080;
+        }
+    }
+}
+.finaladd{
+    
+    .label-md[stacked] {
+        font-size: 18px !important;
+        color: #808080;
+    }
+   
+}
+.withborder{
+    padding-left: 0px !important;
+    border-bottom: 1px solid #808080 !important;
+    .label-md[stacked] {
+        font-size: 18px !important;
+        color: #808080;
+    }
+}
+
+
+}

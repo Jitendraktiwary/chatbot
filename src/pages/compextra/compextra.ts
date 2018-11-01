@@ -4,14 +4,12 @@ import { ApiServiceProvider } from '../../providers/api-service/api-service';
 import { Base64 } from '@ionic-native/base64';
 import { Crop } from '@ionic-native/crop';
 import { Camera } from '@ionic-native/camera';
-import { CompanyDetailPage } from '../company-detail/company-detail';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
-import { DashboardPage } from '../dashboard/dashboard';
-declare var cordova: any;
 
+declare var cordova: any;
 /**
- * Generated class for the CompinfoPage page.
+ * Generated class for the CompextraPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -19,10 +17,13 @@ declare var cordova: any;
 
 @IonicPage()
 @Component({
-  selector: 'page-compinfo',
-  templateUrl: 'compinfo.html',
+  selector: 'page-compextra',
+  templateUrl: 'compextra.html',
 })
-export class CompinfoPage {
+export class CompextraPage {
+  showdiv:any='one';
+  is_image:any=0;
+  is_certi:any=0;
   desc:any;
   Noofemp:any;
   turnover:any;
@@ -38,92 +39,64 @@ export class CompinfoPage {
   file_name:any;
   certimg_type:any='jpg';
   certimg_type_name:any;
-  ishome:any='1';
   constructor(public platform:Platform,private FileChooser: FileChooser,
     private filePath: FilePath,private loadingController: LoadingController,private toastCtrl: ToastController,private ApiServiceProvider: ApiServiceProvider,private base64: Base64,public actionsheetCtrl: ActionSheetController,private crop: Crop,private camera: Camera,public viewCtrl: ViewController,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
  
-    this.turnover=this.navParams.get("turnover");
-    this.Noofemp=this.navParams.get("staff");
-    this.desc=this.navParams.get("desc");
-    this.imgCertificate=this.navParams.get("certficate");
-
-   
-
-   
-      this.ishome = this.navParams.get('homevalue');
-   
-
-    if(this.imgCertificate == 'application'){
-      this.certimg_type ='application';
-      
-    }
-    this.imgData=this.navParams.get("compimg");
-    this.oldcertifany=this.navParams.get("certficate");
-    this.oldcomiomg=this.navParams.get("compimg");
-    console.log(this.navParams.get("annual_currency"));
-    console.log(this.navParams.get("annual_mult"));
-    if(this.navParams.get("annual_currency") != null || this.navParams.get("annual_currency") != undefined){
-      this.annual_currency=this.navParams.get("annual_currency");
-    }else{
-      this.annual_currency=0;
-    }
-
-    if(this.navParams.get("annual_mult") != null || this.navParams.get("annual_mult") != undefined){
-      this.annual_mult=this.navParams.get("annual_mult");
-    }else{
-      this.annual_mult=0;
-    }
-    
-   
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CompinfoPage');
+    console.log('ionViewDidLoad CompextraPage');
   }
-  send_otp(){
-    
-    if(this.ishome == 0){
-      let json_data = {'is_login':'1'};
-      this.viewCtrl.dismiss(json_data);
-    }else{
+  show(val){
+  
+    if(val == 'two'){
       if(this.desc == undefined){
-        let alert = this.alertCtrl.create({
-          title:'Description',
-          message:'Please enter Description',
-          buttons:['Ok']
+          let toast = this.toastCtrl.create({
+          message: 'Please enter Description',
+          duration: 3000,
+          position: 'top'
         });
-        alert.present();
+        toast.present();
         }else if(this.Noofemp == undefined){
-        let alert = this.alertCtrl.create({
-          title:'No of employee',
-          message:'Please enter No of employee',
-          buttons:['Ok']
-        });
-        alert.present();
-      }else if(this.turnover == undefined){
-        let alert = this.alertCtrl.create({
-          title:'Turn over',
-          message:'Please enter Turn over',
-          buttons:['Ok']
-        });
-        alert.present();
-      }else if(this.annual_currency == undefined){
-        let alert = this.alertCtrl.create({
-          title:'Turn over',
-          message:'Please select currency ',
-          buttons:['Ok']
-        });
-        alert.present();
-      }else if(this.annual_mult == undefined){
-        let alert = this.alertCtrl.create({
-          title:'Turn over',
-          message:'Please select "annual turn over in  ',
-          buttons:['Ok']
-        });
-        alert.present();
-      }else{
+          let toast = this.toastCtrl.create({
+            message: 'Please enter No of employee',
+            duration: 3000,
+            position: 'top'
+          });
+          toast.present();
         
-        let json_data:any=[];
+      }else if(this.turnover == undefined){
+
+        let toast = this.toastCtrl.create({
+          message: 'Please enter Turn over',
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+        
+      }else if(this.annual_currency == undefined){
+
+        let toast = this.toastCtrl.create({
+          message: 'Please select currency',
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+        
+      }else if(this.annual_mult == undefined){
+        let toast = this.toastCtrl.create({
+          message: 'Please select "annual turn over in',
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+        
+      }else{
+        this.showdiv=val;
+      }   
+   }else{
+    //this.showdiv=val;
+    let json_data:any=[];
         json_data={'userid':localStorage.getItem('userid'),'profile_id':localStorage.getItem('profile_id'),'co_info':this.desc,
         'staff':this.Noofemp,'turnover':this.turnover,'annual_mult':this.annual_mult,'annual_currency':this.annual_currency};
         
@@ -157,11 +130,7 @@ export class CompinfoPage {
             });
             toast.present();
             loader.dismiss();
-            this.navCtrl.push(CompanyDetailPage,{'selected':'ExtraDetail'}) .then(() =>{
-              const index =this.viewCtrl.index;
-               this.navCtrl.remove(index);
-           
-              });
+            this.viewCtrl.dismiss(json_data);
             }else{
               loader.dismiss();
             let toast = this.toastCtrl.create({
@@ -175,15 +144,12 @@ export class CompinfoPage {
             loader.dismiss();
             console.log(error);
           })
-        
-  
-      }
-    }
-     
-  
-
+   }
   }
-
+   back(){
+     
+     
+  }
   ChooseOption2(){
     let actionSheet = this.actionsheetCtrl.create({
       title: 'Select File',
@@ -213,7 +179,7 @@ export class CompinfoPage {
                         
                         let arr = base64File.split('base64,');
                         this.compImage = arr[1];
-                        
+                        this.is_image=1;
                       }, (err) => {
                         console.log(err);
                       });
@@ -239,8 +205,7 @@ export class CompinfoPage {
           targetHeight: 720,
         };
         this.camera.getPicture(options).then((imageData) => {
-          console.log(imageData);
-          
+           
           this.crop.crop(imageData, {quality: 100, targetWidth: -1, targetHeight: -1 })
           .then(
             newImage => {
@@ -249,6 +214,7 @@ export class CompinfoPage {
                 console.log(base64File);
                 let arr = base64File.split('base64,');
                 this.compImage = arr[1];
+                this.is_image=1;
               }, (err) => {
                 console.log(err);
               });
@@ -291,7 +257,7 @@ export class CompinfoPage {
                     this.camera.getPicture(options).then((imageData) => {
                       imageData = normalizeURL(imageData);
                       this.imgCertificate = imageData;
-                      console.log(this.imgCertificate);
+                    
                       this.imgCertificate = this.imgCertificate.split('cache/');
                       this.imgCertificate = this.imgCertificate[1].split('?');
                 
@@ -302,6 +268,8 @@ export class CompinfoPage {
                         
                         let arr = base64File.split('base64,');
                         this.compCertif = arr[1];
+                       
+                        this.is_certi=1;
 
                         
                       }, (err) => {
@@ -317,42 +285,64 @@ export class CompinfoPage {
       text: 'Select from Directory',
       icon: 'md-images',
       handler: () => {
-        var options = {
-           quality: 50,
-           destinationType: this.camera.DestinationType.FILE_URI,
-           sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-           allowEdit: true,
-           encodingType: this.camera.EncodingType.JPEG,
-           saveToPhotoAlbum: false,
-           correctOrientation: true,
-           targetWidth: 720,
-           targetHeight: 720,
-         };
-         this.camera.getPicture(options).then((imageData) => {
-           console.log(imageData);
-          
-           this.crop.crop(imageData, {quality: 100, targetWidth: -1, targetHeight: -1 })
-           .then(
-            newImage => {
-               this.imgCertificate = normalizeURL(newImage);
-           this.base64.encodeFile(newImage).then((base64File: string) => {
-               console.log(base64File);
-                 let arr = base64File.split('base64,');
-                 this.compCertif = arr[1];
-               }, (err) => {
-                 console.log(err);
-               });
-             },
-             error => console.error('Error cropping image', error)
-           );
-          
-         }, (err) => {
-          
-             });
+          this.platform.ready().then(() => {
+          var permissions = cordova.plugins.permissions;
 
-        
+          permissions.hasPermission(permissions.READ_EXTERNAL_STORAGE, checkPermissionCallback, null);
+          let alertmsg = this.toastCtrl.create({
+            message:'Please allow the READ_EXTERNAL_STORAGE permission',
+            duration:4000
+          })
 
-                      
+          function checkPermissionCallback(status) {
+            if(!status.hasPermission) {
+              var errorCallback = function() {
+            
+                alertmsg.present();
+              }
+              permissions.requestPermission(permissions.READ_EXTERNAL_STORAGE,function(status) {
+                if(!status.hasPermission) {
+                  errorCallback();
+                }
+              },
+              errorCallback);                   
+
+            }
+          }
+        });
+
+        this.FileChooser.open()
+            .then((uri) => { console.log(uri)
+             
+              this.filePath.resolveNativePath(uri)
+              .then((filePath) =>
+              {
+                
+              
+               
+                this.file_name =  filePath.split('/');
+                
+                 this.imgCertificate = normalizeURL(filePath);
+                 this.certimg_type=this.file_name[this.file_name.length-1];
+                 this.certimg_type_name=this.file_name[this.file_name.length-1];
+                 this.certimg_type =  this.certimg_type.split('.');
+                 this.certimg_type =  this.certimg_type[1];
+                this.base64.encodeFile(filePath).then((base64File: string) => {
+              
+                let arr = base64File.split('base64,');
+                this.compCertif = arr[1];
+                this.is_certi=1;
+              }, (err) => {
+                        console.log(err);
+                      });
+              }
+
+              )
+              .catch(err => console.log(err));
+
+            }
+            )
+            .catch(e => console.log(e));                
 
           }
 
@@ -365,8 +355,18 @@ export class CompinfoPage {
     });
     actionSheet.present();
   }
-  gohome(){
-    this.navCtrl.setRoot(DashboardPage);
-  }
+  clearOption(val){
+    if(val == 1){
+      this.compCertif='';
+      this.imgCertificate ='';
+     this.certimg_type='jpg';
+     this.is_certi=0;
+                
+    }else{
+      this.imgData='';
+      this.is_image=0;
+      
+    }
 
+  }
 }

@@ -65,10 +65,13 @@
 </ion-item> 
  </ion-list>
 </ion-card>  
-<ion-item class="pdploadmore">
+<ion-item class="pdploadmore" *ngIf="ishome == 1">
   <button  ion-button icon-start  (click)="goback('product')" round><ion-icon ios="ios-add" md="md-add"></ion-icon>Product</button>
   <button  ion-button icon-start  (click)="goback('Dashborad')" round><ion-icon ios="ios-folder" md="md-folder"></ion-icon>Dashborad</button>
   <button  ion-button icon-start color="danger" (click)="goback('com_detail')" round><ion-icon ios="ios-briefcase" md="md-briefcase"></ion-icon>Add Companey Detail</button>
 </ion-item>
+<ion-item class="pdploadmore" *ngIf="ishome == 0">
+  <button  ion-button icon-start  (click)="goback('home')" round><ion-icon ios="ios-add" md="md-add"></ion-icon>Continue</button>
+ </ion-item>
 </div>     
 </ion-content>
